@@ -1,0 +1,59 @@
+
+/*
+ *目前用到的包：
+ * webpack
+ * babel ...
+ * react react-dom
+ * webpack-dev-server
+ * 
+ *目前用到的指令：
+ *	npm init //初始化项目
+ *	npm install --save ** 
+ 	//安装包
+ *	npm install --save-dev ** 
+ 	//安装包到开发环境(非生产环境)
+ *	npm install ** --save-dev 
+ 	//'--save-dev'的含义是代表把你的安装包信息写入package.json文件的devDependencies字段中，包安装在指定项目的node_modules文件夹下
+ *	npm install --save-dev ** ** ** **
+ 	//同时安装多个包
+ *	npm install --save-dev **@3
+ 	//安装特定版本包
+ *	npm install ** -g
+ 	//全局安装:包安装在Node安装目录下的node_modules文件夹中，一般在\Users\用户名\AppData\Roaming\ 	目录下,可以使用npm root -g查看全局安装目录
+ *	webpack weback.config.dev.js //webpack打包
+ *	npm run **
+ */
+
+/*
+	2018-05-15
+	开始动手实践从零开始(跟着网络帖子学习)搭建react项目结构
+	学习帖：https://github.com/brickspert/blog/issues/1#
+*/
+
+/*
+	20180516
+	编译命令：
+	目标目录：F:\react-family>
+	编译指令：.\node_modules\.bin\webpack --config webpack.dev.config.js
+/*
+	20180517
+	优化编译指令：npm run dev-build
+*/
+
+/*
+	20180519
+	全局安装webpack，webpack-dev-server
+	安装调试服务器，支持路由
+	运行调试服务器指令：webpack-dev-server --config webpack.dev.config.js
+	支持局域网使用ip访问
+	支持找不到页面即404，自动跳到index.html页面(主页？)
+	支持修改了代码，自动编译并刷新网页
+*/
+
+/*
+	20180520
+	模块热替换
+	问题：修改了组建代码，整个页面都被刷新，且组建内部state被重置
+	react-hot-loader
+
+*/
