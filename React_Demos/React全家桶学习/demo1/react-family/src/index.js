@@ -24,7 +24,7 @@
 
 import React from 'react';
 import ReactDom from 'react-dom';
-import getRouter from './router/router';
+import getRouter from 'router/router';
 import {AppContainer} from 'react-hot-loader';
 
 /*初始化*/

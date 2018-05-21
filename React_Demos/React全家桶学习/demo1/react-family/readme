@@ -55,5 +55,12 @@
 	模块热替换
 	问题：修改了组建代码，整个页面都被刷新，且组建内部state被重置
 	react-hot-loader
+	[文件路径优化]：为特定的文件路径配置别名，在webpack的配置文件中
+*/
 
+/*
+	20180521
+	[集成redux]:
+	[combinReducers优化]:
+	[devtool优化]:
 */
