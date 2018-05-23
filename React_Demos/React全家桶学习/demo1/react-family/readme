@@ -70,3 +70,16 @@
 	[引入库'react-redux']:
 	[结合react与redux库使用]:
 */
+
+/*
+	20180523
+	[debug]
+	[异步action]:
+	[redux-thunk库]:简单的说，中间件就是action在到达reducer，先经过中间件处理。我们之前知道reducer能处理的action只有这样的{type:xxx}，所以我们使用中间件来处理函数形式的action，把他们转为标准的action给reducer。这是redux-thunk的作用。
+	[devtool优化]:webpack.dev.config.js增加devtool: 'inline-source-map'。能打开编写的各个js，能打断点.
+*/
+
+/*
+	20180524
+	[编译css]
+*/

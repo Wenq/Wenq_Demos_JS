@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 class Counter extends Component{
 	render(){
 		return <div>
-                <div>当前计数为(显示redux计数){this.props.count}</div>
+                <div>当前计数为(显示redux计数): {this.props.counter.count}</div>
                 <button onClick={() => {
                     console.log('调用自增函数');
                     this.props.increment();
@@ -48,4 +48,5 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
+//connect函数作用是从 Redux state 树中读取部分数据，并通过 props 来把这些数据提供给要渲染的组件。也传递dispatch(action)函数到props。
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

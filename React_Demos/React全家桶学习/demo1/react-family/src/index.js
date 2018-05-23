@@ -41,6 +41,7 @@ if(module.hot){
 	}); //使用模块热替换
 }
 
+//Provider组件是让所有的组件可以访问到store。不用手动去传。也不用手动去监听。
 function renderWithHotReload(RootElement){
 	ReactDom.render(
 		<AppContainer>

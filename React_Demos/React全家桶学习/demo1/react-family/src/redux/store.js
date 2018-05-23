@@ -8,9 +8,11 @@
 	通过 subscribe(listener) 返回的函数注销监听器。
 */
 
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import combineReducers from './reducers.js';
 
-let store = createStore(combineReducers);
+// let store = createStore(combineReducers);
+let store = createStore(combineReducers, applyMiddleware(thunkMiddleware));
 
 export default store;
