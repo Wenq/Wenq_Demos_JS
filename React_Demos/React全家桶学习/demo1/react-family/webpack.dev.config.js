@@ -27,6 +27,18 @@ module.exports = {
 	     {
 	     	test: /\.css$/,
 	     	use: ['style-loader','css-loader']
+	     },
+	     {
+	     	test: /\.(png|jpg|gif)$/,
+	     	use:[
+	     	{
+	     		loader: 'url-loader',
+	     		options: {
+	     			//小于等于8K的图片会被转成base64编码，直接插入HTML中，减少HTTP请求。
+	     			limit: 8192
+	     		}
+	     	}
+	     	]
 	     }
 	    ]
 	 },

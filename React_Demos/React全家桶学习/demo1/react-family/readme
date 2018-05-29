@@ -81,7 +81,8 @@
 
 /*
 	20180524
-	[编译css]
+	[编译css]: npm install css-loader style-loader --save-dev
+	引入库: style-loader css-loader
 */
 
 /*
@@ -98,4 +99,11 @@
 	[public path]
 	[打包优化]
 	[抽取css]
+*/
+
+/*
+	20180529
+	实践，手写一遍之前看的章节的代码
+	[编译图片]: npm install --save-dev url-loader file-loader
+	[按需加载]: npm install bundle-loader --save-dev
 */
