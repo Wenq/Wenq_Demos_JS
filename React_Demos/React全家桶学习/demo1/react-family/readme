@@ -107,3 +107,11 @@
 	[编译图片]: npm install --save-dev url-loader file-loader
 	[按需加载]: npm install bundle-loader --save-dev
 */
+
+/*
+	20180607
+	实践
+	[改造路由器]
+	[缓存]
+	
+*/
