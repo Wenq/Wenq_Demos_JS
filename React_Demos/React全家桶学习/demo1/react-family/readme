@@ -113,12 +113,17 @@
 	实践
 	[改造路由器]
 	[缓存]
-	
 */
 
 /*
 	20180612
 	实践
-	[HtmlWebpackPlugin]
+	[缓存]
+*/
+
+/*
+	20180614
+	实践
+	[HtmlWebpackPlugin]：npm install html-webpack-plugin --save-dev
 	[提取公共代码]
 */

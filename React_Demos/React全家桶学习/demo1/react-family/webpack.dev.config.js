@@ -1,13 +1,21 @@
 const path = require('path');
 const webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
  
     /*入口*/
-    entry: [ 
-	    'react-hot-loader/patch',
-	    path.join(__dirname, 'src/index.js')
-    ],
+    // entry: [ 
+	   //  'react-hot-loader/patch',
+	   //  path.join(__dirname, 'src/index.js')
+    // ],
+    entry: {
+        app: [
+            'react-hot-loader/patch',
+            path.join(__dirname, 'src/index.js')
+        ],
+        vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']
+    },
     
     /*输出到dist文件夹，输出文件名字为bundle.js*/
     // output: {
@@ -21,7 +29,7 @@ module.exports = {
     // },
     output: {
         path: path.join(__dirname, './dist'),
-        filename: '[name].[hash].js',
+        filename: '[name].[hash].js', //这里应该用chunkhash替换hash. 如果用chunkhash，会报错。和webpack-dev-server --hot不兼容
         chunkFilename: '[name].[chunkhash].js'
     },
 
@@ -56,6 +64,18 @@ module.exports = {
  	// plugins: [
     // 	new webpack.HotModuleReplacementPlugin() //模块热替换
     // ]
+
+    plugins: [
+    //这个插件，每次会自动把js插入到你的模板index.html里面去。
+     new HtmlWebpackPlugin({
+     	filename: 'index.html',
+     	template: path.join(__dirname, 'src/index.html')
+     }),
+     new webpack.optimize.CommonsChunkPlugin({
+     	name: 'vendor'
+     })
+    ],
+
      // hot: true //启用模块热替换
 	devServer: {
         port: 8080,
