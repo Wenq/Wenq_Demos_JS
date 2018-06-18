@@ -127,3 +127,26 @@
 	[HtmlWebpackPlugin]：npm install html-webpack-plugin --save-dev
 	[提取公共代码]
 */
+
+/*
+	20180618
+	实践
+	[生产坏境构建]
+	[文件压缩]: npm i --save-dev uglifyjs-webpack-plugin
+	[指定环境]: new webpack.DefinePlugin({
+          'process.env': {
+              'NODE_ENV': JSON.stringify('production')
+           }
+       })
+	[优化缓存]:	new webpack.HashedModuleIdsPlugin()
+				new webpack.optimize.CommonsChunkPlugin({
+			    name: 'runtime'
+				})
+	[public path]:	静态文件放在了单独的静态服务器上,
+					output: {
+				        publicPath : '/'
+				    }
+    [打包优化]:	npm install clean-webpack-plugin --save-dev   //清理掉打包目录旧(所有)文件
+    [抽取css]:	目前我们的css是直接打包进js里面的，我们希望能单独生成css文件. 
+    			npm install --save-dev extract-text-webpack-plugin
+*/

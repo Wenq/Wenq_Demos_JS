@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev-build": "webpack --config webpack.dev.config.js",
     "start": "webpack-dev-server --config webpack.dev.config.js --color --progress --hot",
-    "dev-build-server": "webpack-dev-server --config webpack.dev.config.js"
+    "dev-build-server": "webpack-dev-server --config webpack.dev.config.js",
+    "build": "webpack --config webpack.config.js"
   },
   "author": "wenq",
   "license": "ISC",
@@ -18,11 +19,14 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "bundle-loader": "^0.5.6",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "react-hot-loader": "^4.0.0",
     "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
     "webpack": "^3.12.0",
     "webpack-dev-server": "^2.11.2"
