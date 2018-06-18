@@ -1,4 +1,9 @@
 //开发环境打包
+const merge = require('webpack-merge');
+const path = require('path');
+
+const commonConfig = require('./webpack.common.config.js');
+
 const devConfig = {
     devtool: 'inline-source-map',
     entry: {

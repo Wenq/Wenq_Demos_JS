@@ -163,4 +163,6 @@
 	:Sublime Text 3 / IntelliJ / Vim / WebStorm
 
 	[合并提取webpack公共配置]: npm install --save-dev webpack-merge
+
+	[优化目录结构并增加404页面]: 分离组建，增加NotFound组件，修改路由
 */
