@@ -31,8 +31,14 @@ const publicConfig = {
             filename: '[name].[contenthash:5].css',
             allChunks: true
         })
-    ]
-
+    ],
+    rules:  [{
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: ["css-loader", "postcss-loader"]
+            })
+        }]
 };
 
 module.exports = merge(commonConfig, publicConfig);

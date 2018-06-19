@@ -166,3 +166,14 @@
 
 	[优化目录结构并增加404页面]: 分离组建，增加NotFound组件，修改路由
 */
+
+/*
+	20180619
+	[加入 babel-plugin-transform-runtime 和 babel-polyfill]:
+	npm install --save-dev babel-plugin-transform-runtime;npm install --save-dev babel-polyfill.
+	
+	babel 提供了 transform-runtime 来将这些辅助函数“搬”到一个单独的模块 babel-runtime 中，这样做能减小项目文件的大小。
+
+	[集成PostCSS]: npm install --save-dev  postcss-loader; npm install --save-dev  postcss-cssnext
+	postCSS的功能很多，插件很多，这里用到了 autoprefixer自动加前缀
+*/
