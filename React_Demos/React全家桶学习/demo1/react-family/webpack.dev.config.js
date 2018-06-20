@@ -18,15 +18,15 @@ const devConfig = {
         filename: '[name].[hash].js'
     },
     module: {
+        // rules: [{
+        //     test: /\.(css|scss)$/,
+        //     use: ["style-loader", "css-loader"]
+        // }]
         rules: [{
-            test: /\.(css|scss)$/,
-            use: ["style-loader", "css-loader"]
-        }]
+	        test: /\.(css|scss)$/,
+	        use: ["style-loader", "css-loader", "postcss-loader"]
+    	}]
     },
-    rules: [{
-        test: /\.(css|scss)$/,
-        use: ["style-loader", "css-loader", "postcss-loader"]
-    }],
     devServer: {
         contentBase: path.join(__dirname, './dist'),
         historyApiFallback: true,

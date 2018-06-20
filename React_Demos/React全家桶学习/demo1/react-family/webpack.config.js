@@ -11,11 +11,19 @@ const commonConfig = require('./webpack.common.config.js');
 const publicConfig = {
     devtool: 'cheap-module-source-map',
     module: {
-        rules: [{
+        // rules: [{
+        //     test: /\.css$/,
+        //     use: ExtractTextPlugin.extract({
+        //         fallback: "style-loader",
+        //         use: "css-loader"
+        //     })
+        // }]
+
+        rules:  [{
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
                 fallback: "style-loader",
-                use: "css-loader"
+                use: ["css-loader", "postcss-loader"]
             })
         }]
     },
@@ -31,14 +39,7 @@ const publicConfig = {
             filename: '[name].[contenthash:5].css',
             allChunks: true
         })
-    ],
-    rules:  [{
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-                fallback: "style-loader",
-                use: ["css-loader", "postcss-loader"]
-            })
-        }]
+    ]
 };
 
 module.exports = merge(commonConfig, publicConfig);

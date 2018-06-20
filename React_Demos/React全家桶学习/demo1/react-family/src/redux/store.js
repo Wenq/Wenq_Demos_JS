@@ -19,4 +19,12 @@ import promiseMiddleware from './middleware/promiseMiddleware';
 
 let store = createStore(combineReducers, applyMiddleware(promiseMiddleware));
 
+//待处理:redux 模块热替换配置 -20180620
+// if (module.hot) {
+//     module.hot.accept("./reducers", () => {
+//         const nextCombineReducers = require("./reducers").default;
+//         store.replaceReducer(nextCombineReducers);
+//     });
+// }
+
 export default store;

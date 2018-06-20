@@ -177,3 +177,9 @@
 	[集成PostCSS]: npm install --save-dev  postcss-loader; npm install --save-dev  postcss-cssnext
 	postCSS的功能很多，插件很多，这里用到了 autoprefixer自动加前缀
 */
+
+/*
+	20180620
+	[redux 模块热替换配置]: 修改store.js中代码实现
+	[模拟AJAX数据之Mock.js]:npm install mockjs --save-dev
+*/
