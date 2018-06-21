@@ -33,6 +33,11 @@ import store from './redux/store';
 import {BrowserRouter as Router} from 'react-router-dom';
 import App from 'components/App/App';
 
+// import mock from '../mock/mock';
+if (MOCK) {
+    require('mock/mock'); //这样，就只会在npm start 开发模式下，才会应用mock，如果不想用，就把MOCK改成false就好了。
+}
+
 /*初始化*/
 renderWithHotReload(App);
 

@@ -4,6 +4,8 @@ const path = require('path');
 
 const commonConfig = require('./webpack.common.config.js');
 
+const webpack = require('webpack');
+
 const devConfig = {
     devtool: 'inline-source-map',
     entry: {
@@ -27,6 +29,11 @@ const devConfig = {
 	        use: ["style-loader", "css-loader", "postcss-loader"]
     	}]
     },
+   plugins:[
+        new webpack.DefinePlugin({
+               MOCK: true
+        })
+    ],
     devServer: {
         contentBase: path.join(__dirname, './dist'),
         historyApiFallback: true,

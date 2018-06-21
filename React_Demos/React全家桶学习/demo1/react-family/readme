@@ -183,3 +183,8 @@
 	[redux 模块热替换配置]: 修改store.js中代码实现
 	[模拟AJAX数据之Mock.js]:npm install mockjs --save-dev
 */
+
+/*
+	20180621
+	继续[模拟AJAX数据之Mock.js]: 定义了mock，在index.js引入。 mock的工作就是，拦截AJAX请求，返回模拟数据。
+*/
