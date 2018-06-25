@@ -193,3 +193,11 @@
 	20180624
 	[使用 CSS Modules]: 使得css样式文件中的单个样式，可以以模块化方式去访问，比如'styles.样式名称'.
 */
+
+/*
+	20180625
+	[使用 json-server 代替 Mock.js]: npm install --save-dev json-server
+	json-server和Mock.js一样，都是用来模拟接口数据的。json-server功能更强大，支持分页，排序，筛选等等
+
+	[问题修复]: 1. react热模块加载无效
+*/
