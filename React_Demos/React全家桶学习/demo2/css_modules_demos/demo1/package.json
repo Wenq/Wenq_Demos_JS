@@ -1,0 +1,28 @@
+{
+  "name": "cssmodules_demo1",
+  "version": "1.0.0",
+  "description": "css modules demo1",
+  "main": "demo1",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack webpack.config.js"
+  },
+  "keywords": [
+    "css",
+    "modules"
+  ],
+  "author": "wenq",
+  "license": "MIT",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "css-loader": "^0.28.11",
+    "postcss-loader": "^2.1.5",
+    "postcss-modules-values": "^1.3.0",
+    "react": "^16.4.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.15.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.0.8"
+  }
+}
