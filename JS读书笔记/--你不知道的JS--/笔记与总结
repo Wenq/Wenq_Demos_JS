@@ -54,3 +54,14 @@ let self=this;
 第二部分
 this和对象原型
 -------------------------------------------
+0713:
+js中，所有函数都是对象；
+
+function foo(num) { console.log( "foo: " + num ); // 记录 foo 被调用的次数 foo.count++; }
+具名函数中，函数内部通过函数名称就可以访问函数本身，this不指向函数本身，但有时指向函数的作用域；
+
+还有一种传统的但是现在已经被弃用和批判的用法，是使用 arguments. callee 来引用当前正在运行的函数对象。
+
+function foo(num) { console.log( "foo: " + num ); // 记录 foo 被调用的次数 // 注意，在当前的调用方式下（参见下方代码），this 确实指向 foo this.count++; } foo.count = 0; var i; for (i=0; i<10; i++) { if (i > 5) { // 使用 call(..) 可以确保 this 指向函数对象 foo 本身 foo.call( foo, i ); } }
+说明：使用‘函数.call’，可以强制 this 指向 foo 函数对象；
+-------------------------------------------
