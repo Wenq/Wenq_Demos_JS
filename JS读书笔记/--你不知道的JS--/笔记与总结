@@ -203,3 +203,37 @@ objA.a来访问对象的属性a，在当前对象objA中没查找到属性a，�
 所有普通的 [[Prototype]] 链最终都会指向内置的 Object.prototype。
 
 -------------------------------------------
+0721:
+【5.2 “类”】：
+【5.2.1 “类”函数】
+【5.2.2 “构造函数”】
+【5.2.3 技术】
+
+原型继承的机制！
+
+-------------------------------------------
+0722：
+【5.3 （原型）继承】：
+Bar.prototype = Object.create( Foo.prototype )。调用 Object.create(..) 会凭空创建一个“新”对象并把新对象内部的 [[Prototype]] 关联到你 指定的对象（本例中是 Foo.prototype）。
+
+ES6 之前， 我们只能通过设置 .__proto__ 属性来实现，但是这个方法并不是标准并且无法兼容所有浏 览器。ES6 添加了辅助函数 Object.setPrototypeOf(..)，可以用标准并且可靠的方法来修 改关联。
+// ES6 之前需要抛弃默认的 Bar.prototype Bar.ptototype = Object.create( Foo.prototype ); // ES6 开始可以直接修改现有的 Bar.prototype Object.setPrototypeOf( Bar.prototype, Foo.prototype );
+
+【检查“类”关系】：
+有对象 a，如何寻找对象 a 委托的对象（即祖先）？
+a instanceof Foo; // true
+上面是实力对象与函数，还有如下实例与实例的prototype比较：
+非常简单：b 是否出现在 c 的 [[Prototype]] 链中？ b.isPrototypeOf( c );
+
+可以直接获取一个对象的 [[Prototype]] 链。在 ES5 中，标准的方法是： Object.getPrototypeOf( a )
+
+【5.4 对象关联】：
+，[[Prototype]] 机制就是存在于对象中的一个内部链接，它会引用其他 对象。 通常来说，这个链接的作用是：如果在对象上没有找到需要的属性或者方法引用，引擎就 会继续在 [[Prototype]] 关联的对象上进行查找。同理，如果在后者中也没有找到需要的 引用就会继续查找它的 [[Prototype]]，以此类推。这一系列对象的链接被称为“原型链”。
+
+【5.4.1 创建关联】：
+var bar = Object.create( foo );
+
+Object.create(null) 会 创 建 一 个 拥 有 空（ 或 者 说 null）[[Prototype]] 链接的对象，这个对象无法进行委托。由于这个对象没有原型链，所以 instanceof 操作符（之前解释过）无法进行判断，因此总是会返回 false。 这些特殊的空 [[Prototype]] 对象通常被称作“字典”，它们完全不会受到原 型链的干扰，因此非常适合用来存储数据。
+
+Object.create(..) 是在 ES5 中新增的函数。
+-------------------------------------------
