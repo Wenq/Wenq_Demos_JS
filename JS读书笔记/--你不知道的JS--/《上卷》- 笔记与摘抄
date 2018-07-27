@@ -316,3 +316,24 @@ ES6 的 class 语法可以简洁地定义类方法。可以抛弃定义中的关
 【6.5 内省】：
 
 -------------------------------------------
+0725:
+自省就是检查实例的类型。类实例的自省主要目的是通过创建方式来判断对象的结构 和功能。
+
+使用 instanceof. //a1 instanceof Foo
+从语法角度来说，instanceof 似乎是检查 a1 和 Foo 的关系，但是实际上它想 说的是 a1 和 Foo.prototype（引用的对象）是互相关联的。
+
+鸭子类型？？
+
+var Foo = { /* .. */ }; var Bar = Object.create( Foo ); Bar... var b1 = Object.create( Bar ); 使用对象关联时，所有的对象都是通过 [[Prototype]] 委托互相关联，下面是内省的方法， 非常简单： // 让 Foo 和 Bar 互相关联 Foo.isPrototypeOf( Bar ); // true Object.getPrototypeOf( Bar ) === Foo; // true // 让 b1 关联到 Foo 和 Bar Foo.isPrototypeOf( b1 ); // true Bar.isPrototypeOf( b1 ); // true Object.getPrototypeOf( b1 ) === Bar; // true 我们没有使用 instanceof，因为它会产生一些和类有关的误解。
+
+不推荐使用‘instanceof’来判断两个对象之间是否有关联。
+
+【6.6 小结】：
+更强大的设计模式：行为委托。
+
+行为委托认为对象之间是兄弟关系，互相委托，而不是父类和子类的关系。JavaScript 的 [[Prototype]] 机制本质上就是行为委托机制。
+
+对象关联（对象之前互相关联）是一种编码风格，它倡导的是直接创建和关联对象，不把 它们抽象成类。对象关联可以用基于 [[Prototype]] 的行为委托非常自然地实现。
+
+【ES6中的Class】：
+只是一种语法糖，解决了一些问题，也有缺陷。
