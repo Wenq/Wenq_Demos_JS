@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>媒体查询-demo</title>
+        <link type="text/css" rel="stylesheet" media="only screen and (max-width: 600px)" href="smallstyle.css"/>
+        <link type="text/css" rel="stylesheet" media="all and (min-width: 1400px)" href="bigstyle.css"/>
+        <style type="text/css">
+        *{
+            /* padding:0;
+            margin:0; */
+            }
+        body,html{
+            /* background:transparent;
+            overflow:hidden; */
+            padding:0;
+            margin:0;
+            }
+        body{
+                display: flex;
+            }
+        .container{
+            display: flex;
+            /* height: 100%; */
+            width: 100%;
+            background: green;
+            margin: 20px;
+            min-width: 400px;
+            color: white;
+            }
+        .item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: red;
+            width: 500px;
+            height: 200px;
+            margin: 20px;
+            }
+         /*媒体查询*/
+         @media only screen and (max-width:400px){
+            .container{
+                overflow: auto;
+            }
+        }
+
+        @media only screen and (min-width:200px){
+            /*当页面宽度>=200px时，启用下面的样式*/
+            .item{
+                background: yellow;
+            }
+        }
+        @media only screen and (min-width:400px){
+            .item{
+                background: red;
+            }
+        }
+        @media only screen and (min-width:600px){
+            .item{
+                background: black;
+            }
+        }
+        @media only screen and (min-width:800px){
+            .item{
+                background: lawngreen;
+            }
+        }
+        @media only screen and (min-width:1000px){
+            .item{
+                background: aqua;
+            }
+        }
+        @media only screen and (min-width:1200px){
+            .item{
+                background:cornsilk;
+            }
+        }
+        @media only screen and (min-width:1400px){
+            .item{
+                background: blueviolet;
+            }
+        }
+        @media only screen and (min-width:1600px){
+            .item{
+                background: lightblue;
+            }
+        }
+        @media only screen and (min-width:1800px){
+            .item{
+                background:blue;
+            }
+        }
+        @media only screen and (min-width:1900px){
+            .item{
+                background: gray;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <div id="container" class="container">
+            '我是父div'
+            <div id="item" class="item">
+                '使用媒体查询,根据页面(document)的width变化，改变背景色'
+            </div>
+        </div>
+    </body>
+</html>
