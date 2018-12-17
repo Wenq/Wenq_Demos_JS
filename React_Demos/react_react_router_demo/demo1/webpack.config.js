@@ -7,6 +7,10 @@ module.exports = {
     publicPath: '/',
     filename: './bundle.js'
   },
+  performance: {
+      hints:false   
+  },
+  mode: 'development', // 设置mode
   module: {
     rules: [
       {
