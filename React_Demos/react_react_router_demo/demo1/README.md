@@ -1,6 +1,7 @@
 
 react-router练习demo
 =============================
+Single Page Application
 
 需求描述：
 1. 模拟pc端知乎主页结构，即：一个主页下，一排导航，每个导航链接到不同页面
