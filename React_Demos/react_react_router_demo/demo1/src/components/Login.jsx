@@ -9,7 +9,7 @@ export default class Login extends Component {
 
     render(){
         return <div className={styles['login']}>
-            <span>{'main component'}</span>
+            <span>{'Login component'}</span>
             {
                 this.props.children
             }
