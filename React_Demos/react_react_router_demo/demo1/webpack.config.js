@@ -1,6 +1,21 @@
 var webpack = require('webpack');
 var uglifyjsPlugin=require('uglifyjs-webpack-plugin');
 
+// module.exports = {
+//   entry: './index.js',
+
+//   output: {
+//     filename: 'bundle.js',
+//     publicPath: ''
+//   },
+
+//   module: {
+//     loaders: [
+//       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react' }
+//     ]
+//   }
+// }
+
 module.exports = {
   entry: __dirname + '/index.js',
   output: {
@@ -34,13 +49,13 @@ module.exports = {
   //   })
   // ]
   //压缩js webpack 4.0写法
-  optimization: {
-      minimizer: [
-          new uglifyjsPlugin({
-              uglifyOptions: {
-                  compress: false
-              }
-          })
-      ]
-  }
+  // optimization: {
+  //     minimizer: [
+  //         new uglifyjsPlugin({
+  //             uglifyOptions: {
+  //                 compress: false
+  //             }
+  //         })
+  //     ]
+  // }
 };
