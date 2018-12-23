@@ -1,5 +1,5 @@
-var webpack = require('webpack');
-var uglifyjsPlugin=require('uglifyjs-webpack-plugin');
+// var webpack = require('webpack');
+// var uglifyjsPlugin=require('uglifyjs-webpack-plugin');
 
 // module.exports = {
 //   entry: './index.js',
@@ -17,10 +17,10 @@ var uglifyjsPlugin=require('uglifyjs-webpack-plugin');
 // }
 
 module.exports = {
-  entry: __dirname + '/index.js',
+  entry: './index.js',
   output: {
-    publicPath: '/',
-    filename: './bundle.js'
+    filename: './bundle.js',
+    publicPath: '/'
   },
   performance: {
       hints:false   
