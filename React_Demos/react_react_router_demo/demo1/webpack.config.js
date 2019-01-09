@@ -16,17 +16,26 @@
 //   }
 // }
 
+let path = require('path');//node的模块
 module.exports = {
   entry: './index.js',
   output: {
-    filename: './bundle.js',
-    publicPath: '/'
+    filename:'build.js',
+    // 这个路径必须是绝对路径
+    path: path.resolve('./dist')
   },
+  devServer:{
+    contentBase:'./dist',
+    port:8080,
+    compress:true,// 服务器压缩
+    open:true,// 自动打开浏览器
+    // hot:true//热更新
+    },// 开发服务器
   performance: {
       hints:false   
   },
-  mode: 'development', // 设置mode
-  module: {
+  mode: 'development', // 设置mode // 可以更改模式
+  module: { // 模块配置
     rules: [
       {
         test: /\.jsx?$/,

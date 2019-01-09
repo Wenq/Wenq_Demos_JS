@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --config webpack.config.js",
     "dev-run": "webpack-dev-server --config webpack.config.js",
-    "start": "webpack-dev-server --inline --content-base ."
+    "start": "webpack-dev-server --inline --content-base .",
+    "build": "webpack  --profile --progress --colors --display-error-details"
   },
   "keywords": [
     "css",
