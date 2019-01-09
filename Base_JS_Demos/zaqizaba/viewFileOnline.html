@@ -1,0 +1,80 @@
+<html>
+    <title>在线预览文档(图片、文本、pdf、office)</title>
+    <head>
+        <style>
+            #btncontainer{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin: 20px 10px;
+            }
+            .btnbase{
+                width: 100px;
+                height: 27px;
+                margin: 0px 5px;
+            }
+            #file_iframe{
+                width: 100%;
+                height: 100%;
+                border: 1px solid red;
+            }
+        </style>
+        <script>
+            // var fileSrc = [
+            //     "http://a.hiphotos.baidu.com/image/pic/item/aa18972bd40735faee21b63393510fb30e240862.jpg",
+            //     "http://a.hiphotos.baidu.com/image/pic/item/aa18972bd40735faee21b63393510fb30e240862.jpg",
+            //     "http://a.hiphotos.baidu.com/image/pic/item/aa18972bd40735faee21b63393510fb30e240862.jpg",
+            //     "http%3A%2F%2Fvideo.ch9.ms%2Fbuild%2F2011%2Fslides%2FTOOL-532T_Sutter.pptx"
+            // ];
+            var fileSrc = [
+                "http%3A%2F%2Fa.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Faa18972bd40735faee21b63393510fb30e240862.jpg",
+                "http%3A%2F%2Fqcloudoss.xunjiepdf.com%2Fxunjiepdf%2Ftemp%2F20190109%2F529070bc48d5b94fe33e110a.pptx",
+                "http%3A%2F%2Fqcloudoss.xunjiepdf.com%2Fxunjiepdf%2Ftemp%2F20190109%2F529070bc48d5b94fe33e110a.pdf",
+                "http%3A%2F%2Fvideo.ch9.ms%2Fbuild%2F2011%2Fslides%2FTOOL-532T_Sutter.pptx"
+            ];
+            window.onload = (e)=>{
+                var file_iframe = document.getElementById("file_iframe");
+                if(file_iframe){
+                    // document.getElementsByClassName
+                    var previewImg = document.getElementById('previewImg');
+                    if(previewImg){
+                        previewImg.addEventListener('click',(e)=>{
+                            e.stopPropagation();
+                            file_iframe.setAttribute( "src", 'https://view.officeapps.live.com/op/view.aspx?src='+ fileSrc[0]);
+                        });
+                    }
+                    var previewText = document.getElementById('previewText');
+                    if(previewText){
+                        previewText.addEventListener('click',(e)=>{
+                            e.stopPropagation();
+                            file_iframe.setAttribute( "src", 'https://view.officeapps.live.com/op/view.aspx?src='+ fileSrc[1]);
+                        });
+                    }
+                    var previewPdf = document.getElementById('previewPdf');
+                    if(previewPdf){
+                        previewPdf.addEventListener('click',(e)=>{
+                            e.stopPropagation();
+                            file_iframe.setAttribute( "src", 'https://view.officeapps.live.com/op/view.aspx?src='+ fileSrc[2]);
+                        });
+                    }
+                    var previewOffice = document.getElementById('previewOffice');
+                    if(previewOffice){
+                        previewOffice.addEventListener('click',(e)=>{
+                            e.stopPropagation();
+                            file_iframe.setAttribute( "src", 'https://view.officeapps.live.com/op/view.aspx?src='+ fileSrc[3]);
+                        });
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="btncontainer">
+            <button class="btnbase" id='previewImg'>预览图片</button>
+            <button class="btnbase" id='previewText'>预览文本</button>
+            <button class="btnbase" id='previewPdf'>预览pdf</button>
+            <button class="btnbase" id='previewOffice'>预览office</button>
+        </div>
+        <iframe id="file_iframe" src='' width='100%' height='100%' frameborder='1'></iframe>
+    </body>
+</html>
