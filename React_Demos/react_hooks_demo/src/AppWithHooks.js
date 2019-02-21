@@ -52,7 +52,7 @@ function AppWithHooks() {
     return (
         <div>
             <p>u click {count} times</p>
-            <button onClick={()=>setState(++count)}>
+            <button onClick={()=>setState(count+1)}>
                 Click me
             </button>
             </div>
