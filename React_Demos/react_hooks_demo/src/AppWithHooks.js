@@ -28,8 +28,27 @@ import React, {Component} from 'react';
 
 //使用hooks重构
 import {useState} from 'react';
+import {useEffect} from 'react';
 function AppWithHooks() {
-    const [count, setState] = useState(0);
+    //声明一个名为“count”的新状态变量
+    const [count, setState] = useState(10); //参数'10'是状态变量count的初始值
+    //参数可以是复杂对象
+    const [aa, testFun] = useState({a:'xxx'});
+
+    //在刷新DOM之后运行你的副作用函数
+    useEffect(()=>{
+        document.title = `u click ${count} times`;
+
+        //副作用函数可以通过返回一个函数来指定如何“回收”它们
+        return ()=>{
+            console.log('执行回收操作');
+        }
+    });
+    //可以用是有多个useEffect
+    useEffect(()=>{
+        //todo
+    });
+
     return (
         <div>
             <p>u click {count} times</p>
