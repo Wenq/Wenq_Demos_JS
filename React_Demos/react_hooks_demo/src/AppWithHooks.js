@@ -35,7 +35,7 @@ function AppWithHooks() {
     //参数可以是复杂对象
     const [aa, testFun] = useState({a:'xxx'});
 
-    //在刷新DOM之后运行你的副作用函数
+    //在刷新DOM之后运行副作用函数
     useEffect(()=>{
         document.title = `u click ${count} times`;
 
@@ -44,7 +44,7 @@ function AppWithHooks() {
             console.log('执行回收操作');
         }
     });
-    //可以用是有多个useEffect
+    //可以有多个useEffect
     useEffect(()=>{
         //todo
     });
