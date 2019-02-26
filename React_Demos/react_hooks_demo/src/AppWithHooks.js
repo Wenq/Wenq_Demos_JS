@@ -35,7 +35,7 @@ function AppWithHooks() {
     //参数可以是复杂对象
     const [aa, testFun] = useState({a:'xxx'});
 
-    //在刷新DOM之后运行副作用函数
+    //在刷新DOM之后运行的副作用函数(在class就是componentDidMount和componentDidUpdate中)
     useEffect(()=>{
         document.title = `u click ${count} times`;
 
