@@ -39,7 +39,7 @@ function AppWithHooks() {
     useEffect(()=>{
         document.title = `u click ${count} times`;
 
-        //副作用函数可以通过返回一个函数来指定如何“回收”它们
+        //副作用函数可以通过返回一个函数来指定如何“回收”它们(在class就是unMount)
         return ()=>{
             console.log('执行回收操作');
         }
@@ -47,6 +47,11 @@ function AppWithHooks() {
     //可以有多个useEffect
     useEffect(()=>{
         //todo
+
+        //undo
+        return ()=>{
+            
+        }
     });
 
     return (
