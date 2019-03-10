@@ -1,0 +1,17 @@
+/*主页组件的样式文件*/
+
+html,body{
+    height: 100%;
+    width: 100%;
+    /* margin: 0px;
+    padding: 0px; */
+}
+#root{
+    height: 100%;
+    display: flex;
+}
+.main{
+    display: flex;
+    border: 1px solid red;
+    flex-grow: 1;
+}
