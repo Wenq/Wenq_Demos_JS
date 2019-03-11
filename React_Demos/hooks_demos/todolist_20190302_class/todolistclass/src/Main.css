@@ -10,8 +10,16 @@ html,body{
     height: 100%;
     display: flex;
 }
+
 .main{
     display: flex;
     border: 1px solid red;
     flex-grow: 1;
+    justify-content: center;
+    flex-direction: column;
+}
+.title{
+    border: 1px solid gray;
+    height: 30px;
+    padding: 5px;
 }
