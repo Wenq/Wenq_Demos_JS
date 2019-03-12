@@ -16,7 +16,7 @@ import './InputComponent.css';
     }
 
     onKeyDown(e){
-        e.stoppropagation();
+        // e.stoppropagation();
         this.props.onKeyDown&&this.props.onKeyDown(e);
     }
 

@@ -17,16 +17,31 @@ class Main extends Component {
         super(props)
 
         this.state = {
+            value: '',
             todoItemList: [1,2,3],
             doneItemList: [4,5,6]
         }
+
+        this.onTxtChange = this.onTxtChange.bind(this);
+        this.onTxtKeyDown = this.onTxtKeyDown.bind(this);
     }
+
+    onTxtChange(value){
+        this.setState({value});
+    }
+
+    onTxtKeyDown(e){
+        if(e.keyCode===13){//enter
+            alert(e.target.value);
+        }
+    }
+
     render() {
         // let todoItemList = [1,2,3];
         // let doneItemList = [4,5,6];
         return <div className='main'>
             <span className='title'>todolist class 版本实现</span>
-            <InputComponent />
+            <InputComponent value={this.state.value} onChange={this.onTxtChange} onKeyDown={this.onTxtKeyDown}/>
             <ItemContainer title={'待处理'} items={[]}>
                 {
                     this.state.todoItemList && this.state.todoItemList.map((item, index) => {

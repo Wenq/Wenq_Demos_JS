@@ -11,6 +11,9 @@
     width: 100px;
     margin-left: 5px;
 }
+.btn:hover{
+    cursor: pointer;
+}
 .text{
     flex-grow: 1;
     height: 50px;
