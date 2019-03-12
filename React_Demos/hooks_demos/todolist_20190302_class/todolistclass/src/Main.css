@@ -1,5 +1,4 @@
 /*主页组件的样式文件*/
-
 html,body{
     height: 100%;
     width: 100%;
@@ -10,7 +9,7 @@ html,body{
     height: 100%;
     display: flex;
 }
-
+/*主页布局*/
 .main{
     display: flex;
     border: 1px solid red;
@@ -18,8 +17,10 @@ html,body{
     justify-content: center;
     flex-direction: column;
 }
+/*标题栏*/
 .title{
     border: 1px solid gray;
     height: 30px;
     padding: 5px;
+    text-align: center;
 }

@@ -13,22 +13,30 @@ import DoneItem from './components/DoneItem';
 
 
 class Main extends Component {
+    constructor(props){
+        super(props)
+
+        this.state = {
+            todoItemList: [1,2,3],
+            doneItemList: [4,5,6]
+        }
+    }
     render() {
-        let todoItemList = [1,2,3];
-        let doneItemList = [4,5,6];
+        // let todoItemList = [1,2,3];
+        // let doneItemList = [4,5,6];
         return <div className='main'>
             <span className='title'>todolist class 版本实现</span>
             <InputComponent />
             <ItemContainer title={'待处理'} items={[]}>
                 {
-                    todoItemList && todoItemList.map((item, index) => {
+                    this.state.todoItemList && this.state.todoItemList.map((item, index) => {
                         return <ToDoItem key={index} />
                     })
                 }
             </ItemContainer>
             <ItemContainer title={'已完成'} items={[]}>
                 {
-                    doneItemList && doneItemList.map((item, index) => {
+                    this.state.doneItemList && this.state.doneItemList.map((item, index) => {
                         return <DoneItem key={index} />
                     })
                 }
