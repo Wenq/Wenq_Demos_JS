@@ -39,7 +39,9 @@ class Main extends Component {
     render() {
         // let todoItemList = [1,2,3];
         // let doneItemList = [4,5,6];
-        return <div className='main'>
+
+        let {style, className, ...others} = this.props;
+        return <div className={'main' + ' ' + className} style={style} {...others}>
             <span className='title'>todolist class 版本实现</span>
             <InputComponent value={this.state.value} onChange={this.onTxtChange} onKeyDown={this.onTxtKeyDown}/>
             <ItemContainer title={'待处理'} items={[]}>

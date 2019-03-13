@@ -16,6 +16,7 @@ html,body{
     flex-grow: 1;
     justify-content: center;
     flex-direction: column;
+    /* padding: 10px; */
 }
 /*标题栏*/
 .title{

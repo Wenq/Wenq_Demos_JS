@@ -21,8 +21,12 @@ import './InputComponent.css';
     }
 
      render(){
-         return (<div className='inputcomponent'>
-             <input type='text' className='text' onChange={this.onChange} onKeyDown={this.onKeyDown}/>
+         let {style, className, onChange, onKeyDown, placeholder, ...others} = this.props;
+         let inputStyle = {
+            //  "spellCheck": false
+         };
+         return (<div className='inputcomponent' {...others}>
+             <input type='text' spellCheck={false} placeholder={placeholder||'请输入'} style={inputStyle} className='text' onChange={this.onChange} onKeyDown={this.onKeyDown}/>
              <button className='btn'>新增</button>
          </div>
          )
