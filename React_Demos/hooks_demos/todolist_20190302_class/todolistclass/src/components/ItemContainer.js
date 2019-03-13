@@ -4,9 +4,10 @@ import './ItemContainer.css';
 
 class ItemContainer extends Component {
     render() {
-        return <div className='main'>
-            <span>{this.props.title||'ItemContainer'}</span>
-            {this.props.children}
+        let { style, className, title, children, titleStyle, items, ...others } = this.props;
+        return <div className={'itemcontainer' + ' ' + className} style={style} {...others}>
+            <span style={titleStyle}>{title || 'ItemContainer'}</span>
+            {children}
         </div>
     }
 }
