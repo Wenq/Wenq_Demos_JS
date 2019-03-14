@@ -42,7 +42,13 @@ class Main extends Component {
         let { style, className, ...others } = this.props;
         return <div className={'main' + ' ' + className} style={style} {...others}>
             <span className='title'>todolist class 版本实现</span>
-            <InputComponent style={{ 'margin': '10px 0px 10px 0px' }} value={this.state.value} onChange={this.onTxtChange} onKeyDown={this.onTxtKeyDown} />
+            <InputComponent 
+            style={{ 'margin': '10px 0px 10px 0px' }} 
+            value={this.state.value} 
+            onChange={this.onTxtChange} 
+            onKeyDown={this.onTxtKeyDown}
+            placeholder={'请输入待办事项  [回车快速添加]'} 
+            />
             <ItemContainer title={'待处理: '} items={[]} titleStyle={{ 'color': 'green' }}
                 style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
                 {
