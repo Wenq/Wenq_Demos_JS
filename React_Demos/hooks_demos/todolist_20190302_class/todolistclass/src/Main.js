@@ -17,7 +17,7 @@ class Main extends Component {
 
         this.state = {
             value: '',
-            todoItemList: [1, 2, 3],
+            todoItemList: [{titile:'1', date:''},{},{}],
             doneItemList: [4, 5, 6]
         }
 
@@ -48,7 +48,7 @@ class Main extends Component {
             onKeyDown={this.onTxtKeyDown}
             placeholder={'请输入待办事项  [回车快速添加]'} 
             />
-            <ItemContainer title={'待处理: '} items={[]} titleStyle={{ 'color': 'green' }}
+            <ItemContainer title={'待处理: '} titleStyle={{ 'color': 'green', 'fontSize':'16px' }}
                 style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
                 {
                     this.state.todoItemList && this.state.todoItemList.map((item, index) => {
@@ -56,7 +56,7 @@ class Main extends Component {
                     })
                 }
             </ItemContainer>
-            <ItemContainer title={'已完成: '} items={[]} titleStyle={{ 'color': 'gray' }}
+            <ItemContainer title={'已完成: '} titleStyle={{ 'color': 'gray', 'fontSize':'16px' }}
                 style={{ 'border': '1px solid gray' }}>
                 {
                     this.state.doneItemList && this.state.doneItemList.map((item, index) => {
