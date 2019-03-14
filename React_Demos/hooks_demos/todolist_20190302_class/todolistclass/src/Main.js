@@ -11,7 +11,6 @@ import ItemContainer from './components/ItemContainer';
 import ToDoItem from './components/ToDoItem';
 import DoneItem from './components/DoneItem';
 
-
 class Main extends Component {
     constructor(props) {
         super(props)
