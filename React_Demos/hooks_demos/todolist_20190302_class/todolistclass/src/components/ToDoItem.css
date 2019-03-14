@@ -1,3 +1,25 @@
 .todoitem{
-    
+    border: 1px solid green;
+    margin: 10px;
+    flex-grow: 1;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+.todoitem_check{
+
+}
+.todoitem_check:hover{
+    cursor: pointer;
+}
+.todoitem_title{
+    white-space: nowrap;
+    margin: 0px 10px 0px 10px;
+    overflow: hidden;
+    max-width: 200px;
+}
+.todoitem_date{
+
 }

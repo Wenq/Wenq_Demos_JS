@@ -1,10 +1,20 @@
 /*主页组件的样式文件*/
+
+/*页面样式*/
 html,body{
     height: 100%;
     width: 100%;
     /* margin: 0px;
     padding: 0px; */
 }
+body {
+    font: 12px Arial,"PingFang SC","Hiragino Sans GB",STHeiti,"Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+/*根节点*/
 #root{
     height: 100%;
     display: flex;
