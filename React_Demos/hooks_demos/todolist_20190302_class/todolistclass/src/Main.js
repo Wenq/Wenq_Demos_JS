@@ -17,8 +17,8 @@ class Main extends Component {
 
         this.state = {
             value: '',
-            todoItemList: [{ titile: '1', date: '' }, {}, {}],
-            doneItemList: [4, 5, 6]
+            todoItemList: [{ title: '1', date: '03/12', do: false }, { title: '2', date: '03/05', do: false }, { title: '3', date: '03/15', do: false }],
+            doneItemList: [{ title: '4', date: '03/11', do: true},{ title: '5', date: '03/12', do: true},{ title: '6', date: '03/09', do: true},{ title: '7', date: '03/12', do: true},{ title: '8', date: '03/12', do: true}]
         }
 
         this.onTxtChange = this.onTxtChange.bind(this);
@@ -50,7 +50,7 @@ class Main extends Component {
                 style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
                 {
                     this.state.todoItemList && this.state.todoItemList.map((item, index) => {
-                        return <ToDoItem key={index} style={{ 'magin': '10px' }} />
+                        return <ToDoItem key={index} style={{ 'magin': '10px' }} item={item}/>
                     })
                 }
             </ItemContainer>
@@ -58,7 +58,7 @@ class Main extends Component {
                 style={{ 'border': '1px solid gray' }}>
                 {
                     this.state.doneItemList && this.state.doneItemList.map((item, index) => {
-                        return <DoneItem key={index} style={{ 'magin': '10px' }} />
+                        return <DoneItem key={index} style={{ 'magin': '10px' }} item={item}/>
                     })
                 }
             </ItemContainer>
