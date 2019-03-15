@@ -17,21 +17,46 @@ class Main extends Component {
 
         this.state = {
             value: '',
-            todoItemList: [{ title: '1', date: '03/12', do: false }, { title: '2', date: '03/05', do: false }, { title: '3', date: '03/15', do: false }],
-            doneItemList: [{ title: '4', date: '03/11', do: true},{ title: '5', date: '03/12', do: true},{ title: '6', date: '03/09', do: true},{ title: '7', date: '03/12', do: true},{ title: '8', date: '03/12', do: true}]
+            todoItemList: [{ id: 1, title: '1', date: '03/12', do: false }, { id: 2, title: '2', date: '03/05', do: false }, { id: 3, title: '3', date: '03/15', do: false }],
+            doneItemList: [{ id: 4, title: '4', date: '03/11', do: true }, { id: 5, title: '5', date: '03/12', do: true }, { id: 6, title: '6', date: '03/09', do: true }, { id: 7, title: '7', date: '03/12', do: true }, { id: 8, title: '8', date: '03/12', do: true }]
         }
 
         this.onTxtChange = this.onTxtChange.bind(this);
         this.onTxtKeyDown = this.onTxtKeyDown.bind(this);
+        this.onDoneItemChange = this.onDoneItemChange.bind(this);
+        this.onToDoItemChange = this.onToDoItemChange.bind(this);
     }
 
+    //搜索框文本change事件
     onTxtChange(value) {
         this.setState({ value });
     }
 
+    //搜索框按键事件
     onTxtKeyDown(e) {
         if (e.keyCode === 13) {//enter
             alert(e.target.value);
+        }
+    }
+
+    //点击已完成item
+    onDoneItemChange(id) {
+
+    }
+
+    //点击待办item
+    onToDoItemChange(id) {
+        let todoItemList = this.state.todoItemList;
+        let target = todoItemList.find(item=>{return item.id===id});
+        if(target){
+            todoItemList.pop(target);
+            target.do = true;
+            let doneItemList = this.state.doneItemList;
+            doneItemList.push(target);
+            this.setState({
+                todoItemList: todoItemList,
+                doneItemList: doneItemList
+            });
         }
     }
 
@@ -50,7 +75,7 @@ class Main extends Component {
                 style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
                 {
                     this.state.todoItemList && this.state.todoItemList.map((item, index) => {
-                        return <ToDoItem key={index} style={{ 'magin': '10px' }} item={item}/>
+                        return <ToDoItem key={index} style={{ 'magin': '10px' }} item={item} />
                     })
                 }
             </ItemContainer>
@@ -58,7 +83,7 @@ class Main extends Component {
                 style={{ 'border': '1px solid gray' }}>
                 {
                     this.state.doneItemList && this.state.doneItemList.map((item, index) => {
-                        return <DoneItem key={index} style={{ 'magin': '10px' }} item={item}/>
+                        return <DoneItem key={index} style={{ 'magin': '10px' }} item={item} />
                     })
                 }
             </ItemContainer>
