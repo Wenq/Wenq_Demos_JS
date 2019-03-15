@@ -49,7 +49,7 @@ class Main extends Component {
         let todoItemList = this.state.todoItemList;
         let target = todoItemList.find(item=>{return item.id===id});
         if(target){
-            todoItemList.pop(target);
+            todoItemList.splice(todoItemList.indexOf(target),1);
             target.do = true;
             let doneItemList = this.state.doneItemList;
             doneItemList.push(target);
@@ -75,7 +75,8 @@ class Main extends Component {
                 style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
                 {
                     this.state.todoItemList && this.state.todoItemList.map((item, index) => {
-                        return <ToDoItem key={index} style={{ 'magin': '10px' }} item={item} />
+                        return <ToDoItem key={index} style={{ 'magin': '10px' }} item={item} 
+                        onCheckChange={this.onToDoItemChange}/>
                     })
                 }
             </ItemContainer>
@@ -83,7 +84,8 @@ class Main extends Component {
                 style={{ 'border': '1px solid gray' }}>
                 {
                     this.state.doneItemList && this.state.doneItemList.map((item, index) => {
-                        return <DoneItem key={index} style={{ 'magin': '10px' }} item={item} />
+                        return <DoneItem key={index} style={{ 'magin': '10px' }} item={item} 
+                        onCheckChange={this.onDoneItemChange}/>
                     })
                 }
             </ItemContainer>

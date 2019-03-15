@@ -17,7 +17,7 @@ class DoneItem extends Component {
     render() {
         let { style, className, item={}, onCheckChange, ...others } = this.props;
         return <div className={`doneitem ${className}`} style={style} {...others}>
-                <input type='checkbox' className={'doneitem_check'} onChange={this.onCheckChange} checked={item.do}/>
+                <input type='checkbox' className={'doneitem_check'} onClick={this.onCheckChange} checked={item.do}/>
                 <span className='doneitem_title'>{item.title||'无'}</span>
                 <span className='doneitem_date'>{item.date||'3/14'}</span>
         </div>
