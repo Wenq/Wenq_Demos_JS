@@ -41,7 +41,18 @@ class Main extends Component {
 
     //点击已完成item
     onDoneItemChange(id) {
-
+        let doneItemList = this.state.doneItemList;
+        let target = doneItemList.find(item=>{return item.id===id});
+        if(target){
+            doneItemList.splice(doneItemList.indexOf(target),1);
+            target.do = true;
+            let todoItemList = this.state.todoItemList;
+            todoItemList.push(target);
+            this.setState({
+                todoItemList: todoItemList,
+                doneItemList: doneItemList
+            });
+        }
     }
 
     //点击待办item
