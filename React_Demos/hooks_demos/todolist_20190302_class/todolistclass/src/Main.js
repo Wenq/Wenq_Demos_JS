@@ -22,9 +22,13 @@ class Main extends Component {
             doneItemList: [{ id: 4, title: '4', date: '03/11', do: true }, { id: 5, title: '5', date: '03/12', do: true }, { id: 6, title: '6', date: '03/09', do: true }, { id: 7, title: '7', date: '03/12', do: true }, { id: 8, title: '8', date: '03/12', do: true }]
         }
 
+        //输入框
         this.onTxtChange = this.onTxtChange.bind(this);
         this.onTxtKeyDown = this.onTxtKeyDown.bind(this);
+        this.onClick = this.onClick.bind(this);
+        //待办
         this.onDoneItemChange = this.onDoneItemChange.bind(this);
+        //已办
         this.onToDoItemChange = this.onToDoItemChange.bind(this);
     }
 
@@ -36,26 +40,34 @@ class Main extends Component {
     //搜索框按键事件
     onTxtKeyDown(e) {
         if (e.keyCode === 13) {//enter
-            // alert(e.target.value);
-            let title = e.target.value;
-            if (title.trim() === '') {
-                console.warn(`blank string, cancel...`);
-                return;
-            }
-
-            let newToDOItem = {
-                id: createId(),
-                title: title,
-                date: getDate(),
-                do: false
-            };
-            let todoItemList = this.state.todoItemList;
-            todoItemList.push(newToDOItem);
-            this.setState({
-                todoItemList: todoItemList,
-                value: ''
-            });
+            // alert(this.state.value);
+            this.doAddToDoItem();
         }
+    }
+
+    onClick(e){
+        this.doAddToDoItem();
+    }
+
+    doAddToDoItem(){
+        let title = this.state.value;
+        if (title.trim() === '') {
+            console.warn(`blank string, cancel...`);
+            return;
+        }
+
+        let newToDOItem = {
+            id: createId(),
+            title: title,
+            date: getDate(),
+            do: false
+        };
+        let todoItemList = this.state.todoItemList;
+        todoItemList.push(newToDOItem);
+        this.setState({
+            todoItemList: todoItemList,
+            value: ''
+        });
     }
 
     //点击已完成item
@@ -99,6 +111,7 @@ class Main extends Component {
                 value={this.state.value}
                 onChange={this.onTxtChange}
                 onKeyDown={this.onTxtKeyDown}
+                onClick = {this.onClick}
                 placeholder={'请输入待办事项  [回车快速添加]'}
             />
             <ItemContainer title={'待处理: '} titleStyle={{ 'color': 'green', 'fontSize': '16px' }}

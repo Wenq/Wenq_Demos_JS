@@ -9,6 +9,7 @@ class InputComponent extends Component {
 
         this.onChange = this.onChange.bind(this);
         this.onKeyDown = this.onKeyDown.bind(this);
+        this.onClick = this.onClick.bind(this);
     }
 
     onChange(e) {
@@ -18,6 +19,10 @@ class InputComponent extends Component {
     onKeyDown(e) {
         // e.stoppropagation();
         this.props.onKeyDown && this.props.onKeyDown(e);
+    }
+
+    onClick(e){
+        this.props.onClick && this.props.onClick(e);
     }
 
     render() {
@@ -36,7 +41,7 @@ class InputComponent extends Component {
                 onKeyDown={this.onKeyDown}
                 value={value}
             />
-            <button className='btn'>新增</button>
+            <button className='btn' onClick={this.onClick}>新增</button>
         </div>
         )
     }
