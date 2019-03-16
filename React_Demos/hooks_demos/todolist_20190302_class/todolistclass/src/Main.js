@@ -10,6 +10,7 @@ import InputComponent from './components/InputComponent';
 import ItemContainer from './components/ItemContainer';
 import ToDoItem from './components/ToDoItem';
 import DoneItem from './components/DoneItem';
+import { getDate } from './utils/commonUtil';
 
 class Main extends Component {
     constructor(props) {
@@ -35,16 +36,34 @@ class Main extends Component {
     //搜索框按键事件
     onTxtKeyDown(e) {
         if (e.keyCode === 13) {//enter
-            alert(e.target.value);
+            // alert(e.target.value);
+            let title = e.target.value;
+            if(title.trim()===''){
+                console.warn(`blank string, cancel...`);
+                return;
+            }
+
+            let newToDOItem = {
+                id: '',
+                title: title,
+                date: getDate(),
+                do: false
+            };
+            let todoItemList = this.state.todoItemList;
+            todoItemList.push(newToDOItem);
+            this.setState({
+                todoItemList : todoItemList,
+                value: ''
+            });
         }
     }
 
     //点击已完成item
     onDoneItemChange(id) {
         let doneItemList = this.state.doneItemList;
-        let target = doneItemList.find(item=>{return item.id===id});
-        if(target){
-            doneItemList.splice(doneItemList.indexOf(target),1);
+        let target = doneItemList.find(item => { return item.id === id });
+        if (target) {
+            doneItemList.splice(doneItemList.indexOf(target), 1);
             target.do = true;
             let todoItemList = this.state.todoItemList;
             todoItemList.push(target);
@@ -58,9 +77,9 @@ class Main extends Component {
     //点击待办item
     onToDoItemChange(id) {
         let todoItemList = this.state.todoItemList;
-        let target = todoItemList.find(item=>{return item.id===id});
-        if(target){
-            todoItemList.splice(todoItemList.indexOf(target),1);
+        let target = todoItemList.find(item => { return item.id === id });
+        if (target) {
+            todoItemList.splice(todoItemList.indexOf(target), 1);
             target.do = true;
             let doneItemList = this.state.doneItemList;
             doneItemList.push(target);
@@ -86,8 +105,8 @@ class Main extends Component {
                 style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
                 {
                     this.state.todoItemList && this.state.todoItemList.map((item, index) => {
-                        return <ToDoItem key={index} style={{ 'magin': '10px' }} item={item} 
-                        onCheckChange={this.onToDoItemChange}/>
+                        return <ToDoItem key={index} style={{ 'magin': '10px' }} item={item}
+                            onCheckChange={this.onToDoItemChange} />
                     })
                 }
             </ItemContainer>
@@ -95,8 +114,8 @@ class Main extends Component {
                 style={{ 'border': '1px solid gray' }}>
                 {
                     this.state.doneItemList && this.state.doneItemList.map((item, index) => {
-                        return <DoneItem key={index} style={{ 'magin': '10px' }} item={item} 
-                        onCheckChange={this.onDoneItemChange}/>
+                        return <DoneItem key={index} style={{ 'magin': '10px' }} item={item}
+                            onCheckChange={this.onDoneItemChange} />
                     })
                 }
             </ItemContainer>
