@@ -10,7 +10,7 @@ import InputComponent from './components/InputComponent';
 import ItemContainer from './components/ItemContainer';
 import ToDoItem from './components/ToDoItem';
 import DoneItem from './components/DoneItem';
-import { getDate } from './utils/commonUtil';
+import { getDate, createId } from './utils/commonUtil';
 
 class Main extends Component {
     constructor(props) {
@@ -38,13 +38,13 @@ class Main extends Component {
         if (e.keyCode === 13) {//enter
             // alert(e.target.value);
             let title = e.target.value;
-            if(title.trim()===''){
+            if (title.trim() === '') {
                 console.warn(`blank string, cancel...`);
                 return;
             }
 
             let newToDOItem = {
-                id: '',
+                id: createId(),
                 title: title,
                 date: getDate(),
                 do: false
@@ -52,7 +52,7 @@ class Main extends Component {
             let todoItemList = this.state.todoItemList;
             todoItemList.push(newToDOItem);
             this.setState({
-                todoItemList : todoItemList,
+                todoItemList: todoItemList,
                 value: ''
             });
         }
