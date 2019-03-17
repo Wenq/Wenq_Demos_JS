@@ -9,7 +9,7 @@ import './Main.css';
 import InputComponent from './components/InputComponent';
 import ItemContainer from './components/ItemContainer';
 import ToDoItem from './components/ToDoItem';
-import DoneItem from './components/DoneItem';
+// import DoneItem from './components/DoneItem';
 import { getDate, createId } from './utils/commonUtil';
 
 class Main extends Component {
@@ -18,17 +18,17 @@ class Main extends Component {
 
         this.state = {
             value: '',
-            todoItemList: [{ id: 'dfdfdf', title: '1', date: '03/12', do: false }, { id: 'xxxx', title: '2', date: '03/05', do: false }, { id: 'cgsdf', title: '3', date: '03/15', do: false }],
-            doneItemList: [{ id: 'sdfsdf', title: '4', date: '03/11', do: true }, { id: 'dfdfsd', title: '5', date: '03/12', do: true }, { id: 'gggg', title: '6', date: '03/09', do: true }, { id: 'eeeee', title: '7', date: '03/12', do: true }, { id: 'dddgdg', title: '8', date: '03/12', do: true }]
+            todoItemList: [{ id: 'dfdfdf', title: '1', date: '03/12', done: false }, { id: 'xxxx', title: '2', date: '03/05', done: false }, { id: 'cgsdf', title: '3', date: '03/15', done: false }],
+            doneItemList: [{ id: 'sdfsdf', title: '4', date: '03/11', done: true }, { id: 'dfdfsd', title: '5', date: '03/12', done: true }, { id: 'gggg', title: '6', date: '03/09', done: true }, { id: 'eeeee', title: '7', date: '03/12', done: true }, { id: 'dddgdg', title: '8', date: '03/12', done: true }]
         }
 
         //输入框
         this.onTxtChange = this.onTxtChange.bind(this);
         this.onTxtKeyDown = this.onTxtKeyDown.bind(this);
         this.onClick = this.onClick.bind(this);
-        //待办
-        this.onDoneItemChange = this.onDoneItemChange.bind(this);
         //已办
+        // this.onDoneItemChange = this.onDoneItemChange.bind(this);
+        //待办
         this.onToDoItemChange = this.onToDoItemChange.bind(this);
         this.onItemDelClick = this.onItemDelClick.bind(this);
         //测试
@@ -54,6 +54,7 @@ class Main extends Component {
         this.doAddToDoItem();
     }
 
+    //逻辑：增加一个待办项
     doAddToDoItem() {
         let title = this.state.value;
         if (title.trim() === '') {
@@ -84,34 +85,51 @@ class Main extends Component {
     }
 
     //点击已完成item
-    onDoneItemChange(id) {
-        let doneItemList = this.state.doneItemList;
-        let target = doneItemList.find(item => { return item.id === id });
-        if (target) {
-            doneItemList.splice(doneItemList.indexOf(target), 1);
-            target.do = true;
-            let todoItemList = this.state.todoItemList;
-            todoItemList.push(target);
-            this.setState({
-                todoItemList: todoItemList,
-                doneItemList: doneItemList
-            });
-        }
-    }
+    // onDoneItemChange(id) {
+    //     let doneItemList = this.state.doneItemList;
+    //     let target = doneItemList.find(item => { return item.id === id });
+    //     if (target) {
+    //         doneItemList.splice(doneItemList.indexOf(target), 1);
+    //         target.do = true;
+    //         let todoItemList = this.state.todoItemList;
+    //         todoItemList.push(target);
+    //         this.setState({
+    //             todoItemList: todoItemList,
+    //             doneItemList: doneItemList
+    //         });
+    //     }
+    // }
 
     //点击待办item
-    onToDoItemChange(id) {
-        let todoItemList = this.state.todoItemList;
-        let target = todoItemList.find(item => { return item.id === id });
-        if (target) {
-            todoItemList.splice(todoItemList.indexOf(target), 1);
-            target.do = true;
+    onToDoItemChange(id, isDone) {
+        if (isDone) {
+            //由已办到待办
             let doneItemList = this.state.doneItemList;
-            doneItemList.push(target);
-            this.setState({
-                todoItemList: todoItemList,
-                doneItemList: doneItemList
-            });
+            let target = doneItemList.find(item => { return item.id === id });
+            if (target) {
+                doneItemList.splice(doneItemList.indexOf(target), 1);
+                target.do = true;
+                let todoItemList = this.state.todoItemList;
+                todoItemList.push(target);
+                this.setState({
+                    todoItemList: todoItemList,
+                    doneItemList: doneItemList
+                });
+            }
+        } else {
+            //由待办到已办
+            let todoItemList = this.state.todoItemList;
+            let target = todoItemList.find(item => { return item.id === id });
+            if (target) {
+                todoItemList.splice(todoItemList.indexOf(target), 1);
+                target.do = true;
+                let doneItemList = this.state.doneItemList;
+                doneItemList.push(target);
+                this.setState({
+                    todoItemList: todoItemList,
+                    doneItemList: doneItemList
+                });
+            }
         }
     }
 
@@ -168,14 +186,14 @@ class Main extends Component {
                 placeholder={'请输入待办事项  [回车快速添加]'}
             />
             <ItemContainer title={'测试: '} titleStyle={{ 'color': 'red', 'fontSize': '16px' }}
-                style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid red' }}>
+                style={{ 'border': '1px solid red' }}>
                 <div>
                     <button className={'test_btn'} onClick={this.onAdd10KBtnClick}>增加10k条数据</button>
                     <button className={'test_btn'} onClick={this.onClearAllBtnClick}>全部清除</button>
                 </div>
             </ItemContainer>
             <ItemContainer title={'正在进行'} titleStyle={{ 'color': 'green', 'fontSize': '16px' }}
-                style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
+                style={{ 'margin': '10px 0px 10px 0px', 'border': '5px solid green' }}>
                 {
                     this.state.todoItemList && this.state.todoItemList.map((item, index) => {
                         return <ToDoItem key={item.id} style={{ 'magin': '10px' }} item={item}
@@ -187,8 +205,8 @@ class Main extends Component {
                 style={{ 'border': '1px solid gray' }}>
                 {
                     this.state.doneItemList && this.state.doneItemList.map((item, index) => {
-                        return <DoneItem key={item.id} style={{ 'magin': '10px' }} item={item}
-                            onCheckChange={this.onDoneItemChange} onDelClick={this.onItemDelClick} />
+                        return <ToDoItem key={item.id} style={{ 'magin': '10px' }} item={item}
+                            onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
                     })
                 }
             </ItemContainer>

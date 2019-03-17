@@ -8,6 +8,9 @@
     justify-content: space-between;
     padding: 0px 10px;
 }
+.todoitem_done{
+    opacity: 0.3;
+}
 .todoitem_check{
     height: 18px;
     width: 18px;

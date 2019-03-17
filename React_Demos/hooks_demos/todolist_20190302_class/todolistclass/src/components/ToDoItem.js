@@ -14,27 +14,37 @@ class ToDoItem extends Component {
 
     onCheckChange(e) {
         let { item } = this.props;
-        this.props.onCheckChange && this.props.onCheckChange(item.id);
+        this.props.onCheckChange && this.props.onCheckChange(item.id, this.isDone(item));
     }
 
     onChange(e) { }
 
+    //单击删除图标
     onDelClick(e) {
         let { item } = this.props;
-        this.props.onDelClick && this.props.onDelClick(item.id, false);
+        this.props.onDelClick && this.props.onDelClick(item.id, this.isDone(item));
+    }
+
+    //是否是已办项
+    isDone(item) {
+        if (item) {
+            return item.done === true;
+        }
+        return false;
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return this.props.item.id!==nextProps.item.id;
+        return this.props.item.id !== nextProps.item.id;
     }
 
     render() {
         let { style, className, item = {}, onCheckChange, onDelClick, ...others } = this.props;
-        return <div className={`todoitem ${className}`} style={style} {...others}>
+        let rootClassName = `todoitem ${className} ` + (this.isDone(item) ? 'todoitem_done' : '');
+        return <div className={rootClassName} style={style} {...others}>
             <input type='checkbox' className={'todoitem_check'} onClick={this.onCheckChange}
-                checked={item.do} onChange={this.onChange} />
-            <span className='todoitem_title'>{item.title || '无'}</span>
-            <span className='todoitem_date'>{item.date || '3/14'}</span>
+                checked={item.done} onChange={this.onChange} />
+            <span className='todoitem_title'>{item.title || 'no title'}</span>
+            <span className='todoitem_date'>{item.date || 'no date'}</span>
             <img alt='delete' title={'delete item'} className={'todoitem_del'} src={del} onClick={this.onDelClick} />
         </div>
     }
