@@ -30,6 +30,10 @@ class Main extends Component {
         this.onDoneItemChange = this.onDoneItemChange.bind(this);
         //已办
         this.onToDoItemChange = this.onToDoItemChange.bind(this);
+        this.onItemDelClick = this.onItemDelClick.bind(this);
+        //测试
+        this.onClearAllBtnClick = this.onClearAllBtnClick.bind(this);
+        this.onAdd10KBtnClick = this.onAdd10KBtnClick.bind(this);
     }
 
     //搜索框文本change事件
@@ -45,29 +49,44 @@ class Main extends Component {
         }
     }
 
-    onClick(e){
+    //点击增加按钮
+    onClick(e) {
         this.doAddToDoItem();
     }
 
-    doAddToDoItem(){
+    doAddToDoItem() {
         let title = this.state.value;
         if (title.trim() === '') {
             console.warn(`blank string, cancel...`);
             return;
         }
 
-        let newToDOItem = {
-            id: createId(),
+        // let newToDOItem = {
+        //     id: createId(),
+        //     title: title,
+        //     date: getDate(),
+        //     do: false
+        // };
+        let newToDOItem = this.getNewToDoItem({
             title: title,
-            date: getDate(),
-            do: false
-        };
+            date: getDate()
+        });
         let todoItemList = this.state.todoItemList;
         todoItemList.push(newToDOItem);
         this.setState({
             todoItemList: todoItemList,
             value: ''
         });
+    }
+
+    //生产一个新的待办项
+    getNewToDoItem({ id, title, date }) {
+        return {
+            id: id === undefined ? createId() : id,
+            title: title || 'no data',
+            date: date || getDate(),
+            do: false
+        }
     }
 
     //点击已完成item
@@ -102,6 +121,30 @@ class Main extends Component {
         }
     }
 
+    //点击删除图标
+    onItemDelClick(id) {
+
+    }
+
+    //清空所有待办项
+    onClearAllBtnClick() {
+        this.setState({
+            todoItemList: [],
+            doneItemList: []
+        });
+    }
+
+    //增加测试数据，1万条数据.
+    onAdd10KBtnClick(count = 10000) {
+        let todoItemList = this.state.todoItemList;
+        for (let i = 0; i < count; i++) {
+            todoItemList.push(this.getNewToDoItem({ title: i }));
+        }
+        this.setState({
+            todoItemList
+        });
+    }
+
     render() {
         let { style, className, ...others } = this.props;
         return <div className={'main' + ' ' + className} style={style} {...others}>
@@ -111,9 +154,16 @@ class Main extends Component {
                 value={this.state.value}
                 onChange={this.onTxtChange}
                 onKeyDown={this.onTxtKeyDown}
-                onClick = {this.onClick}
+                onClick={this.onClick}
                 placeholder={'请输入待办事项  [回车快速添加]'}
             />
+            <ItemContainer title={'测试: '} titleStyle={{ 'color': 'red', 'fontSize': '16px' }}
+                style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid red' }}>
+                <div>
+                    <button className={'test_btn'} onClick={this.onAdd10KBtnClick}>增加10k条数据</button>
+                    <button className={'test_btn'} onClick={this.onClearAllBtnClick}>全部清除</button>
+                </div>
+            </ItemContainer>
             <ItemContainer title={'待处理: '} titleStyle={{ 'color': 'green', 'fontSize': '16px' }}
                 style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
                 {
