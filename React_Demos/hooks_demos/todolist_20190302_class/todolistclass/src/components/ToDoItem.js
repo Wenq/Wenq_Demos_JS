@@ -24,6 +24,10 @@ class ToDoItem extends Component {
         this.props.onDelClick && this.props.onDelClick(item.id, false);
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.props.item.id!==nextProps.item.id;
+    }
+
     render() {
         let { style, className, item = {}, onCheckChange, onDelClick, ...others } = this.props;
         return <div className={`todoitem ${className}`} style={style} {...others}>
@@ -31,7 +35,7 @@ class ToDoItem extends Component {
                 checked={item.do} onChange={this.onChange} />
             <span className='todoitem_title'>{item.title || '无'}</span>
             <span className='todoitem_date'>{item.date || '3/14'}</span>
-            <img alt='delete' className={'todoitem_del'} src={del} onClick={this.onDelClick} />
+            <img alt='delete' title={'delete item'} className={'todoitem_del'} src={del} onClick={this.onDelClick} />
         </div>
     }
 }

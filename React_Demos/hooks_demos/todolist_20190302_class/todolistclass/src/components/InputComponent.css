@@ -11,6 +11,7 @@
     height: 50px;
     width: 100px;
     margin-left: 5px;
+    display: none;
 }
 .btn:hover{
     cursor: pointer;
@@ -21,4 +22,5 @@
     padding: 0px;
     border: 1px solid gray;
     padding: 0 10px 0 10px;
+    border-radius: 5px;
 }

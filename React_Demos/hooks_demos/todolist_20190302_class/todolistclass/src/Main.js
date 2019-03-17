@@ -18,8 +18,8 @@ class Main extends Component {
 
         this.state = {
             value: '',
-            todoItemList: [{ id: 1, title: '1', date: '03/12', do: false }, { id: 2, title: '2', date: '03/05', do: false }, { id: 3, title: '3', date: '03/15', do: false }],
-            doneItemList: [{ id: 4, title: '4', date: '03/11', do: true }, { id: 5, title: '5', date: '03/12', do: true }, { id: 6, title: '6', date: '03/09', do: true }, { id: 7, title: '7', date: '03/12', do: true }, { id: 8, title: '8', date: '03/12', do: true }]
+            todoItemList: [{ id: 'dfdfdf', title: '1', date: '03/12', do: false }, { id: 'xxxx', title: '2', date: '03/05', do: false }, { id: 'cgsdf', title: '3', date: '03/15', do: false }],
+            doneItemList: [{ id: 'sdfsdf', title: '4', date: '03/11', do: true }, { id: 'dfdfsd', title: '5', date: '03/12', do: true }, { id: 'gggg', title: '6', date: '03/09', do: true }, { id: 'eeeee', title: '7', date: '03/12', do: true }, { id: 'dddgdg', title: '8', date: '03/12', do: true }]
         }
 
         //输入框
@@ -61,12 +61,6 @@ class Main extends Component {
             return;
         }
 
-        // let newToDOItem = {
-        //     id: createId(),
-        //     title: title,
-        //     date: getDate(),
-        //     do: false
-        // };
         let newToDOItem = this.getNewToDoItem({
             title: title,
             date: getDate()
@@ -150,14 +144,12 @@ class Main extends Component {
     //增加测试数据，1万条数据.
     onAdd10KBtnClick(e, count = 10000) {
         let todoItemList = this.state.todoItemList;
-        let i = 0;
-        while (i < count) {
+        let i = 1;
+        while (i <= count) {
             todoItemList.push(this.getNewToDoItem({ title: i }));
             i++;
         }
-        // for (let i = 0; i < count; i) {
-        //     todoItemList.push(this.getNewToDoItem({ title: i }));
-        // }
+
         this.setState({
             todoItemList
         });
@@ -165,7 +157,7 @@ class Main extends Component {
 
     render() {
         let { style, className, ...others } = this.props;
-        return <div className={'main' + ' ' + className} style={style} {...others}>
+        return <div className={`main ${className}`} style={style} {...others}>
             <span className='title'>todolist class 版本实现</span>
             <InputComponent
                 style={{ 'margin': '10px 0px 10px 0px' }}
@@ -186,7 +178,7 @@ class Main extends Component {
                 style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
                 {
                     this.state.todoItemList && this.state.todoItemList.map((item, index) => {
-                        return <ToDoItem key={index} style={{ 'magin': '10px' }} item={item}
+                        return <ToDoItem key={item.id} style={{ 'magin': '10px' }} item={item}
                             onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
                     })
                 }
@@ -195,7 +187,7 @@ class Main extends Component {
                 style={{ 'border': '1px solid gray' }}>
                 {
                     this.state.doneItemList && this.state.doneItemList.map((item, index) => {
-                        return <DoneItem key={index} style={{ 'magin': '10px' }} item={item}
+                        return <DoneItem key={item.id} style={{ 'magin': '10px' }} item={item}
                             onCheckChange={this.onDoneItemChange} onDelClick={this.onItemDelClick} />
                     })
                 }

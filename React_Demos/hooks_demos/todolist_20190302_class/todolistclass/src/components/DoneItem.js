@@ -24,6 +24,10 @@ class DoneItem extends Component {
         this.props.onDelClick && this.props.onDelClick(item.id, true);
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.props.item.id!==nextProps.item.id;
+    }
+
     render() {
         let { style, className, item = {}, onCheckChange, onDelClick, ...others } = this.props;
         return <div className={`doneitem ${className}`} style={style} {...others}>
