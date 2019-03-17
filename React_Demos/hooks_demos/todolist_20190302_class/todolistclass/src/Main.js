@@ -135,11 +135,16 @@ class Main extends Component {
     }
 
     //增加测试数据，1万条数据.
-    onAdd10KBtnClick(count = 10000) {
+    onAdd10KBtnClick(e, count = 10000) {
         let todoItemList = this.state.todoItemList;
-        for (let i = 0; i < count; i++) {
+        let i=0;
+        while(i<count){
             todoItemList.push(this.getNewToDoItem({ title: i }));
+            i++;
         }
+        // for (let i = 0; i < count; i) {
+        //     todoItemList.push(this.getNewToDoItem({ title: i }));
+        // }
         this.setState({
             todoItemList
         });
