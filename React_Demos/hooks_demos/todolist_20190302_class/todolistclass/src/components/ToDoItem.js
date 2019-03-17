@@ -20,12 +20,12 @@ class ToDoItem extends Component {
     onChange(e) { }
 
     onDelClick(e) {
-        let {item} = this.props;
-        this.props.onChange && this.props.onChange(item.id);
+        let { item } = this.props;
+        this.props.onDelClick && this.props.onDelClick(item.id, false);
     }
 
     render() {
-        let { style, className, item = {}, onCheckChange, ...others } = this.props;
+        let { style, className, item = {}, onCheckChange, onDelClick, ...others } = this.props;
         return <div className={`todoitem ${className}`} style={style} {...others}>
             <input type='checkbox' className={'todoitem_check'} onClick={this.onCheckChange}
                 checked={item.do} onChange={this.onChange} />

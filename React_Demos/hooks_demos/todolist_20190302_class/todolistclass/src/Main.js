@@ -122,8 +122,21 @@ class Main extends Component {
     }
 
     //点击删除图标
-    onItemDelClick(id) {
-
+    onItemDelClick(id, isDone) {
+        let doList = isDone ? this.state.doneItemList : this.state.todoItemList;
+        let target = doList.find(item => { return id === item.id });
+        if (target) {
+            doList.splice(doList.indexOf(target), 1);
+            if (isDone) {
+                this.setState({
+                    doneItemList: doList
+                });
+            } else {
+                this.setState({
+                    todoItemList: doList
+                });
+            }
+        }
     }
 
     //清空所有待办项
@@ -137,8 +150,8 @@ class Main extends Component {
     //增加测试数据，1万条数据.
     onAdd10KBtnClick(e, count = 10000) {
         let todoItemList = this.state.todoItemList;
-        let i=0;
-        while(i<count){
+        let i = 0;
+        while (i < count) {
             todoItemList.push(this.getNewToDoItem({ title: i }));
             i++;
         }
@@ -174,7 +187,7 @@ class Main extends Component {
                 {
                     this.state.todoItemList && this.state.todoItemList.map((item, index) => {
                         return <ToDoItem key={index} style={{ 'magin': '10px' }} item={item}
-                            onCheckChange={this.onToDoItemChange} />
+                            onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
                     })
                 }
             </ItemContainer>
@@ -183,7 +196,7 @@ class Main extends Component {
                 {
                     this.state.doneItemList && this.state.doneItemList.map((item, index) => {
                         return <DoneItem key={index} style={{ 'magin': '10px' }} item={item}
-                            onCheckChange={this.onDoneItemChange} />
+                            onCheckChange={this.onDoneItemChange} onDelClick={this.onItemDelClick} />
                     })
                 }
             </ItemContainer>
