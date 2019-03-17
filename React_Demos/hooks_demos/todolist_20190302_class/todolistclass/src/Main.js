@@ -11,10 +11,15 @@ import ItemContainer from './components/ItemContainer';
 import ToDoItem from './components/ToDoItem';
 // import DoneItem from './components/DoneItem';
 import { getDate, createId } from './utils/commonUtil';
+import {setStorage, getStorage } from './utils/storageUtil';
 
+const STORAGE_ID = 'todolist';
 class Main extends Component {
     constructor(props) {
         super(props)
+
+        let localData = getStorage(STORAGE_ID);
+        console.log(`todolist-> localData: ${JSON.stringify(localData)}`);
 
         this.state = {
             value: '',
@@ -34,6 +39,8 @@ class Main extends Component {
         //测试
         this.onClearAllBtnClick = this.onClearAllBtnClick.bind(this);
         this.onAdd10KBtnClick = this.onAdd10KBtnClick.bind(this);
+        this.onSaveLocalDataClick = this.onSaveLocalDataClick.bind(this);
+        this.onClearLocalDataClick = this.onClearLocalDataClick.bind(this);
     }
 
     //搜索框文本change事件
@@ -58,7 +65,7 @@ class Main extends Component {
     doAddToDoItem() {
         let title = this.state.value;
         if (title.trim() === '') {
-            console.warn(`blank string, cancel...`);
+            console.log(`blank string, cancel...`);
             return;
         }
 
@@ -173,6 +180,20 @@ class Main extends Component {
         });
     }
 
+    //存储数据到本地
+    onSaveLocalDataClick() {
+        let localData = {
+            todoItemList: this.state.todoItemList,
+            doneItemList: this.state.doneItemList
+        };
+        setStorage('todolist',localData);
+    }
+
+    //清空本地存储数据
+    onClearLocalDataClick() {
+        setStorage('todolist', {});
+    }
+
     render() {
         let { style, className, ...others } = this.props;
         return <div className={`main ${className}`} style={style} {...others}>
@@ -190,28 +211,30 @@ class Main extends Component {
                 <div>
                     <button className={'test_btn'} onClick={this.onAdd10KBtnClick}>增加10k条数据</button>
                     <button className={'test_btn'} onClick={this.onClearAllBtnClick}>全部清除</button>
+                    <button className={'test_btn'} onClick={this.onSaveLocalDataClick}>数据本地存储</button>
+                    <button className={'test_btn'} onClick={this.onClearLocalDataClick}>清除本地存储</button>
                 </div>
             </ItemContainer>
             <ItemContainer title={'正在进行'} titleStyle={{ 'color': 'green', 'fontSize': '16px' }}
                 style={{ 'margin': '10px 0px 10px 0px', 'border': '5px solid green' }}>
                 <ul className='itemlist'>
-                {
-                    this.state.todoItemList && this.state.todoItemList.map((item, index) => {
-                        return <ToDoItem key={item.id} style={{ 'magin': '10px' }} item={item}
-                            onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
-                    })
-                }
+                    {
+                        this.state.todoItemList && this.state.todoItemList.map((item, index) => {
+                            return <ToDoItem key={item.id} style={{ 'magin': '10px' }} item={item}
+                                onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
+                        })
+                    }
                 </ul>
             </ItemContainer>
             <ItemContainer title={'已经完成'} titleStyle={{ 'color': 'gray', 'fontSize': '16px' }}
                 style={{ 'border': '1px solid gray' }}>
                 <ul className='itemlist'>
-                {
-                    this.state.doneItemList && this.state.doneItemList.map((item, index) => {
-                        return <ToDoItem key={item.id} style={{ 'magin': '10px' }} item={item}
-                            onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
-                    })
-                }
+                    {
+                        this.state.doneItemList && this.state.doneItemList.map((item, index) => {
+                            return <ToDoItem key={item.id} style={{ 'magin': '10px' }} item={item}
+                                onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
+                        })
+                    }
                 </ul>
             </ItemContainer>
         </div>
