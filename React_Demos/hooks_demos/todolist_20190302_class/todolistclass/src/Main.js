@@ -194,21 +194,25 @@ class Main extends Component {
             </ItemContainer>
             <ItemContainer title={'正在进行'} titleStyle={{ 'color': 'green', 'fontSize': '16px' }}
                 style={{ 'margin': '10px 0px 10px 0px', 'border': '5px solid green' }}>
+                <ul className='itemlist'>
                 {
                     this.state.todoItemList && this.state.todoItemList.map((item, index) => {
                         return <ToDoItem key={item.id} style={{ 'magin': '10px' }} item={item}
                             onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
                     })
                 }
+                </ul>
             </ItemContainer>
             <ItemContainer title={'已经完成'} titleStyle={{ 'color': 'gray', 'fontSize': '16px' }}
                 style={{ 'border': '1px solid gray' }}>
+                <ul className='itemlist'>
                 {
                     this.state.doneItemList && this.state.doneItemList.map((item, index) => {
                         return <ToDoItem key={item.id} style={{ 'magin': '10px' }} item={item}
                             onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
                     })
                 }
+                </ul>
             </ItemContainer>
         </div>
     }
