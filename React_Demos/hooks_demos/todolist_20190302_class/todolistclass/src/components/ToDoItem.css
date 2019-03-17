@@ -23,3 +23,9 @@
 .todoitem_date{
 
 }
+.todoitem_del{
+    height: 20px;
+    width: 20px;
+    flex-grow: 0;
+    cursor: pointer;
+}
