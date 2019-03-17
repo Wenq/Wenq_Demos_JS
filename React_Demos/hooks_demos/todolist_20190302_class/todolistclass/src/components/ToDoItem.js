@@ -34,7 +34,9 @@ class ToDoItem extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return this.props.item.id !== nextProps.item.id;
+        let oldItem = this.props.item;
+        let newItem = nextProps.item;
+        return oldItem.id !== newItem.id && oldItem.done !== newItem.done;
     }
 
     render() {

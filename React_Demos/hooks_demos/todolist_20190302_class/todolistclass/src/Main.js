@@ -108,7 +108,7 @@ class Main extends Component {
             let target = doneItemList.find(item => { return item.id === id });
             if (target) {
                 doneItemList.splice(doneItemList.indexOf(target), 1);
-                target.do = true;
+                target.done = false;
                 let todoItemList = this.state.todoItemList;
                 todoItemList.push(target);
                 this.setState({
@@ -122,7 +122,7 @@ class Main extends Component {
             let target = todoItemList.find(item => { return item.id === id });
             if (target) {
                 todoItemList.splice(todoItemList.indexOf(target), 1);
-                target.do = true;
+                target.done = true;
                 let doneItemList = this.state.doneItemList;
                 doneItemList.push(target);
                 this.setState({
