@@ -7,9 +7,11 @@
     margin: 10px;
     padding: 0px 10px;
     border: 1px solid green;
+    opacity: 0.3;
 }
 .doneitem_check{
-
+    height: 18px;
+    width: 18px;
 }
 .doneitem_check:hover{
     cursor: pointer;

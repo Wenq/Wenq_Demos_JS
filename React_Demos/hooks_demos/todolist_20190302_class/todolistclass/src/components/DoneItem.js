@@ -1,12 +1,15 @@
 //已办组件
 import React, { Component } from 'react';
 import './DoneItem.css';
+import del from './img/del.jpg';
 
 class DoneItem extends Component {
     constructor(props){
         super(props)
 
         this.onCheckChange = this.onCheckChange.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.onDelClick = this.onDelClick.bind(this);
     }
 
     onCheckChange(e){
@@ -16,6 +19,11 @@ class DoneItem extends Component {
 
     onChange(e){}
 
+    onDelClick(e) {
+        let {item} = this.props;
+        this.props.onChange && this.props.onChange(item.id);
+    }
+
     render() {
         let { style, className, item={}, onCheckChange, ...others } = this.props;
         return <div className={`doneitem ${className}`} style={style} {...others}>
@@ -23,6 +31,7 @@ class DoneItem extends Component {
                 checked={item.do} onChange={this.onChange}/>
                 <span className='doneitem_title'>{item.title||'无'}</span>
                 <span className='doneitem_date'>{item.date||'3/14'}</span>
+                <img alt='delete' className={'todoitem_del'} src={del} onClick={this.onDelClick} />
         </div>
     }
 }

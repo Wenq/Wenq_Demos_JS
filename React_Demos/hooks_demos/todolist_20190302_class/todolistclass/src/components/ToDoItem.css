@@ -9,7 +9,8 @@
     padding: 0px 10px;
 }
 .todoitem_check{
-
+    height: 18px;
+    width: 18px;
 }
 .todoitem_check:hover{
     cursor: pointer;
@@ -21,7 +22,6 @@
     max-width: 200px;
 }
 .todoitem_date{
-
 }
 .todoitem_del{
     height: 20px;

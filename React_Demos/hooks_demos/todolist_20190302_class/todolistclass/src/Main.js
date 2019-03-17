@@ -169,7 +169,7 @@ class Main extends Component {
                     <button className={'test_btn'} onClick={this.onClearAllBtnClick}>全部清除</button>
                 </div>
             </ItemContainer>
-            <ItemContainer title={'待处理: '} titleStyle={{ 'color': 'green', 'fontSize': '16px' }}
+            <ItemContainer title={'正在进行'} titleStyle={{ 'color': 'green', 'fontSize': '16px' }}
                 style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
                 {
                     this.state.todoItemList && this.state.todoItemList.map((item, index) => {
@@ -178,7 +178,7 @@ class Main extends Component {
                     })
                 }
             </ItemContainer>
-            <ItemContainer title={'已完成: '} titleStyle={{ 'color': 'gray', 'fontSize': '16px' }}
+            <ItemContainer title={'已经完成'} titleStyle={{ 'color': 'gray', 'fontSize': '16px' }}
                 style={{ 'border': '1px solid gray' }}>
                 {
                     this.state.doneItemList && this.state.doneItemList.map((item, index) => {
