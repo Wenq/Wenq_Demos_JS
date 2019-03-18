@@ -4,11 +4,12 @@ export function getDate() {
     return new Date().Format('MM/dd');
 }
 
+//生成一个GUID
 export function createId() {
     return guid();
 }
 
-/*------生产随机GUID------*/
+/*------生产随机GUID算法(来自网路)------*/
 function S4() { 
     return (((1+Math.random())*0x10000)|0).toString(16).substring(1); 
  }; 
@@ -18,7 +19,7 @@ function S4() {
  }; 
 /*------end------*/
 
-/*------为Date对象扩展一个方法'Format',用于格式化输出------*/
+/*------为Date对象扩展一个方法'Format',用于格式化输出(来自网路)------*/
 Date.prototype.Format = function (fmt) { //author: meizz   
     var o = {
         "M+": this.getMonth() + 1,                 //月份   
