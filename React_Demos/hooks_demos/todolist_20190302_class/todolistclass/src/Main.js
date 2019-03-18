@@ -11,7 +11,7 @@ import ItemContainer from './components/ItemContainer';
 import ToDoItem from './components/ToDoItem';
 // import DoneItem from './components/DoneItem';
 import { getDate, createId } from './utils/commonUtil';
-import {setStorage, getStorage } from './utils/storageUtil';
+import { setStorage, getStorage, clearStorage } from './utils/storageUtil';
 
 const STORAGE_ID = 'todolist';
 class Main extends Component {
@@ -186,12 +186,12 @@ class Main extends Component {
             todoItemList: this.state.todoItemList,
             doneItemList: this.state.doneItemList
         };
-        setStorage('todolist',localData);
+        setStorage('todolist', localData);
     }
 
     //清空本地存储数据
     onClearLocalDataClick() {
-        setStorage('todolist', {});
+        clearStorage();
     }
 
     render() {
