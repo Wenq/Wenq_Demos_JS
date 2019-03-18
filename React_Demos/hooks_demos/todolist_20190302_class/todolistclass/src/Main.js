@@ -13,18 +13,34 @@ import ToDoItem from './components/ToDoItem';
 import { getDate, createId } from './utils/commonUtil';
 import { setStorage, getStorage, clearStorage } from './utils/storageUtil';
 
-const STORAGE_ID = 'todolist';
+//常量
+// const STORAGE_ID = 'todolist';
+const STORAGE_ID_TODOITEM_LIST = 'todoItemList';
+const STORAGE_ID_DONEITEM_LIST = 'doneItemList';
+
+//测试数据
+const TODOITEM_LIST_TEST_DATA = [{ id: 'dfdfdf', title: '1', date: '03/12', done: false }, { id: 'xxxx', title: '2', date: '03/05', done: false }, { id: 'cgsdf', title: '3', date: '03/15', done: false }];
+const DONEITEM_LIST_TEST_DATA = [{ id: 'sdfsdf', title: '4', date: '03/11', done: true }, { id: 'dfdfsd', title: '5', date: '03/12', done: true }, { id: 'gggg', title: '6', date: '03/09', done: true }, { id: 'eeeee', title: '7', date: '03/12', done: true }, { id: 'dddgdg', title: '8', date: '03/12', done: true }];
+
 class Main extends Component {
     constructor(props) {
         super(props)
 
-        let localData = getStorage(STORAGE_ID);
-        console.log(`todolist-> localData: ${JSON.stringify(localData)}`);
+        //localStorage中存储的用户数据，取出用于初始化数据
+        // let localData = getStorage(STORAGE_ID);
+        // console.log(`todolist-> localData: ${JSON.stringify(localData)}`);
+        let todoItemList_data = getStorage(STORAGE_ID_TODOITEM_LIST);
+        let doneItemList_data = getStorage(STORAGE_ID_DONEITEM_LIST);
+        if(todoItemList_data&&doneItemList_data){
+            //初始化
+        }
+        console.log(`todolist-> todoItemList_data: ${JSON.stringify(todoItemList_data)}`);
+        console.log(`todolist-> doneItemList_data: ${JSON.stringify(doneItemList_data)}`);
 
         this.state = {
             value: '',
-            todoItemList: [{ id: 'dfdfdf', title: '1', date: '03/12', done: false }, { id: 'xxxx', title: '2', date: '03/05', done: false }, { id: 'cgsdf', title: '3', date: '03/15', done: false }],
-            doneItemList: [{ id: 'sdfsdf', title: '4', date: '03/11', done: true }, { id: 'dfdfsd', title: '5', date: '03/12', done: true }, { id: 'gggg', title: '6', date: '03/09', done: true }, { id: 'eeeee', title: '7', date: '03/12', done: true }, { id: 'dddgdg', title: '8', date: '03/12', done: true }]
+            todoItemList: TODOITEM_LIST_TEST_DATA,
+            doneItemList: DONEITEM_LIST_TEST_DATA
         }
 
         //输入框
@@ -182,11 +198,13 @@ class Main extends Component {
 
     //存储数据到本地
     onSaveLocalDataClick() {
-        let localData = {
-            todoItemList: this.state.todoItemList,
-            doneItemList: this.state.doneItemList
-        };
-        setStorage('todolist', localData);
+        // let localData = {
+        //     todoItemList: this.state.todoItemList,
+        //     doneItemList: this.state.doneItemList
+        // };
+        // setStorage('todoList', localData);
+        setStorage('todoItemList', this.state.todoItemList);
+        setStorage('doneItemList', this.state.doneItemList);
     }
 
     //清空本地存储数据
