@@ -1,17 +1,28 @@
 
 //将数据存储到本地localStorage
 export function setStorage(contentId, content) {
-    console.log(`todolist-> set localStorage, key: ${contentId}, content: ${JSON.stringify(content)}`);
-    StorageAPI.setItem(contentId + '', JSON.stringify(content));
+    if (typeof content !== 'string') {
+        content = JSON.stringify(content);
+    }
+    StorageAPI.setItem(contentId + '', content);
+    console.log(`set localStorage, key: ${contentId}, value: ${JSON.stringify(content)}`);
 }
 
 //从本地localStorage获取数据
+//return JSON Format Data
 export function getStorage(contentId) {
-    return StorageAPI.getItem(contentId + '');
+    let content = StorageAPI.getItem(contentId + '') || '';
+    try {
+        content = JSON.parse(content);
+    } catch (e) {
+        console.log(`convert string 2 JSON fail, key: ${contentId}, reason: ${e}`);
+    }
+    return content;
 }
 
 export function clearStorage() {
-    return StorageAPI.clear();
+    StorageAPI.clear();
+    console.log(`clearStorage: done`);
 }
 
 //封装localStorage相关接口
@@ -20,7 +31,7 @@ const StorageAPI = {
         window.localStorage.setItem(key, value);
     },
     getItem(key) {
-        window.localStorage.getItem(key);
+        return window.localStorage.getItem(key);
     },
     removeItem(key) {
         window.localStorage.removeItem(key);

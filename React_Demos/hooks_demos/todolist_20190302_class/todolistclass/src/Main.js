@@ -26,22 +26,30 @@ class Main extends Component {
     constructor(props) {
         super(props)
 
+        let InitStateObj = {
+            value: '',
+            todoItemList: [],
+            doneItemList: []
+        }
+
         //localStorage中存储的用户数据，取出用于初始化数据
         // let localData = getStorage(STORAGE_ID);
         // console.log(`todolist-> localData: ${JSON.stringify(localData)}`);
         let todoItemList_data = getStorage(STORAGE_ID_TODOITEM_LIST);
         let doneItemList_data = getStorage(STORAGE_ID_DONEITEM_LIST);
-        if(todoItemList_data&&doneItemList_data){
-            //初始化
+        console.log(`init todoItemList_data: ${JSON.stringify(todoItemList_data)}`);
+        console.log(`init doneItemList_data: ${JSON.stringify(doneItemList_data)}`);
+        if (todoItemList_data || doneItemList_data) {
+            //用本地存储数据初始化
+            InitStateObj.todoItemList = todoItemList_data || [];
+            InitStateObj.doneItemList = doneItemList_data || [];
+        } else {
+            //测试数据初始化
+            InitStateObj.todoItemList = TODOITEM_LIST_TEST_DATA;
+            InitStateObj.doneItemList = DONEITEM_LIST_TEST_DATA;
         }
-        console.log(`todolist-> todoItemList_data: ${JSON.stringify(todoItemList_data)}`);
-        console.log(`todolist-> doneItemList_data: ${JSON.stringify(doneItemList_data)}`);
 
-        this.state = {
-            value: '',
-            todoItemList: TODOITEM_LIST_TEST_DATA,
-            doneItemList: DONEITEM_LIST_TEST_DATA
-        }
+        this.state = InitStateObj;
 
         //输入框
         this.onTxtChange = this.onTxtChange.bind(this);
@@ -203,8 +211,8 @@ class Main extends Component {
         //     doneItemList: this.state.doneItemList
         // };
         // setStorage('todoList', localData);
-        setStorage('todoItemList', this.state.todoItemList);
-        setStorage('doneItemList', this.state.doneItemList);
+        setStorage(STORAGE_ID_TODOITEM_LIST, this.state.todoItemList);
+        setStorage(STORAGE_ID_DONEITEM_LIST, this.state.doneItemList);
     }
 
     //清空本地存储数据
