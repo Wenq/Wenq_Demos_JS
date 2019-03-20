@@ -2,7 +2,7 @@
 //将数据存储到本地localStorage
 export function setStorage(contentId, content) {
     if (typeof content !== 'string') {
-        content = JSON.stringify(content);
+        content = JSON.stringify(content); //immutable对象可以直接转为string
     }
     StorageAPI.setItem(contentId + '', content);
     console.log(`set localStorage, key: ${contentId}, value: ${JSON.stringify(content)}`);

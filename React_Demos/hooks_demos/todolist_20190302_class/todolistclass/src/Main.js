@@ -100,21 +100,22 @@ class Main extends Component {
             date: getDate()
         });
         let todoItemList = this.state.todoItemList;
-        todoItemList.push(newToDOItem);
+        todoItemList = todoItemList.push(newToDOItem);
         this.setState({
             todoItemList: todoItemList,
             value: ''
         });
     }
 
-    //生产一个新的待办项
+    //生成一个新的待办项
     getNewToDoItem({ id, title, date }) {
-        return {
-            id: id === undefined ? createId() : id,
-            title: title || 'no data',
-            date: date || getDate(),
-            do: false
-        }
+        return fromJS(
+            {
+                id: id === undefined ? createId() : id,
+                title: title || 'no data',
+                date: date || getDate(),
+                do: false
+            });
     }
 
     //点击已完成item
@@ -169,9 +170,11 @@ class Main extends Component {
     //点击删除图标
     onItemDelClick(id, isDone) {
         let doList = isDone ? this.state.doneItemList : this.state.todoItemList;
-        let target = doList.find(item => { return id === item.id });
-        if (target) {
-            doList.splice(doList.indexOf(target), 1);
+        // let target = doList.find(item => { return id === item.get('id') });
+        let targetIndex = doList.findIndex(item => { return id === item.get('id') });
+        if (targetIndex > -1) {
+            // doList.splice(doList.indexOf(target), 1);
+            doList = doList.delete(targetIndex);
             if (isDone) {
                 this.setState({
                     doneItemList: doList
@@ -187,8 +190,8 @@ class Main extends Component {
     //清空所有待办项
     onClearAllBtnClick() {
         this.setState({
-            todoItemList: [],
-            doneItemList: []
+            todoItemList: new List(),
+            doneItemList: new List()
         });
     }
 
