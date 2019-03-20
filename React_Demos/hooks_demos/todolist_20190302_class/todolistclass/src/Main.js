@@ -2,7 +2,6 @@
  * 主页组件
  * 2019-03-10
  */
-
 import React, { Component } from 'react';
 //  import * as styles from './Main.css';
 import './Main.css';
@@ -12,6 +11,7 @@ import ToDoItem from './components/ToDoItem';
 // import DoneItem from './components/DoneItem';
 import { getDate, createId } from './utils/commonUtil';
 import { setStorage, getStorage, clearStorage } from './utils/storageUtil';
+import { Map, List, fromJS, toJS } from 'immutable';
 
 //常量
 // const STORAGE_ID = 'todolist';
@@ -19,8 +19,10 @@ const STORAGE_ID_TODOITEM_LIST = 'todoItemList';
 const STORAGE_ID_DONEITEM_LIST = 'doneItemList';
 
 //测试数据
-const TODOITEM_LIST_TEST_DATA = [{ id: 'dfdfdf', title: '1', date: '03/12', done: false }, { id: 'xxxx', title: '2', date: '03/05', done: false }, { id: 'cgsdf', title: '3', date: '03/15', done: false }];
-const DONEITEM_LIST_TEST_DATA = [{ id: 'sdfsdf', title: '4', date: '03/11', done: true }, { id: 'dfdfsd', title: '5', date: '03/12', done: true }, { id: 'gggg', title: '6', date: '03/09', done: true }, { id: 'eeeee', title: '7', date: '03/12', done: true }, { id: 'dddgdg', title: '8', date: '03/12', done: true }];
+let TODOITEM_LIST_TEST_DATA = [{ id: 'dfdfdf', title: '1', date: '03/12', done: false }, { id: 'xxxx', title: '2', date: '03/05', done: false }, { id: 'cgsdf', title: '3', date: '03/15', done: false }];
+let DONEITEM_LIST_TEST_DATA = [{ id: 'sdfsdf', title: '4', date: '03/11', done: true }, { id: 'dfdfsd', title: '5', date: '03/12', done: true }, { id: 'gggg', title: '6', date: '03/09', done: true }, { id: 'eeeee', title: '7', date: '03/12', done: true }, { id: 'dddgdg', title: '8', date: '03/12', done: true }];
+TODOITEM_LIST_TEST_DATA = fromJS(TODOITEM_LIST_TEST_DATA);
+DONEITEM_LIST_TEST_DATA = fromJS(DONEITEM_LIST_TEST_DATA);
 
 class Main extends Component {
     constructor(props) {
@@ -28,8 +30,8 @@ class Main extends Component {
 
         let InitStateObj = {
             value: '',
-            todoItemList: [],
-            doneItemList: []
+            todoItemList: new List(),
+            doneItemList: new List()
         }
 
         //localStorage中存储的用户数据，取出用于初始化数据
@@ -41,8 +43,8 @@ class Main extends Component {
         console.log(`init doneItemList_data: ${JSON.stringify(doneItemList_data)}`);
         if (todoItemList_data || doneItemList_data) {
             //用本地存储数据初始化
-            InitStateObj.todoItemList = todoItemList_data || [];
-            InitStateObj.doneItemList = doneItemList_data || [];
+            InitStateObj.todoItemList = fromJS(todoItemList_data) || new List();
+            InitStateObj.doneItemList = fromJS(doneItemList_data) || new List();
         } else {
             //测试数据初始化
             InitStateObj.todoItemList = TODOITEM_LIST_TEST_DATA;

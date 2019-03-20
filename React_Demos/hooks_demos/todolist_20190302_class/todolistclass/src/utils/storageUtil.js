@@ -9,7 +9,7 @@ export function setStorage(contentId, content) {
 }
 
 //从本地localStorage获取数据
-//return JSON Format Data
+//return: JSON Format Data
 export function getStorage(contentId) {
     let content = StorageAPI.getItem(contentId + '') || '';
     try {
