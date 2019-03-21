@@ -141,10 +141,12 @@ class Main extends Component {
             let doneItemList = this.state.doneItemList;
             let target = doneItemList.find(item => { return item.get('id') === id });
             if (target) {
-                doneItemList.splice(doneItemList.indexOf(target), 1);
-                target.done = false;
+                // doneItemList.splice(doneItemList.indexOf(target), 1);
+                doneItemList = doneItemList.delete(doneItemList.indexOf(target));
+                // target.done = false;
                 let todoItemList = this.state.todoItemList;
-                todoItemList.push(target);
+                target = target.set('done', false);
+                todoItemList = todoItemList.push(target);
                 this.setState({
                     todoItemList: todoItemList,
                     doneItemList: doneItemList
@@ -155,10 +157,12 @@ class Main extends Component {
             let todoItemList = this.state.todoItemList;
             let target = todoItemList.find(item => { return item.get('id') === id });
             if (target) {
-                todoItemList.splice(todoItemList.indexOf(target), 1);
-                target.done = true;
+                // todoItemList.splice(todoItemList.indexOf(target), 1);
+                todoItemList = todoItemList.delete(todoItemList.indexOf(target));
+                // target.done = true;
                 let doneItemList = this.state.doneItemList;
-                doneItemList.push(target);
+                target = target.set('done', true);
+                doneItemList = doneItemList.push(target);
                 this.setState({
                     todoItemList: todoItemList,
                     doneItemList: doneItemList
