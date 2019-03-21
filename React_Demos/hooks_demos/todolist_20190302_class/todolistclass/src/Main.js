@@ -121,7 +121,7 @@ class Main extends Component {
     //点击已完成item
     // onDoneItemChange(id) {
     //     let doneItemList = this.state.doneItemList;
-    //     let target = doneItemList.find(item => { return item.id === id });
+    //     let target = doneItemList.find(item => { return item.get('id') === id });
     //     if (target) {
     //         doneItemList.splice(doneItemList.indexOf(target), 1);
     //         target.do = true;
@@ -139,7 +139,7 @@ class Main extends Component {
         if (isDone) {
             //由已办到待办
             let doneItemList = this.state.doneItemList;
-            let target = doneItemList.find(item => { return item.id === id });
+            let target = doneItemList.find(item => { return item.get('id') === id });
             if (target) {
                 doneItemList.splice(doneItemList.indexOf(target), 1);
                 target.done = false;
@@ -153,7 +153,7 @@ class Main extends Component {
         } else {
             //由待办到已办
             let todoItemList = this.state.todoItemList;
-            let target = todoItemList.find(item => { return item.id === id });
+            let target = todoItemList.find(item => { return item.get('id') === id });
             if (target) {
                 todoItemList.splice(todoItemList.indexOf(target), 1);
                 target.done = true;
@@ -251,7 +251,7 @@ class Main extends Component {
                 <ul className='itemlist'>
                     {
                         this.state.todoItemList && this.state.todoItemList.map((item, index) => {
-                            return <ToDoItem key={item.id} style={{ 'magin': '10px' }} item={item}
+                            return <ToDoItem key={item.get('id')} style={{ 'magin': '10px' }} item={item}
                                 onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
                         })
                     }
@@ -262,7 +262,7 @@ class Main extends Component {
                 <ul className='itemlist'>
                     {
                         this.state.doneItemList && this.state.doneItemList.map((item, index) => {
-                            return <ToDoItem key={item.id} style={{ 'magin': '10px' }} item={item}
+                            return <ToDoItem key={item.get('id')} style={{ 'magin': '10px' }} item={item}
                                 onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
                         })
                     }
