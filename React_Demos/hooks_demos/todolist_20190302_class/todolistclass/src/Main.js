@@ -242,7 +242,7 @@ class Main extends Component {
                 placeholder={'请输入待办事项  [回车快速添加]'}
             />
             <ItemContainer title={'测试: '} titleStyle={{ 'color': 'red', 'fontSize': '16px' }}
-                style={{ 'border': '1px solid red' }}>
+                style={{ 'border': '5px solid red' }}>
                 <div>
                     <button className={'test_btn'} onClick={this.onAdd10KBtnClick}>增加10k条数据</button>
                     <button className={'test_btn'} onClick={this.onClearAllBtnClick}>全部清除</button>
@@ -251,7 +251,7 @@ class Main extends Component {
                 </div>
             </ItemContainer>
             <ItemContainer title={'正在进行'} titleStyle={{ 'color': 'green', 'fontSize': '16px' }}
-                style={{ 'margin': '10px 0px 10px 0px', 'border': '5px solid green' }}>
+                style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
                 <ul className='itemlist'>
                     {
                         this.state.todoItemList && this.state.todoItemList.map((item, index) => {
