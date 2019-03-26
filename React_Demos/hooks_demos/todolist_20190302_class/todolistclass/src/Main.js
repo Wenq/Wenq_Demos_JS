@@ -3,6 +3,7 @@
  * 2019-03-10
  */
 import React, { Component } from 'react';
+// import PropTypes from 'prop-types'
 //  import * as styles from './Main.css';
 import './Main.css';
 import InputComponent from './components/InputComponent';
@@ -11,7 +12,7 @@ import ToDoItem from './components/ToDoItem';
 // import DoneItem from './components/DoneItem';
 import { getDate, createId } from './utils/commonUtil';
 import { setStorage, getStorage, clearStorage } from './utils/storageUtil';
-import { Map, List, fromJS, toJS } from 'immutable';
+import { List, fromJS } from 'immutable';
 
 //常量
 // const STORAGE_ID = 'todolist';
