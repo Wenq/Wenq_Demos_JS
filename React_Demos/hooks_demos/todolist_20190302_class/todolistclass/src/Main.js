@@ -3,7 +3,7 @@
  * 2019-03-10
  */
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 //  import * as styles from './Main.css';
 import './Main.css';
 import InputComponent from './components/InputComponent';
@@ -276,5 +276,10 @@ class Main extends Component {
         </div>
     }
 }
+
+Main.propTypes = {
+    style: PropTypes.object,
+    className: PropTypes.string
+  }
 
 export default Main;

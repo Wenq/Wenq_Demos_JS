@@ -8,7 +8,7 @@ import Main from './Main';
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 import { reducer_actions } from './reducer/reducer';
-import { List,fromJS } from 'immutable';
+import { List, fromJS } from 'immutable';
 
 import { getStorage } from './utils/storageUtil';
 
@@ -21,8 +21,8 @@ let doneItemList_data = getStorage('doneItemList');
 InitStateObj.todoItemList = fromJS(todoItemList_data) || new List();
 InitStateObj.doneItemList = fromJS(doneItemList_data) || new List();
 
-const store = createStore(reducer_actions, InitStateObj||new List());
-store.subscribe((newState)=>{
+const store = createStore(reducer_actions, InitStateObj || new List());
+store.subscribe((newState) => {
     console.log(`new State: ${newState.toJS()}`);
 });
 
@@ -32,9 +32,31 @@ store.subscribe((newState)=>{
 // ReactDOM.render(<Main style={{ 'padding': '10px' }} />, document.getElementById('root'));
 
 //用Provider组件通过context向子组件传递store
+// ReactDOM.render(<Provider store={store}>
+//     <Main style={{ 'padding': '10px' }} />>
+// </Provider>,document.getElementById('root'));
+
+//state to UI
+function mapStateToProps(State) {
+    return {
+        value: State
+    }
+}
+//UI to action(通过dispatch)
+function mapDispatchToProps(dispatch) {
+    return {
+        onClick: (data) => dispatch({
+            type: 'delToDoItem',
+            data
+        })
+    }
+}
+//生成容器类组件MainApp
+let MainApp = connect(mapStateToProps, mapDispatchToProps)(Main);
+//Provider,connect
 ReactDOM.render(<Provider store={store}>
-    <Main style={{ 'padding': '10px' }} />>
-</Provider>,document.getElementById('root'));
+    <MainApp style={{ 'padding': '10px' }} />>
+</Provider>, document.getElementById('root'));
 
 
 // If you want your app to work offline and load faster, you can change
