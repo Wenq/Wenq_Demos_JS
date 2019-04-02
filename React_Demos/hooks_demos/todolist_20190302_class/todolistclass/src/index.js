@@ -9,6 +9,7 @@ import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 import { reducer_actions } from './reducer/reducer';
 import { List, fromJS } from 'immutable';
+import { action_names } from './action/action';
 
 import { getStorage } from './utils/storageUtil';
 
@@ -48,6 +49,10 @@ function mapDispatchToProps(dispatch) {
         onClick: (data) => dispatch({
             type: 'delToDoItem',
             data
+        }),
+        addToDoItem: (newItem)=>({
+            type: 'addToDoItem',
+            newItem
         })
     }
 }

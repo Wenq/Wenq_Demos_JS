@@ -106,6 +106,8 @@ class Main extends Component {
             todoItemList: todoItemList,
             value: ''
         });
+
+        this.props.addToDoItem&&this.props.addToDoItem(newToDOItem);
     }
 
     //生成一个新的待办项
@@ -231,7 +233,7 @@ class Main extends Component {
     }
 
     render() {
-        let { style, className, ...others } = this.props;
+        let { style, className, addToDoItem, ...others } = this.props;
         return <div className={`main ${className}`} style={style} {...others}>
             <span className='title'>todolist class 版本实现</span>
             <InputComponent
