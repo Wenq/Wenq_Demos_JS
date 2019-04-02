@@ -47,13 +47,27 @@ function mapStateToProps(State) {
 function mapDispatchToProps(dispatch) {
     return {
         onClick: (data) => dispatch({
-            type: 'delToDoItem',
+            type: 'click',
             data
         }),
-        addToDoItem: (newItem)=>({
-            type: 'addToDoItem',
-            newItem
-        })
+        addToDoItem: (newItem) => {
+            dispatch({
+                type: action_names.ADDTODOITEM,
+                newItem
+            });
+        },
+        delToDoItem: (item) => {
+            dispatch({
+                type: action_names.DELTODOITEM,
+                item
+            });
+        },
+        resetToDoItem: (data) => {
+            dispatch({
+                type: action_names.RESETODOITEM,
+                data
+            });
+        }
     }
 }
 //生成容器类组件MainApp

@@ -233,7 +233,7 @@ class Main extends Component {
     }
 
     render() {
-        let { style, className, addToDoItem, ...others } = this.props;
+        let { style, className, onClick, addToDoItem, ...others } = this.props;
         return <div className={`main ${className}`} style={style} {...others}>
             <span className='title'>todolist class 版本实现</span>
             <InputComponent
