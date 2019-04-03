@@ -58,9 +58,7 @@ class Main extends Component {
         this.onTxtChange = this.onTxtChange.bind(this);
         this.onTxtKeyDown = this.onTxtKeyDown.bind(this);
         this.onClick = this.onClick.bind(this);
-        //已办
-        // this.onDoneItemChange = this.onDoneItemChange.bind(this);
-        //待办
+        //待办,已办
         this.onToDoItemChange = this.onToDoItemChange.bind(this);
         this.onItemDelClick = this.onItemDelClick.bind(this);
         //测试
@@ -107,7 +105,7 @@ class Main extends Component {
             value: ''
         });
 
-        this.props.addToDoItem&&this.props.addToDoItem(newToDOItem);
+        this.props.addToDoItem && this.props.addToDoItem(newToDOItem);
     }
 
     //生成一个新的待办项
@@ -120,22 +118,6 @@ class Main extends Component {
                 do: false
             });
     }
-
-    //点击已完成item
-    // onDoneItemChange(id) {
-    //     let doneItemList = this.state.doneItemList;
-    //     let target = doneItemList.find(item => { return item.get('id') === id });
-    //     if (target) {
-    //         doneItemList.splice(doneItemList.indexOf(target), 1);
-    //         target.do = true;
-    //         let todoItemList = this.state.todoItemList;
-    //         todoItemList.push(target);
-    //         this.setState({
-    //             todoItemList: todoItemList,
-    //             doneItemList: doneItemList
-    //         });
-    //     }
-    // }
 
     //点击待办item
     onToDoItemChange(id, isDone) {
@@ -233,7 +215,7 @@ class Main extends Component {
     }
 
     render() {
-        let { style, className, onClick, addToDoItem, ...others } = this.props;
+        let { style, className, onClick, addToDoItem, delToDoItem, resetToDoItem, value, ...others } = this.props;
         return <div className={`main ${className}`} style={style} {...others}>
             <span className='title'>todolist class 版本实现</span>
             <InputComponent
@@ -282,6 +264,6 @@ class Main extends Component {
 Main.propTypes = {
     style: PropTypes.object,
     className: PropTypes.string
-  }
+}
 
 export default Main;

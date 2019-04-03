@@ -8,21 +8,26 @@ import Main from './Main';
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 import { reducer_actions } from './reducer/reducer';
-import { List, fromJS } from 'immutable';
+import { List, fromJS, Map } from 'immutable';
 import { action_names } from './action/action';
 
 import { getStorage } from './utils/storageUtil';
 
-let InitStateObj = {
-    todoItemList: new List(),
-    doneItemList: new List()
-}
+// let InitStateObj = new Map(
+//     {
+//         todoItemList: new List(),
+//         doneItemList: new List()
+//     }
+// )
+let InitStateObj = new Map();
 let todoItemList_data = getStorage('todoItemList');
 let doneItemList_data = getStorage('doneItemList');
-InitStateObj.todoItemList = fromJS(todoItemList_data) || new List();
-InitStateObj.doneItemList = fromJS(doneItemList_data) || new List();
+// InitStateObj.todoItemList = fromJS(todoItemList_data) || new List();
+// InitStateObj.doneItemList = fromJS(doneItemList_data) || new List();
+InitStateObj = InitStateObj.set('todoItemList', fromJS(todoItemList_data) || new List());
+InitStateObj = InitStateObj.set('doneItemList', fromJS(doneItemList_data) || new List());
 
-const store = createStore(reducer_actions, InitStateObj || new List());
+const store = createStore(reducer_actions, InitStateObj || new Map());
 store.subscribe((newState) => {
     console.log(`new State: ${newState.toJS()}`);
 });
@@ -40,12 +45,13 @@ store.subscribe((newState) => {
 //state to UI
 function mapStateToProps(State) {
     return {
-        value: State
+        value: State //props传递的数据store
     }
 }
 //UI to action(通过dispatch)
 function mapDispatchToProps(dispatch) {
     return {
+        //示例
         onClick: (data) => dispatch({
             type: 'click',
             data
