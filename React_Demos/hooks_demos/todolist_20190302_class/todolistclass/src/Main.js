@@ -29,30 +29,34 @@ class Main extends Component {
     constructor(props) {
         super(props)
 
-        let InitStateObj = {
-            value: '',
-            todoItemList: new List(),
-            doneItemList: new List()
-        }
+        // let InitStateObj = {
+        //     value: '',
+        //     todoItemList: new List(),
+        //     doneItemList: new List()
+        // }
 
-        //localStorage中存储的用户数据，取出用于初始化数据
-        // let localData = getStorage(STORAGE_ID);
-        // console.log(`todolist-> localData: ${JSON.stringify(localData)}`);
-        let todoItemList_data = getStorage(STORAGE_ID_TODOITEM_LIST);
-        let doneItemList_data = getStorage(STORAGE_ID_DONEITEM_LIST);
-        console.log(`init todoItemList_data: ${JSON.stringify(todoItemList_data)}`);
-        console.log(`init doneItemList_data: ${JSON.stringify(doneItemList_data)}`);
-        if (todoItemList_data || doneItemList_data) {
-            //用本地存储数据初始化
-            InitStateObj.todoItemList = fromJS(todoItemList_data) || new List();
-            InitStateObj.doneItemList = fromJS(doneItemList_data) || new List();
-        } else {
-            //测试数据初始化
-            InitStateObj.todoItemList = TODOITEM_LIST_TEST_DATA;
-            InitStateObj.doneItemList = DONEITEM_LIST_TEST_DATA;
-        }
+        // //localStorage中存储的用户数据，取出用于初始化数据
+        // // let localData = getStorage(STORAGE_ID);
+        // // console.log(`todolist-> localData: ${JSON.stringify(localData)}`);
+        // let todoItemList_data = getStorage(STORAGE_ID_TODOITEM_LIST);
+        // let doneItemList_data = getStorage(STORAGE_ID_DONEITEM_LIST);
+        // console.log(`init todoItemList_data: ${JSON.stringify(todoItemList_data)}`);
+        // console.log(`init doneItemList_data: ${JSON.stringify(doneItemList_data)}`);
+        // if (todoItemList_data || doneItemList_data) {
+        //     //用本地存储数据初始化
+        //     InitStateObj.todoItemList = fromJS(todoItemList_data) || new List();
+        //     InitStateObj.doneItemList = fromJS(doneItemList_data) || new List();
+        // } else {
+        //     //测试数据初始化
+        //     InitStateObj.todoItemList = TODOITEM_LIST_TEST_DATA;
+        //     InitStateObj.doneItemList = DONEITEM_LIST_TEST_DATA;
+        // }
 
-        this.state = InitStateObj;
+        // this.state = InitStateObj;
+
+        this.state = {
+            value: '' //输入框内容
+        }
 
         //输入框
         this.onTxtChange = this.onTxtChange.bind(this);
@@ -98,12 +102,12 @@ class Main extends Component {
             title: title,
             date: getDate()
         });
-        let todoItemList = this.state.todoItemList;
-        todoItemList = todoItemList.push(newToDOItem);
-        this.setState({
-            todoItemList: todoItemList,
-            value: ''
-        });
+        // let todoItemList = this.state.todoItemList;
+        // todoItemList = todoItemList.push(newToDOItem);
+        // this.setState({
+        //     todoItemList: todoItemList,
+        //     value: ''
+        // });
 
         this.props.addToDoItem && this.props.addToDoItem(newToDOItem);
     }
@@ -215,7 +219,9 @@ class Main extends Component {
     }
 
     render() {
-        let { style, className, onClick, addToDoItem, delToDoItem, resetToDoItem, value, ...others } = this.props;
+        let { style, className, onClick, addToDoItem, delToDoItem, resetToDoItem, data, ...others } = this.props;
+        let todoItemList = data&&data.get('todoItemList');
+        let doneItemList = data&&data.get('doneItemList');
         return <div className={`main ${className}`} style={style} {...others}>
             <span className='title'>todolist class 版本实现</span>
             <InputComponent
@@ -239,7 +245,7 @@ class Main extends Component {
                 style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
                 <ul className='itemlist'>
                     {
-                        this.state.todoItemList && this.state.todoItemList.map((item, index) => {
+                        todoItemList && todoItemList.map((item, index) => {
                             return <ToDoItem key={item.get('id')} style={{ 'magin': '10px' }} item={item}
                                 onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
                         })
@@ -250,7 +256,7 @@ class Main extends Component {
                 style={{ 'border': '1px solid gray' }}>
                 <ul className='itemlist'>
                     {
-                        this.state.doneItemList && this.state.doneItemList.map((item, index) => {
+                        doneItemList && doneItemList.map((item, index) => {
                             return <ToDoItem key={item.get('id')} style={{ 'magin': '10px' }} item={item}
                                 onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
                         })
