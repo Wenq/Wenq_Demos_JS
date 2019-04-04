@@ -1,11 +1,14 @@
 import { List, Map } from 'immutable';
 import { action_names } from '../action/action';
 
-export function reducer_actions(state = List(), action = Map()) {
+export function reducer_actions(state = new Map(), action = new Map()) {
     let { type } = action;
     switch (type) {
         case action_names.ADDTODOITEM:
-            state = 0;
+        let newToDOItem = action.data;
+            let todoItemList = state.get('todoItemList');
+            todoItemList = todoItemList.push(newToDOItem);
+            state = state.setIn(['todoItemList'],todoItemList);;
             break;
         case action_names.DELTODOITEM:
             state = 0;

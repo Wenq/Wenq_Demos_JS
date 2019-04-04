@@ -112,7 +112,7 @@ class Main extends Component {
         this.props.addToDoItem && this.props.addToDoItem(newToDOItem);
     }
 
-    //生成一个新的待办项
+    //生成一个新的待办项数据
     getNewToDoItem({ id, title, date }) {
         return fromJS(
             {
@@ -209,8 +209,8 @@ class Main extends Component {
         //     doneItemList: this.state.doneItemList
         // };
         // setStorage('todoList', localData);
-        setStorage(STORAGE_ID_TODOITEM_LIST, this.state.todoItemList);
-        setStorage(STORAGE_ID_DONEITEM_LIST, this.state.doneItemList);
+        setStorage(STORAGE_ID_TODOITEM_LIST, this.props.data.get('todoItemList'));
+        setStorage(STORAGE_ID_DONEITEM_LIST, this.props.data.get('doneItemList'));
     }
 
     //清空本地存储数据
@@ -270,6 +270,10 @@ class Main extends Component {
 Main.propTypes = {
     style: PropTypes.object,
     className: PropTypes.string
+}
+
+Main.defaultProps = {
+    data: new Map()
 }
 
 export default Main;

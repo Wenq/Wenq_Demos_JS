@@ -20,7 +20,7 @@ InitStateObj = InitStateObj.set('doneItemList', fromJS(doneItemList_data) || new
 
 const store = createStore(reducer_actions, InitStateObj || new Map());
 store.subscribe((newState) => {
-    console.log(`new State: ${newState.toJS()}`);
+    console.log(`new State: ${JSON.stringify(newState)}`);
 });
 
 // ReactDOM.render(<App />, document.getElementById('root'));
@@ -47,16 +47,16 @@ function mapDispatchToProps(dispatch) {
             type: 'click',
             data
         }),
-        addToDoItem: (newItem) => {
+        addToDoItem: (data) => {
             dispatch({
                 type: action_names.ADDTODOITEM,
-                newItem
+                data
             });
         },
-        delToDoItem: (item) => {
+        delToDoItem: (data) => {
             dispatch({
                 type: action_names.DELTODOITEM,
-                item
+                data
             });
         },
         resetToDoItem: (data) => {
