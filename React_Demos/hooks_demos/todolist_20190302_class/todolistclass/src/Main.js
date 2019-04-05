@@ -11,15 +11,16 @@ import ItemContainer from './components/ItemContainer';
 import ToDoItem from './components/ToDoItem';
 // import DoneItem from './components/DoneItem';
 import { getDate, createId } from './utils/commonUtil';
-import { setStorage, getStorage, clearStorage } from './utils/storageUtil';
-import { List, fromJS } from 'immutable';
+import { setStorage, clearStorage } from './utils/storageUtil';
+import { fromJS } from 'immutable';
+import { CONS_TODO_ITEM_LIST, CONS_DONE_ITEM_LIST } from './env/constants';
 
 //常量
 // const STORAGE_ID = 'todolist';
-const STORAGE_ID_TODOITEM_LIST = 'todoItemList';
-const STORAGE_ID_DONEITEM_LIST = 'doneItemList';
+const STORAGE_ID_TODOITEM_LIST = CONS_TODO_ITEM_LIST;
+const STORAGE_ID_DONEITEM_LIST = CONS_DONE_ITEM_LIST;
 
-//测试数据
+//数据结构(测试数据)
 let TODOITEM_LIST_TEST_DATA = [{ id: 'dfdfdf', title: '1', date: '03/12', done: false }, { id: 'xxxx', title: '2', date: '03/05', done: false }, { id: 'cgsdf', title: '3', date: '03/15', done: false }];
 let DONEITEM_LIST_TEST_DATA = [{ id: 'sdfsdf', title: '4', date: '03/11', done: true }, { id: 'dfdfsd', title: '5', date: '03/12', done: true }, { id: 'gggg', title: '6', date: '03/09', done: true }, { id: 'eeeee', title: '7', date: '03/12', done: true }, { id: 'dddgdg', title: '8', date: '03/12', done: true }];
 TODOITEM_LIST_TEST_DATA = fromJS(TODOITEM_LIST_TEST_DATA);
@@ -115,7 +116,7 @@ class Main extends Component {
         this.props.addToDoItem && this.props.addToDoItem([newToDOItem]);
     }
 
-    //生成一个新的待办项数据
+    //生成一个新的待办项数据; return: Map对象
     getNewToDoItem({ id, title, date }) {
         return fromJS(
             {
@@ -223,8 +224,8 @@ class Main extends Component {
         //     doneItemList: this.state.doneItemList
         // };
         // setStorage('todoList', localData);
-        setStorage(STORAGE_ID_TODOITEM_LIST, this.props.data.get('todoItemList'));
-        setStorage(STORAGE_ID_DONEITEM_LIST, this.props.data.get('doneItemList'));
+        setStorage(STORAGE_ID_TODOITEM_LIST, this.props.data.get(CONS_TODO_ITEM_LIST));
+        setStorage(STORAGE_ID_DONEITEM_LIST, this.props.data.get(CONS_DONE_ITEM_LIST));
     }
 
     //清空本地存储数据
@@ -234,8 +235,8 @@ class Main extends Component {
 
     render() {
         let { style, className, onClick, addToDoItem, delToDoItem, resetToDoItem, switchToDoItem, data, ...others } = this.props;
-        let todoItemList = data && data.get('todoItemList');
-        let doneItemList = data && data.get('doneItemList');
+        let todoItemList = data && data.get(CONS_TODO_ITEM_LIST);
+        let doneItemList = data && data.get(CONS_DONE_ITEM_LIST);
         return <div className={`main ${className}`} style={style} {...others}>
             <span className='title'>todolist class 版本实现</span>
             <InputComponent
