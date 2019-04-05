@@ -125,39 +125,40 @@ class Main extends Component {
 
     //点击待办item
     onToDoItemChange(id, isDone) {
-        if (isDone) {
-            //由已办到待办
-            let doneItemList = this.state.doneItemList;
-            let target = doneItemList.find(item => { return item.get('id') === id });
-            if (target) {
-                // doneItemList.splice(doneItemList.indexOf(target), 1);
-                doneItemList = doneItemList.delete(doneItemList.indexOf(target));
-                // target.done = false;
-                let todoItemList = this.state.todoItemList;
-                target = target.set('done', false);
-                todoItemList = todoItemList.push(target);
-                this.setState({
-                    todoItemList: todoItemList,
-                    doneItemList: doneItemList
-                });
-            }
-        } else {
-            //由待办到已办
-            let todoItemList = this.state.todoItemList;
-            let target = todoItemList.find(item => { return item.get('id') === id });
-            if (target) {
-                // todoItemList.splice(todoItemList.indexOf(target), 1);
-                todoItemList = todoItemList.delete(todoItemList.indexOf(target));
-                // target.done = true;
-                let doneItemList = this.state.doneItemList;
-                target = target.set('done', true);
-                doneItemList = doneItemList.push(target);
-                this.setState({
-                    todoItemList: todoItemList,
-                    doneItemList: doneItemList
-                });
-            }
-        }
+        // if (isDone) {
+        //     //由已办到待办
+        //     let doneItemList = this.state.doneItemList;
+        //     let target = doneItemList.find(item => { return item.get('id') === id });
+        //     if (target) {
+        //         // doneItemList.splice(doneItemList.indexOf(target), 1);
+        //         doneItemList = doneItemList.delete(doneItemList.indexOf(target));
+        //         // target.done = false;
+        //         let todoItemList = this.state.todoItemList;
+        //         target = target.set('done', false);
+        //         todoItemList = todoItemList.push(target);
+        //         this.setState({
+        //             todoItemList: todoItemList,
+        //             doneItemList: doneItemList
+        //         });
+        //     }
+        // } else {
+        //     //由待办到已办
+        //     let todoItemList = this.state.todoItemList;
+        //     let target = todoItemList.find(item => { return item.get('id') === id });
+        //     if (target) {
+        //         // todoItemList.splice(todoItemList.indexOf(target), 1);
+        //         todoItemList = todoItemList.delete(todoItemList.indexOf(target));
+        //         // target.done = true;
+        //         let doneItemList = this.state.doneItemList;
+        //         target = target.set('done', true);
+        //         doneItemList = doneItemList.push(target);
+        //         this.setState({
+        //             todoItemList: todoItemList,
+        //             doneItemList: doneItemList
+        //         });
+        //     }
+        // }
+        this.props.switchToDoItem && this.props.switchToDoItem({ id, isDone });
     }
 
     //点击删除图标
@@ -178,7 +179,7 @@ class Main extends Component {
         //         });
         //     }
         // }
-        this.props.delToDoItem&&this.props.delToDoItem({id, isDone});
+        this.props.delToDoItem && this.props.delToDoItem({ id, isDone });
     }
 
     //清空所有待办项
@@ -221,7 +222,7 @@ class Main extends Component {
     }
 
     render() {
-        let { style, className, onClick, addToDoItem, delToDoItem, resetToDoItem, data, ...others } = this.props;
+        let { style, className, onClick, addToDoItem, delToDoItem, resetToDoItem, switchToDoItem, data, ...others } = this.props;
         let todoItemList = data && data.get('todoItemList');
         let doneItemList = data && data.get('doneItemList');
         return <div className={`main ${className}`} style={style} {...others}>

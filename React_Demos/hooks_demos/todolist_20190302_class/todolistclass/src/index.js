@@ -64,6 +64,12 @@ function mapDispatchToProps(dispatch) {
                 type: action_names.RESETODOITEM,
                 data
             });
+        },
+        switchToDoItem: (data) => {
+            dispatch({
+                type: action_names.SWITCHTODOITEM,
+                data
+            });
         }
     }
 }

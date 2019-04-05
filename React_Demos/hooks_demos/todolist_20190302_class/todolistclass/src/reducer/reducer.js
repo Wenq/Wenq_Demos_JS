@@ -6,22 +6,26 @@ export function reducer_actions(state = new Map(), action = new Map()) {
     let { type } = action;
     switch (type) {
         case action_names.ADDTODOITEM:
-            let newToDOItem = action.data;
-            if (newToDOItem) {
-                let todoItemList = state.get('todoItemList');
-                todoItemList = todoItemList.push(newToDOItem);
-                state = state.setIn(['todoItemList'], todoItemList);
-            } else {
-                console.warn(`newToDOItem is invalid, add item cancel`);
+            if(action.data){
+                let newToDOItem = action.data;
+                if (newToDOItem) {
+                    let todoItemList = state.get('todoItemList');
+                    todoItemList = todoItemList.push(newToDOItem);
+                    state = state.setIn(['todoItemList'], todoItemList);
+                } else {
+                    console.warn(`newToDOItem is invalid, add item cancel`);
+                }
             }
             break;
         case action_names.DELTODOITEM:
-            let { id, isDone } = action.data;
-            let doList = isDone ? state.get('doneItemList') : state.get('todoItemList');
-            let targetIndex = doList.findIndex(item => { return id === item.get('id') });
-            if (targetIndex > -1) {
-                doList = doList.delete(targetIndex);
-                state = state.setIn([isDone ? 'doneItemList' : 'todoItemList'], doList);
+            if(action.data){
+                let { id, isDone } = action.data;
+                let doList = isDone ? state.get('doneItemList') : state.get('todoItemList');
+                let targetIndex = doList.findIndex(item => { return id === item.get('id') });
+                if (targetIndex > -1) {
+                    doList = doList.delete(targetIndex);
+                    state = state.setIn([isDone ? 'doneItemList' : 'todoItemList'], doList);
+                }
             }
             break;
         case action_names.RESETODOITEM:
@@ -29,7 +33,34 @@ export function reducer_actions(state = new Map(), action = new Map()) {
             state = state.setIn(['doneItemList'], new List());
             break;
         case action_names.SWITCHTODOITEM:
-            //todo something
+            if(action.data){
+                let { id, isDone } = action.data;
+                if (isDone) {
+                    //由已办到待办
+                    let doneItemList = state.get('doneItemList');
+                    let target = doneItemList.find(item => { return item.get('id') === id });
+                    if (target) {
+                        doneItemList = doneItemList.delete(doneItemList.indexOf(target));
+                        let todoItemList = state.get('todoItemList');
+                        target = target.set('done', false);
+                        todoItemList = todoItemList.push(target);
+                        state = state.setIn(['todoItemList'], todoItemList);
+                        state = state.setIn(['doneItemList'], doneItemList);
+                    }
+                } else {
+                    //由待办到已办
+                    let todoItemList = state.get('todoItemList');
+                    let target = todoItemList.find(item => { return item.get('id') === id });
+                    if (target) {
+                        todoItemList = todoItemList.delete(todoItemList.indexOf(target));
+                        let doneItemList = state.get('doneItemList');
+                        target = target.set('done', true);
+                        doneItemList = doneItemList.push(target);
+                        state = state.setIn(['todoItemList'], todoItemList);
+                        state = state.setIn(['doneItemList'], doneItemList);
+                    }
+                }
+            }
             break;
         default:
             console.warn(`暂不支持的action type: ${type}`);
