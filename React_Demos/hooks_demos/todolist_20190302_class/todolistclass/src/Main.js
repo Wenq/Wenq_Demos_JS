@@ -162,22 +162,23 @@ class Main extends Component {
 
     //点击删除图标
     onItemDelClick(id, isDone) {
-        let doList = isDone ? this.state.doneItemList : this.state.todoItemList;
-        // let target = doList.find(item => { return id === item.get('id') });
-        let targetIndex = doList.findIndex(item => { return id === item.get('id') });
-        if (targetIndex > -1) {
-            // doList.splice(doList.indexOf(target), 1);
-            doList = doList.delete(targetIndex);
-            if (isDone) {
-                this.setState({
-                    doneItemList: doList
-                });
-            } else {
-                this.setState({
-                    todoItemList: doList
-                });
-            }
-        }
+        // let doList = isDone ? this.state.doneItemList : this.state.todoItemList;
+        // // let target = doList.find(item => { return id === item.get('id') });
+        // let targetIndex = doList.findIndex(item => { return id === item.get('id') });
+        // if (targetIndex > -1) {
+        //     // doList.splice(doList.indexOf(target), 1);
+        //     doList = doList.delete(targetIndex);
+        //     if (isDone) {
+        //         this.setState({
+        //             doneItemList: doList
+        //         });
+        //     } else {
+        //         this.setState({
+        //             todoItemList: doList
+        //         });
+        //     }
+        // }
+        this.props.delToDoItem&&this.props.delToDoItem({id, isDone});
     }
 
     //清空所有待办项
@@ -186,7 +187,7 @@ class Main extends Component {
         //     todoItemList: new List(),
         //     doneItemList: new List()
         // });
-        this.props.resetToDoItem && this.props.resetToDoItem();
+        this.props.resetToDoItem && this.props.resetToDoItem({});
     }
 
     //增加测试数据，1万条数据.
