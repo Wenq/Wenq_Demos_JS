@@ -1,3 +1,15 @@
+import { List, fromJS, Map } from 'immutable';
+import { CONS_TODO_ITEM_LIST, CONS_DONE_ITEM_LIST } from '../env/constants';
+
+//加载初始数据源
+export function loadInitData(){
+    let InitStateObj = new Map(); //初始化数据对象
+    let todoItemList_data = getStorage(CONS_TODO_ITEM_LIST);
+    let doneItemList_data = getStorage(CONS_DONE_ITEM_LIST);
+    InitStateObj = InitStateObj.set(CONS_TODO_ITEM_LIST, fromJS(todoItemList_data) || new List());
+    InitStateObj = InitStateObj.set(CONS_DONE_ITEM_LIST, fromJS(doneItemList_data) || new List());
+    return InitStateObj;
+}
 
 //将数据存储到本地localStorage
 export function setStorage(contentId, content) {

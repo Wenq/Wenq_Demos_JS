@@ -10,15 +10,10 @@ import { connect, Provider } from 'react-redux';
 import { reducer_actions } from './reducer/reducer_actions';
 import { List, fromJS, Map } from 'immutable';
 import { action_names } from './action/action_names';
-import { getStorage } from './utils/storageUtil';
+import { getStorage, loadInitData } from './utils/storageUtil';
 import { CONS_TODO_ITEM_LIST, CONS_DONE_ITEM_LIST } from './env/constants';
 
-let InitStateObj = new Map(); //初始化数据对象
-let todoItemList_data = getStorage(CONS_TODO_ITEM_LIST);
-let doneItemList_data = getStorage(CONS_DONE_ITEM_LIST);
-InitStateObj = InitStateObj.set(CONS_TODO_ITEM_LIST, fromJS(todoItemList_data) || new List());
-InitStateObj = InitStateObj.set(CONS_DONE_ITEM_LIST, fromJS(doneItemList_data) || new List());
-
+let InitStateObj = loadInitData();
 const store = createStore(reducer_actions, InitStateObj || new Map());
 store.subscribe((newState) => {
     console.log(`new State: ${JSON.stringify(newState)}`);
