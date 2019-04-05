@@ -109,7 +109,10 @@ class Main extends Component {
         //     value: ''
         // });
 
-        this.props.addToDoItem && this.props.addToDoItem(newToDOItem);
+        this.setState({
+            value: ''
+        });
+        this.props.addToDoItem && this.props.addToDoItem([newToDOItem]);
     }
 
     //生成一个新的待办项数据
@@ -193,16 +196,24 @@ class Main extends Component {
 
     //增加测试数据，1万条数据.
     onAdd10KBtnClick(e, count = 10000) {
-        let todoItemList = this.state.todoItemList;
+        // let todoItemList = this.state.todoItemList;
+        // let i = 1;
+        // while (i <= count) {
+        //     todoItemList.push(this.getNewToDoItem({ title: i }));
+        //     i++;
+        // }
+
+        // this.setState({
+        //     todoItemList
+        // });
+
+        let itemList = [];
         let i = 1;
         while (i <= count) {
-            todoItemList.push(this.getNewToDoItem({ title: i }));
+            itemList.push(this.getNewToDoItem({ title: i }));
             i++;
         }
-
-        this.setState({
-            todoItemList
-        });
+        this.props.addToDoItem && this.props.addToDoItem(itemList);
     }
 
     //存储数据到本地

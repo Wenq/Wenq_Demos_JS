@@ -8,9 +8,11 @@ export function reducer_actions(state = new Map(), action = new Map()) {
         case action_names.ADDTODOITEM:
             if(action.data){
                 let newToDOItem = action.data;
-                if (newToDOItem) {
+                if (newToDOItem&&newToDOItem.length>0) {
                     let todoItemList = state.get('todoItemList');
-                    todoItemList = todoItemList.push(newToDOItem);
+                    newToDOItem.forEach(item=>{
+                        todoItemList = todoItemList.push(item);
+                    });
                     state = state.setIn(['todoItemList'], todoItemList);
                 } else {
                     console.warn(`newToDOItem is invalid, add item cancel`);
