@@ -182,10 +182,11 @@ class Main extends Component {
 
     //清空所有待办项
     onClearAllBtnClick() {
-        this.setState({
-            todoItemList: new List(),
-            doneItemList: new List()
-        });
+        // this.setState({
+        //     todoItemList: new List(),
+        //     doneItemList: new List()
+        // });
+        this.props.resetToDoItem && this.props.resetToDoItem();
     }
 
     //增加测试数据，1万条数据.
@@ -220,8 +221,8 @@ class Main extends Component {
 
     render() {
         let { style, className, onClick, addToDoItem, delToDoItem, resetToDoItem, data, ...others } = this.props;
-        let todoItemList = data&&data.get('todoItemList');
-        let doneItemList = data&&data.get('doneItemList');
+        let todoItemList = data && data.get('todoItemList');
+        let doneItemList = data && data.get('doneItemList');
         return <div className={`main ${className}`} style={style} {...others}>
             <span className='title'>todolist class 版本实现</span>
             <InputComponent

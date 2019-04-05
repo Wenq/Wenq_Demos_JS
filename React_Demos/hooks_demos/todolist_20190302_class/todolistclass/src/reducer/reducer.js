@@ -1,3 +1,4 @@
+//每个action具体实现逻辑
 import { List, Map } from 'immutable';
 import { action_names } from '../action/action';
 
@@ -8,13 +9,16 @@ export function reducer_actions(state = new Map(), action = new Map()) {
         let newToDOItem = action.data;
             let todoItemList = state.get('todoItemList');
             todoItemList = todoItemList.push(newToDOItem);
-            state = state.setIn(['todoItemList'],todoItemList);;
+            state = state.setIn(['todoItemList'],todoItemList);
             break;
         case action_names.DELTODOITEM:
             state = 0;
             break;
         case action_names.RESETODOITEM:
-            state = 0;
+            state = state.setIn(['todoItemList'],new List());
+            state = state.setIn(['doneItemList'],new List());
+            break;
+        case action_names.SWITCHTODOITEM:
             break;
         default:
             console.warn(`暂不支持的action type: ${type}`);

@@ -5,5 +5,7 @@ export const action_names = {
     //删除
     DELTODOITEM: 'delToDoItem',
     //重置
-    RESETODOITEM: 'resetToDoItem'
+    RESETODOITEM: 'resetToDoItem',
+    //切换待办状态
+    SWITCHTODOITEM: 'switchToDoItem'
 }
