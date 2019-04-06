@@ -1,5 +1,7 @@
 .itemcontainer{
-    
+    /* overflow: auto; */
+    /* flex-grow: 1; */
+    /* min-height: 80px; */
 }
 .itemcontainer_title{
     margin: 10px;

@@ -257,7 +257,7 @@ class Main extends Component {
                 placeholder={'请输入待办事项  [回车快速添加]'}
             />
             <ItemContainer title={'测试: '} titleStyle={{ 'color': 'red', 'fontSize': '16px' }}
-                style={{ 'border': '5px solid red' }}>
+                style={{ 'border': '5px solid red', 'flexShrink': 0 }}>
                 <div>
                     <button className={'test_btn'} onClick={this.onAdd10KBtnClick}>增加10k条数据</button>
                     <button className={'test_btn'} onClick={this.onClearAllBtnClick}>全部清除</button>
@@ -265,28 +265,30 @@ class Main extends Component {
                     <button className={'test_btn'} onClick={this.onClearLocalDataClick}>清除本地存储</button>
                 </div>
             </ItemContainer>
-            <ItemContainer title={'正在进行'} titleStyle={{ 'color': 'green', 'fontSize': '16px' }}
-                style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
-                <ul className='itemlist'>
-                    {
-                        todoItemList && todoItemList.map((item, index) => {
-                            return <ToDoItem key={item.get('id')} style={{ 'magin': '10px' }} item={item}
-                                onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
-                        })
-                    }
-                </ul>
-            </ItemContainer>
-            <ItemContainer title={'已经完成'} titleStyle={{ 'color': 'gray', 'fontSize': '16px' }}
-                style={{ 'border': '1px solid gray' }}>
-                <ul className='itemlist'>
-                    {
-                        doneItemList && doneItemList.map((item, index) => {
-                            return <ToDoItem key={item.get('id')} style={{ 'magin': '10px' }} item={item}
-                                onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
-                        })
-                    }
-                </ul>
-            </ItemContainer>
+            <div className={'itemcontainer'} style={{'marginTop':'10px'}}>
+                <ItemContainer title={'正在进行'} titleStyle={{ 'color': 'green', 'fontSize': '16px' }}
+                    style={{ 'margin': '10px 0px 10px 0px', 'border': '1px solid green' }}>
+                    <ul className='itemlist'>
+                        {
+                            todoItemList && todoItemList.map((item, index) => {
+                                return <ToDoItem key={item.get('id')} style={{ 'magin': '10px' }} item={item}
+                                    onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
+                            })
+                        }
+                    </ul>
+                </ItemContainer>
+                <ItemContainer title={'已经完成'} titleStyle={{ 'color': 'gray', 'fontSize': '16px' }}
+                    style={{ 'border': '1px solid gray' }}>
+                    <ul className='itemlist'>
+                        {
+                            doneItemList && doneItemList.map((item, index) => {
+                                return <ToDoItem key={item.get('id')} style={{ 'magin': '10px' }} item={item}
+                                    onCheckChange={this.onToDoItemChange} onDelClick={this.onItemDelClick} />
+                            })
+                        }
+                    </ul>
+                </ItemContainer>
+            </div>
         </div>
     }
 }
