@@ -14,6 +14,7 @@ import { getDate, createId } from './utils/commonUtil';
 import { setStorage, clearStorage } from './utils/storageUtil';
 import { fromJS } from 'immutable';
 import { CONS_TODO_ITEM_LIST, CONS_DONE_ITEM_LIST } from './env/constants';
+import { performance_start, performance_stop, performance_getTime } from './performance/performanceUtil';
 
 //常量
 // const STORAGE_ID = 'todolist';
@@ -210,7 +211,8 @@ class Main extends Component {
 
         console.warn(`开始->生成待办项对象: count: ${count} 个`);
         // console.time(); //chrome浏览器api
-        let start = window.performance.now();
+        // let start = window.performance.now();
+        performance_start('xx');
         let itemList = [];
         let i = 1;
         while (i <= count) {
@@ -218,8 +220,9 @@ class Main extends Component {
             i++;
         }
         // console.timeEnd();
-        let end = window.performance.now();
-        console.warn(`结束->生成待办项对象: 耗时: ${end - start} ms`);
+        // let end = window.performance.now();
+        performance_stop('xx');
+        console.warn(`结束->生成待办项对象: 耗时: ${performance_getTime('xx')} ms`);
         this.props.addToDoItem && this.props.addToDoItem(itemList);
     }
 
