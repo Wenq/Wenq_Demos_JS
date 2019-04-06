@@ -8,13 +8,12 @@ import Main from './Main';
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 import { reducer_actions } from './reducer/reducer_actions';
-import { List, fromJS, Map } from 'immutable';
+import { Map } from 'immutable';
 import { action_names } from './action/action_names';
-import { getStorage, loadInitData } from './utils/storageUtil';
-import { CONS_TODO_ITEM_LIST, CONS_DONE_ITEM_LIST } from './env/constants';
+import { loadInitData } from './utils/storageUtil';
 
-let InitStateObj = loadInitData();
-const store = createStore(reducer_actions, InitStateObj || new Map());
+let InitStateObj = loadInitData() || new Map();
+const store = createStore(reducer_actions, InitStateObj);
 store.subscribe((newState) => {
     console.log(`new State: ${JSON.stringify(newState)}`);
 });
