@@ -207,13 +207,14 @@ class Main extends Component {
         // this.setState({
         //     todoItemList
         // });
-
+        console.warn(`开始->生产待办项对象: count: ${count}`);
         let itemList = [];
         let i = 1;
         while (i <= count) {
             itemList.push(this.getNewToDoItem({ title: i }));
             i++;
         }
+        console.warn(`结束->生产待办项对象: 耗时: ${count}`);
         this.props.addToDoItem && this.props.addToDoItem(itemList);
     }
 
