@@ -8,8 +8,8 @@ import Main from './Main';
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 import { reducer_actions } from './reducer/reducer_actions';
+import { mapDispatchToProps } from './dispatchs/dispatch_actions';
 import { Map } from 'immutable';
-import { action_names } from './action/action_names';
 import { loadInitData } from './utils/storageUtil';
 
 let InitStateObj = loadInitData() || new Map();
@@ -34,40 +34,7 @@ function mapStateToProps(State) {
         data: State //props传递的数据store
     }
 }
-//UI to action(通过dispatch)
-function mapDispatchToProps(dispatch) {
-    return {
-        //示例
-        onClick: (data) => dispatch({
-            type: 'click',
-            data
-        }),
-        addToDoItem: (data) => {
-            dispatch({
-                type: action_names.ADDTODOITEM,
-                data
-            });
-        },
-        delToDoItem: (data) => {
-            dispatch({
-                type: action_names.DELTODOITEM,
-                data
-            });
-        },
-        resetToDoItem: (data) => {
-            dispatch({
-                type: action_names.RESETODOITEM,
-                data
-            });
-        },
-        switchToDoItem: (data) => {
-            dispatch({
-                type: action_names.SWITCHTODOITEM,
-                data
-            });
-        }
-    }
-}
+
 //生成容器类组件MainApp
 let MainApp = connect(mapStateToProps, mapDispatchToProps)(Main);
 //Provider,connect
