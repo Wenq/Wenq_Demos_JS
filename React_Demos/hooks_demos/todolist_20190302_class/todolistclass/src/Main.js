@@ -207,14 +207,19 @@ class Main extends Component {
         // this.setState({
         //     todoItemList
         // });
-        console.warn(`开始->生产待办项对象: count: ${count}`);
+
+        console.warn(`开始->生成待办项对象: count: ${count} 个`);
+        // console.time(); //chrome浏览器api
+        let start = window.performance.now();
         let itemList = [];
         let i = 1;
         while (i <= count) {
             itemList.push(this.getNewToDoItem({ title: i }));
             i++;
         }
-        console.warn(`结束->生产待办项对象: 耗时: ${count}`);
+        // console.timeEnd();
+        let end = window.performance.now();
+        console.warn(`结束->生成待办项对象: 耗时: ${end - start} ms`);
         this.props.addToDoItem && this.props.addToDoItem(itemList);
     }
 
