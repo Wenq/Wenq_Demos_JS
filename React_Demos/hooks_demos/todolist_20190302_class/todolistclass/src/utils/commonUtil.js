@@ -1,7 +1,7 @@
 
 //获取当前日期
-export function getDate() {
-    return new Date().Format('MM/dd');
+export function getDate(format) {
+    return new Date().Format(format||'MM/dd');
 }
 
 //生成一个GUID
