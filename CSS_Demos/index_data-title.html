@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>[wenq]已选条件挤压效果</title>
+    <style>
+        body {
+            background-color: #ccc;
+            text-align: center;
+            padding-top: 200px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        [deta-title] {
+            position: relative;
+            margin: 0 20px;
+        }
+
+        [deta-title]:after {
+            content: attr(deta-title);
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            transform: translate(-50%, 0);
+            color: #fff;
+            text-shadow: 0 -1px 0px black;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+            background: #383838;
+            border-radius: 2px;
+            padding: 3px 10px;
+            font-size: 12px;
+            white-space: nowrap;
+            transition: all .3s;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        [deta-title]:hover:after {
+            transition-delay: 100ms;
+            visibility: visible;
+            transform: translate(-50%, -6px);
+            opacity: 1;
+        }
+
+        .container {
+            /*     display: flex;*/
+            border: 1px solid red;
+
+            box-sizing: border-box;
+            color: rgb(0, 0, 0);
+            display: flex;
+            flex-grow: 1;
+            flex-wrap: nowrap;
+            font-family: "Microsoft YaHei", PingFangSC-Regular, "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+            font-size: 12px;
+            height: 26px;
+            margin-bottom: 10px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 15px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+        }
+
+        .item {
+            align-items: center;
+            color: rgb(102, 102, 102);
+            cursor: pointer;
+            display: flex;
+            font-size: 12px;
+            height: 24px;
+            letter-spacing: normal;
+            margin-right: 6px;
+            border: 1px solid black;
+
+            overflow: hidden;
+        }
+
+        .title {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            cursor: pointer;
+            display: block;
+            float: none;
+            font-size: 12px;
+            height: 16px;
+            letter-spacing: normal;
+            margin-left: 3px;
+            white-space: nowrap;
+        }
+
+        .content {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            cursor: pointer;
+            display: block;
+            float: none;
+            font-size: 12px;
+            height: 16px;
+            letter-spacing: normal;
+            max-width: 155px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            /*width: 24px;*/
+        }
+
+        .icon {
+            align-items: center;
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            cursor: pointer;
+            display: flex;
+            float: none;
+            font-size: 12px;
+            height: 24px;
+            justify-content: center;
+            letter-spacing: normal;
+            margin-left: 4px;
+            white-space: nowrap;
+            width: 22px;
+            background: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <div class='item'>
+            <span class='title'>日期1: </span>
+            <span class='content'> 2019-06-07 至 2019-08-04</span>
+            <span class='icon'></span>
+        </div>
+        <div class='item'>
+            <span class='title'>日期2: </span>
+            <span class='content'> 2019-06-07 至 2019-08-04</span>
+            <span class='icon'></span>
+        </div>
+        <div class='item'>
+            <span class='title'>组织名称有点长哦，你看打得来啦end: </span>
+            <span class='content'> 中华人名共和国金蝶软件深造有限公司经理说快递费啦圣诞节福利口味啦可是对方离开世界的立法 离开世界的立法end</span>
+            <span class='icon'></span>
+        </div>
+        <div class='item'>
+            <span class='title'>性别: </span>
+            <span class='content'> 娜娜南岸娜娜娜娜男女女女女女 v</span>
+            <span class='icon'></span>
+        </div>
+        <div class='item'>
+            <span class='title'>后面的项目哦: </span>
+            <span class='content'> 啦啦啦啦啦大家发；历史；；叫阿懒得理你那 v 来的啦；发；是否；暗示法；阿斯顿发</span>
+            <span class='icon'></span>
+        </div>
+    </div>
+
+
+    <script>
+        function detaTitle() {
+            var deta_title = document.querySelectorAll("[deta-title]");
+            for (var i = 0; i < deta_title.length; i++) {
+                deta_title[i].setAttribute("deta-title", deta_title[i].getAttribute("title"));
+                deta_title[i].removeAttribute("title");
+            }
+        }
+        detaTitle();
+    </script>
+</body>
+
+</html>
