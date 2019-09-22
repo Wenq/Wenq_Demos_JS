@@ -1,0 +1,29 @@
+body {
+    color: #333;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Arial;
+    font-size: 0.8rem;
+}
+
+.btncontainer {
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+}
+
+.contentcontainer {
+    display: flex;
+
+}
+
+#txtcontent {
+    height: 20rem;
+    width: 100rem;
+}
+
+.btn {
+    height: 27px;
+    width: 100px;
+    margin: 5px;
+}
