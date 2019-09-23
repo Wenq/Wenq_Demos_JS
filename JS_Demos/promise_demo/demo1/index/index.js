@@ -1,10 +1,10 @@
 /*
- * @Descripttion: 
+ * @Descripttion: window.promise demo
  * @version: 
  * @Author: wenq
  * @Date: 2019-09-21 21:28:52
  * @LastEditors: wenq
- * @LastEditTime: 2019-09-22 21:00:06
+ * @LastEditTime: 2019-09-23 21:28:05
  */
 window.onload = () => {
     alert('index.js loaded...')
