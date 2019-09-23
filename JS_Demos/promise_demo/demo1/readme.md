@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-09-22 17:52:11
  * @LastEditors: wenq
- * @LastEditTime: 2019-09-23 21:39:02
+ * @LastEditTime: 2019-09-23 22:05:46
  -->
 # promise基础
 
@@ -25,12 +25,21 @@
     Promise.race([p1,p2])）
 ```
 
-
 ## 检测浏览器是否支持promise
 ```
     use 'strict'
     new Promise(function(){}) //如果支持，则这一句不会报错，下一句正常执行;否则报错中断
     console.log('支持Promise') 
 ```
+
 ### 注意
->* new Promsie() 会立即执行
+> * 1.new Promsie() 会立即执行
+
+### 优点
+> * 解决回调地狱问题
+
+### 缺点
+> * 无法取消 Promise，一旦新建它就会立即执行，无法中途取消
+> * 如果不设置回调函数，Promise 内部抛出的错误不会反应到外部
+> * 当处于 Pending 状态时，无法得知目前进展到哪一个阶段
+

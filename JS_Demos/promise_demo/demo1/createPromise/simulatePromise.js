@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-09-22 21:01:21
  * @LastEditors: wenq
- * @LastEditTime: 2019-09-23 21:59:12
+ * @LastEditTime: 2019-09-23 22:38:40
  */
 // window.onload=()=>{
 //     let btn001 = document.getElementById('btntest001');
@@ -94,5 +94,23 @@ function promiseParallel() {
     //任意一个结果返回，则其他抛弃
     Promise.race([p1, p2]).then((success) => {
 
+    })
+}
+
+//promise api 使用例子
+function promiseInvokeDemo1(){
+    //创建promise实例，不会执行
+    let promiseObj = new Promise(function(resolve, reject){
+        if(true){
+            resolve("promise success")
+        }else{
+            reject("promise fail")
+        }
+    });
+    //执行promise
+    promiseObj.then(function(success){
+        console.log("promise invoke success..." + success)
+    },function(error){
+        console.log("promise invoke fail..." + error)
     })
 }
