@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-09-21 21:28:52
  * @LastEditors: wenq
- * @LastEditTime: 2019-09-22 20:54:49
+ * @LastEditTime: 2019-09-22 21:00:06
  */
 window.onload = () => {
     alert('index.js loaded...')
@@ -12,6 +12,8 @@ window.onload = () => {
     let btn1 = document.getElementById('btntest1');
     let btn2 = document.getElementById('btntest2');
     let btn3 = document.getElementById('btntest3');
+    let btn4 = document.getElementById('btntest4');
+    let btn5 = document.getElementById('btntest5');
     if (btn1) {
         btn1.addEventListener("click", (e) => {
             alert('btn1 click');

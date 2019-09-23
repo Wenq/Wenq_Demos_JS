@@ -4,18 +4,19 @@
  * @Author: wenq
  * @Date: 2019-09-21 21:28:45
  * @LastEditors: wenq
- * @LastEditTime: 2019-09-22 20:53:34
+ * @LastEditTime: 2019-09-22 21:05:36
  -->
 <html>
     <head>
         <title>promise demo</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="index.css"></style>
-        <script type="text/javascript" async src="index.js"></script>
+        <link rel="stylesheet" href="index/index.css"></style>
+        <script type="text/javascript" async src="index/index.js"></script>
+        <script type="text/javascript" async src="createPromise/simulatePromise.js"></script>
     </head>
     <body>
-        <h1>promise demo</h1>
+        <h1>promise api demo</h1>
         <div class='btncontainer'>
             <button class='btn' id="btntest1">测试1</button>
             <button class='btn' id="btntest2">测试2</button>
@@ -25,6 +26,12 @@
         </div>
         <div class='contentcontainer'>
             <textarea id='txtcontent'></textarea>
+        </div>
+        <div>
+            <h1>自己动手实现一个promise</h1>
+            <div>
+                <button class='btn' id="btntest001">测试001</button>
+            </div>
         </div>
     </body>
 </html>
