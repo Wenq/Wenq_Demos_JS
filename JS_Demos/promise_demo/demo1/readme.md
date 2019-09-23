@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-09-22 17:52:11
  * @LastEditors: wenq
- * @LastEditTime: 2019-09-22 20:33:30
+ * @LastEditTime: 2019-09-23 21:39:02
  -->
 # promise基础
 
@@ -32,4 +32,5 @@
     new Promise(function(){}) //如果支持，则这一句不会报错，下一句正常执行;否则报错中断
     console.log('支持Promise') 
 ```
-
+### 注意
+>* new Promsie() 会立即执行
