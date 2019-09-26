@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-09-22 21:01:21
  * @LastEditors: wenq
- * @LastEditTime: 2019-09-23 22:38:40
+ * @LastEditTime: 2019-09-24 23:12:45
  */
 // window.onload=()=>{
 //     let btn001 = document.getElementById('btntest001');
@@ -31,17 +31,19 @@ function setTimeoutCallBack() {
         console.log('setTimeout callback done!');
     }
     setTimeout(callbckFun, 1000);
+    console.log('setTimeout callback end...');
 }
 
 //ajax callback
 function ajaxCallBack() {
     //no third api to support 'ajax'
     console.log(`ajax callback`)
+    // $.ajax({...})
 }
 
 //promise example
 function promiseCallBack() {
-    function promiseDoFun(resolve, reject) {
+    function  (resolve, reject) {
         let result = Math.random(2);
         console.log('promise simulate result: ' + result);
         setTimeout(() => {
