@@ -4,10 +4,11 @@
  * @Author: wenq
  * @Date: 2019-09-26 21:49:40
  * @LastEditors: wenq
- * @LastEditTime: 2019-09-27 20:39:14
+ * @LastEditTime: 2019-09-27 21:41:02
  */
 
 //自己写一个bind
+// 使用场景：对一个函数绑定一个特定上下文，函数不执行
 Function.prototype.mybind = function (newContext) {
     let that = this;
     let fArgs = Array.prototype.slice.call(arguments, 1);

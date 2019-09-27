@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-09-21 21:28:52
  * @LastEditors: wenq
- * @LastEditTime: 2019-09-23 21:59:55
+ * @LastEditTime: 2019-09-27 20:44:20
  */
 window.onload = () => {
     console.log('index.js loaded...')
