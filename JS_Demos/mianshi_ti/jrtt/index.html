@@ -1,0 +1,50 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: wenq
+ * @Date: 2019-09-29 21:29:53
+ * @LastEditors: wenq
+ * @LastEditTime: 2019-09-29 21:32:25
+ -->
+ <html>
+
+    <head>
+        <title>promise demo</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="index/index.css">
+        </style>
+        <script type="text/javascript" async src="createPromise/simulatePromise.js"></script>
+        <script type="text/javascript" async src="index/index.js"></script>
+    </head>
+    
+    <body>
+        <h1>jrtt note view</h1>
+        <div class='btncontainer'>
+            <button class='btn' id="btntest1">测试1</button>
+            <button class='btn' id="btntest2">测试2</button>
+            <button class='btn' id="btntest3">测试3</button>
+            <button class='btn' id="btntest4">测试4</button>
+            <button class='btn' id="btntest5">测试5</button>
+        </div>
+        <div class='contentcontainer'>
+            <textarea id='txtcontent'></textarea>
+        </div>
+        <script>
+            //script
+            
+            //'123,433'
+            function sum(numStr) {
+                let result = numStr.split(',');
+                let firstNum = Number.parseInt(result[0]);
+                let secondNum = Number.parseInt(result[1]);
+                let sum =( firstNum + secondNum) + '';
+                console.log(sum);
+                return sum;
+            }
+    
+            sum('0,123');
+        </script>
+    </body>
+    
+    </html>
