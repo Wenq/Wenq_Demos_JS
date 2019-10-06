@@ -1,0 +1,55 @@
+.shuziweiba {
+    border: 1px solid red;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0px 10px;
+    /* border: 1px solid blue; */
+    background-color: lightcoral;
+}
+
+.content {
+    display: flex;
+    flex-grow: 1;
+    overflow: auto;
+    height: 0px; /*初始高度为0，自行撑高，超过容器则滚动*/
+    border: 1px solid red;
+}
+
+.bottombar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0px 10px;
+    /* border: 1px solid yellow; */
+    background-color: lightcoral;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li div {
+    background-color: lightgreen;
+    border: 1px solid crimson;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li p {
+    border: 1px solid crimson;
+}
