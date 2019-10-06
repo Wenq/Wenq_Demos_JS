@@ -4,15 +4,23 @@
  * @Author: wenq
  * @Date: 2019-10-06 12:05:34
  * @LastEditors: wenq
- * @LastEditTime: 2019-10-06 13:45:10
+ * @LastEditTime: 2019-10-06 22:53:49
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './topBar_ShuZiWeiBa.css';
 
 class TopBar_ShuZiWeiBa extends Component {
-    getEl(type, index){
-        switch(type){
+    constructor(props) {
+        super(props)
+
+        this.state={
+            showTopBar: true //是否显示顶部bar
+        }
+    }
+
+    getEl(type, index) {
+        switch (type) {
             case 0:
                 return <li key={index}><p>让我们来回顾一下这个例子中发生了什么：
                 我们调用 ReactDOM.render() 函数，并传入 作为参数。
@@ -31,16 +39,23 @@ class TopBar_ShuZiWeiBa extends Component {
                 break;
         }
     }
-    getContent(){
-        let els = [0,1,2,0,0,,3,5,3,4,0,6,7,0,8,0,0,9,10,0,2,3,0,5,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
+
+    getContent() {
+        //模拟数据
+        let els = [0, 1, 2, 0, 0, , 3, 5, 3, 4, 0, 6, 7, 0, 8, 0, 0, 9, 10, 0, 2, 3, 0, 5, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
         return <ul>
-        {
-            els.map((item, index)=>{
-                return this.getEl(item,index)
-            })
-        }
+            {
+                els.map((item, index) => {
+                    return this.getEl(item, index)
+                })
+            }
         </ul>
     }
+
+    onContentClick() {
+        console.log(`onContentClick`)
+    }
+
     render() {
         let { style, className, ...others } = this.props;
         return <div style={style} className={'shuziweiba' + ' ' + className} {...others}>
@@ -51,7 +66,7 @@ class TopBar_ShuZiWeiBa extends Component {
                     <i>{'🗑'}</i>
                 </div>
             </div>
-            <div className='content'>
+            <div className='content' onClick={this.onContentClick.bind(this)}>
                 {
                     this.getContent()
                 }
