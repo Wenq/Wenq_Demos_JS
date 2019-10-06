@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-10-06 12:05:34
  * @LastEditors: wenq
- * @LastEditTime: 2019-10-06 22:53:49
+ * @LastEditTime: 2019-10-06 23:03:03
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -14,7 +14,7 @@ class TopBar_ShuZiWeiBa extends Component {
     constructor(props) {
         super(props)
 
-        this.state={
+        this.state = {
             showTopBar: true //是否显示顶部bar
         }
     }
@@ -54,12 +54,15 @@ class TopBar_ShuZiWeiBa extends Component {
 
     onContentClick() {
         console.log(`onContentClick`)
+        this.setState({
+            showTopBar: !this.state.showTopBar
+        })
     }
 
     render() {
         let { style, className, ...others } = this.props;
         return <div style={style} className={'shuziweiba' + ' ' + className} {...others}>
-            <div className='topbar'>
+            <div className={'topbar' + (this.state.showTopBar ? '' : ' ' + 'noheight')}>
                 <i className='exit'>{'<'}</i>
                 <div>
                     <i>{'🎆'}</i>

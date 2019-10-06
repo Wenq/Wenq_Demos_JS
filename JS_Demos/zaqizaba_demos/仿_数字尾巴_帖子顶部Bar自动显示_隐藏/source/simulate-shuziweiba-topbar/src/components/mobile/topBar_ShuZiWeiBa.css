@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
+    position: relative;
 }
 
 .topbar {
@@ -15,11 +16,20 @@
     padding: 0px 10px;
     /* border: 1px solid blue; */
     background-color: lightcoral;
-    
+    overflow: hidden;
+
+    /* transition: height 1s linear; */
+
+    transition: top 0.3s linear;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0px;
 }
 
-.nohight {
-    height: 0px;
+.noheight {
+    /* height: 0px; */
+    top: -50px;
 }
 
 .content {
