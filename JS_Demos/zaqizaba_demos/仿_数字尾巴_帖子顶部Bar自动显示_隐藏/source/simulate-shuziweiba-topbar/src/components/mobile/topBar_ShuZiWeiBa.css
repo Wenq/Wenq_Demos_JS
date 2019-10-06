@@ -7,7 +7,7 @@
     justify-content: flex-start;
     position: relative;
     /*
-        方案1：
+        滚动方案1：
         通过‘padding-top’为topBar显示预留空间，防止内容区靠近顶上内容被遮挡、
         同时要保证：预留空间不能被用户看到，即预留空间滚动到可见区域时，toBar是一定已经显示出来的
     */
@@ -26,7 +26,6 @@
 
     /*动画方案1*/
     /* transition: height 1s linear; */
-
     /*动画方案2*/
     transition: top 0.3s linear;
     position: absolute;
@@ -38,7 +37,6 @@
 .noheight {
     /*动画方案1*/
     /* height: 0px; */
-
     /*动画方案2*/
     top: -50px;
 }
@@ -47,7 +45,8 @@
     display: flex;
     flex-grow: 1;
     overflow: auto;
-    height: 0px; /*初始高度为0，自行撑高，超过容器则滚动*/
+    height: 0px;
+    /*初始高度为0，自行撑高，超过容器则滚动*/
     border: 1px solid red;
 }
 
@@ -80,4 +79,13 @@ li div {
 /*文字段落*/
 li p {
     border: 1px solid crimson;
+}
+
+/*替TopBar占位的元素*/
+ul li:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: cyan;
 }

@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-10-06 12:05:34
  * @LastEditors: wenq
- * @LastEditTime: 2019-10-06 23:03:03
+ * @LastEditTime: 2019-10-06 23:37:26
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -44,6 +44,7 @@ class TopBar_ShuZiWeiBa extends Component {
         //模拟数据
         let els = [0, 1, 2, 0, 0, , 3, 5, 3, 4, 0, 6, 7, 0, 8, 0, 0, 9, 10, 0, 2, 3, 0, 5, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
         return <ul>
+            <li key={'space'}>{'我替topBar占位'}</li>
             {
                 els.map((item, index) => {
                     return this.getEl(item, index)
