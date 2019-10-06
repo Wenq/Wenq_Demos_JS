@@ -6,6 +6,12 @@
     align-items: stretch;
     justify-content: flex-start;
     position: relative;
+    /*
+        方案1：
+        通过‘padding-top’为topBar显示预留空间，防止内容区靠近顶上内容被遮挡、
+        同时要保证：预留空间不能被用户看到，即预留空间滚动到可见区域时，toBar是一定已经显示出来的
+    */
+    /* padding-top: 50px; */
 }
 
 .topbar {
@@ -18,8 +24,10 @@
     background-color: lightcoral;
     overflow: hidden;
 
+    /*动画方案1*/
     /* transition: height 1s linear; */
 
+    /*动画方案2*/
     transition: top 0.3s linear;
     position: absolute;
     right: 0;
@@ -28,7 +36,10 @@
 }
 
 .noheight {
+    /*动画方案1*/
     /* height: 0px; */
+
+    /*动画方案2*/
     top: -50px;
 }
 
