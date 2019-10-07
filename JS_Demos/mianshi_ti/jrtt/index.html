@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-09-29 21:29:53
  * @LastEditors: wenq
- * @LastEditTime: 2019-09-30 22:35:24
+ * @LastEditTime: 2019-10-07 21:50:30
  -->
 <html>
 
@@ -34,23 +34,86 @@
         //script
 
         /* 
-            2个大整数求和，注意溢出
-            输入：'123,433'
+            题目：2个大整数求和，注意可能溢出，最后以string输出
+            输入示例：'123,433'、'000,123142'、'23,121414'
+            实现思路：
+                1.直接将字符串转为数字，可能导致相加结果溢出，得到的不是正确数字。
+                2.实现办法：将2个数字字符串转为相同长度字符（相同位置为空则补0），再从后往前（或者说从小到大）
+                  将2个数字字符串对应位置字符取出按照数字方式相加，大于或等于0就向前进一位（单个字符最大为9，则最多进一位），
+                  这样逐位从后往前相加计算，该向前进位的就进位，每个位置字符相加运算结果逐个存到数组里，最后将数组中所有元素join('')出来即最后结果。
         */
-        let max_num = Math.pow(2, 53);
-        console.log('max int: ', max_num);
-        console.log('max int + 1 : ', max_num + 1);
         
+        // let max_num = Math.pow(2, 53);
+        // console.log('max int: ', max_num);
+        // console.log('max int + 1 : ', max_num + 1);
+
         function sum(numStr) {
             let result = numStr.split(',');
-            let firstNum = Number.parseInt(result[0]);
-            let secondNum = Number.parseInt(result[1]);
-            let sum = (firstNum + secondNum) + '';
-            console.log(sum);
-            return sum;
+            let firstNumStr = result[0];
+            let secondNumStr = result[1];
+            // let sum = (firstNum + secondNum) + ''; //这里不能直接数字相加，可能导致溢出
+            let getZero = (count) => {
+                let result = '';
+                //empty array的forEach函数，其回调好像不会执行
+                // new Array(count).forEach(item => {
+                //     result = '0' + result;
+                // })
+                while(count>0){
+                    result = '0' + result;
+                    count--;
+                }
+                return result;
+            }
+            if (firstNumStr.length > secondNumStr.length) {
+                secondNumStr = getZero(firstNumStr.length - secondNumStr.length) + secondNumStr;
+            } else {
+                firstNumStr = getZero(secondNumStr.length - firstNumStr.length) + firstNumStr;
+            }
+
+            result = [];
+            let intFirst, intSecond, sum;
+            let addOne = 0; //进1
+            for (let i = (firstNumStr.length - 1); i >= 0; i--) {
+                intFirst = firstNumStr.charAt(i)-0; //字符减0，即将字符转为number
+                intSecond = secondNumStr.charAt(i)-0;
+                sum = intFirst + intSecond;
+                if(addOne){
+                    //前一个计算结果有进位
+                    sum = sum + addOne;
+                }
+                if(sum>=10){
+                    //满10进1
+                    addone = 1;
+                    sum = sum - 10;
+                }else{
+                    addone = 0;
+                }
+                result.unshift(sum); //从大往小计算，计算结果依次插入到第一位置
+            }
+            if(addOne){
+                //最大位的2个数字相加有进位
+                result.unshift(addone);
+            }else{
+                //最大位可能是0，是则删除
+                if(!result[0]){
+                    result.splice(0,1);
+                }
+            }
+            console.log(result.join(''));
+            return result.join('');
         }
 
-        sum('0,123');
+        sum('09999,921');
+    </script>
+    <script>
+        /*
+        array操作:
+            push: 尾部插入一个元素
+            pop: 删除尾部元素
+            unshift: 头部插入一个元素
+            shift: 删除头部一个元素
+            join('分隔符'):将array中元素使用‘分隔符’连接起来，形成一个string
+        */
     </script>
 </body>
 
