@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-10-06 12:05:34
  * @LastEditors: wenq
- * @LastEditTime: 2019-10-06 23:37:26
+ * @LastEditTime: 2019-10-07 15:42:04
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -34,7 +34,7 @@ class TopBar_ShuZiWeiBa extends Component {
                 break;
             default:
                 return <li key={index}>
-                    <div className='simage'>我是图片</div>
+                    <div>我是图片</div>
                 </li>
                 break;
         }
@@ -60,11 +60,79 @@ class TopBar_ShuZiWeiBa extends Component {
         })
     }
 
+    onHandleTouchStart(e) {
+        console.log(`touch start`);
+
+        console.log(e.touches);
+        console.log(e.targetTouches);
+        console.log(e.changedTouches);
+
+        this._startX = e.changedTouches[0].pageX;
+        this._startY = e.changedTouches[0].pageY;
+        console.log('_startX', this._startX);
+        console.log('_startY', this._startY);
+    }
+
+    onHandleTouchMove(e) {
+        console.log(`touch move`);
+        console.log(e.touches);
+        console.log(e.targetTouches);
+        console.log(e.changedTouches);
+
+        this._moveX = e.changedTouches[0].pageX;
+        this._moveY = e.changedTouches[0].pageY;
+        console.log('_moveX', this._moveX);
+        console.log('_moveY', this._moveY);
+
+        let X = this._moveX - this._startX;
+        let Y = this._moveY - this._startY;
+        if (Math.abs(X) > Math.abs(Y) && X > 0) {// right
+            console.log('向右');
+        }
+        else if (Math.abs(X) > Math.abs(Y) && X < 0) {// left
+            console.log('向左');
+        }
+        else if (Math.abs(Y) > Math.abs(X) && Y > 0) {// down
+            console.log('向下');
+            this.setState({
+                showTopBar: true
+            })
+        }
+        else if (Math.abs(Y) > Math.abs(X) && Y < 0) {// up
+            console.log('向上');
+            this.setState({
+                showTopBar: false
+            })
+        }
+        else {//没有发生滑动
+            console.log('没有发生滑动');
+        }
+    }
+
+    onHandleTouchEnd(e) {
+        console.log(`touch end`);
+        console.log(e.touches);
+        console.log(e.targetTouches);
+        console.log(e.changedTouches);
+
+        this._endX = e.changedTouches[0].pageX;
+        this._endY = e.changedTouches[0].pageY;
+        console.log('_moveX', this._endX);
+        console.log('_endY', this._endY);
+    }
+
     render() {
         let { style, className, ...others } = this.props;
-        return <div style={style} className={'shuziweiba' + ' ' + className} {...others}>
+        return <div
+            style={style}
+            className={'shuziweiba' + ' ' + className}
+            {...others}
+            onTouchStart={this.onHandleTouchStart.bind(this)}
+            onTouchMove={this.onHandleTouchMove.bind(this)}
+            onTouchEnd={this.onHandleTouchEnd.bind(this)}
+        >
             <div className={'topbar' + (this.state.showTopBar ? '' : ' ' + 'noheight')}>
-                <i className='exit'>{'<'}</i>
+                <i>{'<'}</i>
                 <div>
                     <i>{'🎆'}</i>
                     <i>{'🗑'}</i>
