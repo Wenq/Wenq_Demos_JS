@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-09-29 21:29:53
  * @LastEditors: wenq
- * @LastEditTime: 2019-10-07 21:50:30
+ * @LastEditTime: 2019-10-07 22:00:34
  -->
 <html>
 
@@ -80,19 +80,20 @@
                 if(addOne){
                     //前一个计算结果有进位
                     sum = sum + addOne;
+                    addOne = 0;
                 }
                 if(sum>=10){
                     //满10进1
-                    addone = 1;
+                    addOne = 1;
                     sum = sum - 10;
                 }else{
-                    addone = 0;
+                    addOne = 0;
                 }
                 result.unshift(sum); //从大往小计算，计算结果依次插入到第一位置
             }
             if(addOne){
                 //最大位的2个数字相加有进位
-                result.unshift(addone);
+                result.unshift(addOne);
             }else{
                 //最大位可能是0，是则删除
                 if(!result[0]){
@@ -103,7 +104,7 @@
             return result.join('');
         }
 
-        sum('09999,921');
+        sum('09999,921');  //10920
     </script>
     <script>
         /*
