@@ -1,0 +1,42 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: wenq
+ * @Date: 2019-10-09 22:27:36
+ * @LastEditors: wenq
+ * @LastEditTime: 2019-10-09 22:38:42
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>bibao demo</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <div>
+            <button id='btn01'>test1</button>
+            <button id='btn02'>test2</button>
+            <button id='btn03'>test3</button>
+            <button id='btn04'>test4</button>
+            <button id='btn05'>test5</button>
+        </div>
+        <script>
+            /*
+                经典问题： for循环中的作用域
+                目标：点击btn01~btn05按钮，分别输出1~5
+            */
+            let btn;
+            for(let i=1; i<6; i++){
+                btn = document.getElementById('btn0' + i);
+                //错误方式，这里最后点击按钮，每个输出都是‘5’
+                // btn.addEventListener('click', function(){
+                //     window.alert(i);
+                // });
+                // btn.onclick = function(){
+                //     window.alert(i);
+                // }
+                //正确方式：采用闭包实现
+            }
+        </script>
+    </body>
+</html>
