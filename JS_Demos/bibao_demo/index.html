@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-10-09 22:27:36
  * @LastEditors: wenq
- * @LastEditTime: 2019-10-09 22:38:42
+ * @LastEditTime: 2019-10-17 11:58:02
  -->
 <!DOCTYPE html>
 <html>
@@ -22,20 +22,29 @@
         </div>
         <script>
             /*
+                介绍地址：https://www.liaoxuefeng.com/wiki/1022910821149312/1023021250770016
+            */
+            /*
                 经典问题： for循环中的作用域
                 目标：点击btn01~btn05按钮，分别输出1~5
             */
             let btn;
             for(let i=1; i<6; i++){
                 btn = document.getElementById('btn0' + i);
-                //错误方式，这里最后点击按钮，每个输出都是‘5’
+                //绑定事件回调
                 // btn.addEventListener('click', function(){
                 //     window.alert(i);
                 // });
+                //绑定事件回调
                 // btn.onclick = function(){
                 //     window.alert(i);
                 // }
-                //正确方式：采用闭包实现
+                //采用闭包实现回调函数
+                btn.onclick = (function(args){
+                    return function(){
+                        window.alert(args);
+                    }
+                })(i)
             }
         </script>
     </body>
