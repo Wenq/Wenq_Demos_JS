@@ -1,0 +1,89 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: wenq
+ * @Date: 2019-10-30 21:25:47
+ * @LastEditors: wenq
+ * @LastEditTime: 2019-10-30 23:25:36
+ -->
+<html>
+
+<head>
+    <title>hoverShowhoverHide</title>
+    <meta charset="utf-8" />
+    <style>
+        html body {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: aquamarine;
+            border: 1px solid red;
+        }
+
+        .container .item {
+            display: flex;
+            flex-direction: column;
+            height: 200px;
+            width: 200px;
+            border: 1px solid blue;
+        }
+
+        .item span {
+            cursor: pointer;
+        }
+
+        /*hover show*/
+        .container:hover .hovershow {
+            opacity: 1;
+            pointer-events: unset;
+        }
+
+        /*hover hide*/
+        .container:hover .hoverhide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .hovershow {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .hoverhide {
+            opacity: 1;
+            pointer-events: unset;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <div class='item hovershow'>
+            <p>hover show</p>
+            <span id='click01'>click me!</span>
+        </div>
+        <div class='item hoverhide'>
+            <p>hover hide</p>
+            <span id='click02'>click me!</span>
+        </div>
+    </div>
+    <script>
+        //script
+        let click01 = document.getElementById('click01')
+        if(click01){
+            click01.addEventListener('click',(e)=>{
+                window.alert('01')
+            })
+        }
+        let click02 = document.getElementById('click02')
+        if(click02){
+            click02.addEventListener('click',(e)=>{
+                window.alert('02')
+            })
+        }
+    </script>
+</body>
+
+</html>
