@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-10-30 21:25:47
  * @LastEditors: wenq
- * @LastEditTime: 2019-10-30 23:25:36
+ * @LastEditTime: 2019-10-30 23:49:50
  -->
 <html>
 
@@ -37,7 +37,7 @@
         /*hover show*/
         .container:hover .hovershow {
             opacity: 1;
-            pointer-events: unset;
+            pointer-events: inherit;
         }
 
         /*hover hide*/
@@ -45,41 +45,42 @@
             opacity: 0;
             pointer-events: none;
         }
-
+        /*normal hide, hover show*/
         .hovershow {
             opacity: 0;
             pointer-events: none;
         }
-
+        /*normal show, hover hide*/
         .hoverhide {
             opacity: 1;
-            pointer-events: unset;
+            pointer-events: inherit; /*兼容ie，这里不能用unset*/
         }
     </style>
 </head>
 
 <body>
     <div class='container'>
-        <div class='item hovershow'>
+        <div id='click01' class='item hovershow'>
             <p>hover show</p>
-            <span id='click01'>click me!</span>
+            <span>click me!</span>
         </div>
-        <div class='item hoverhide'>
+        <div id='click02' class='item hoverhide'>
             <p>hover hide</p>
-            <span id='click02'>click me!</span>
+            <span>click me!</span>
         </div>
     </div>
     <script>
         //script
-        let click01 = document.getElementById('click01')
+        var click01 = document.getElementById('click01')
         if(click01){
-            click01.addEventListener('click',(e)=>{
+            //兼容ie，这里click回调不能用箭头函数
+            click01.addEventListener('click',function(e){
                 window.alert('01')
             })
         }
-        let click02 = document.getElementById('click02')
+        var click02 = document.getElementById('click02')
         if(click02){
-            click02.addEventListener('click',(e)=>{
+            click02.addEventListener('click',function(e){
                 window.alert('02')
             })
         }
