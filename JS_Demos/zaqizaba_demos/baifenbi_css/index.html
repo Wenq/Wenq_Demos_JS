@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,no-store" />
+    <meta http-equiv="expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>[wenq] js demos</title>
+    <link rel="icon" href="loginResource/img/favicon.ico" type="image/x-icon" />
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+            width: 100%;
+            height: 100%;
+            background-color: white !important;
+        }
+    </style>
+    <script type="text/javascript">
+        // javascript
+    </script>
+ 
+    <style type="text/css">
+        /* 
+            目标：css百分比设置宽高的实际计算方式
+            结论：
+            1.百分比只是继承父元素content区域的宽高，即使用父元素width/height来计算，不含margin/padding/border尺寸;
+            2.浏览器Elements视图框选的元素大小尺寸是‘content size + padding + border’,不含margin;
+            3.元素height/width指的是content区域尺寸。子的高度百分比用父高度计算，子宽度百分比用父宽度计算;
+            4.一般而言,对于margin和padding,百分比按照父元素的宽度计算(对于定位元素，则按照父元素的高计算，以及‘书写模式’不同可能会参照高度);
+            注：参考的父必须是一个‘块级(display:block)/行内块级(display:inline-block)’元素，如果父是一个行内元素，则继续网上找可以作为计算参照的父元素;
+        */
+        .baifenbi-container {
+            height: 200px;
+            width: 300px;
+            margin: 5px;
+            border:  2px solid red;
+        }
+        .baifenbi-subcontainer {
+            height: 50%;
+            /* padding: 5px; */
+            border: 2px solid aqua;
+            /* margin-right: 30%; */
+            padding: 5%;
+            margin: 1%;
+        }
+        .baifenbi-item {
+            width: 50%;
+            height: 30%;
+            background-color:lightpink;
+        }
+
+    </style>
+</head>
+
+<body id="theme">
+    <div class='demo3 baifenbi-container'>
+        <div class='baifenbi-subcontainer'>
+            <div class='baifenbi-item'></div>
+        <div class='baifenbi-subcontainer'></div>
+    </div>
+</body>
+
+</html>
