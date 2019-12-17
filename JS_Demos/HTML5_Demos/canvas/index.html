@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2019-11-14 22:21:13
  * @LastEditors: wenq
- * @LastEditTime: 2019-11-17 23:38:12
+ * @LastEditTime: 2019-11-17 23:41:30
  -->
 <html>
     <head>
@@ -18,8 +18,8 @@
                 padding: 10px;
             }
             .item-canvas {
-                width: 500px;
-                height: 400px;
+                width: 50%;
+                height: 50%;
                 border: 1px solid blue;
             }
         </style>
@@ -33,7 +33,7 @@
             var canvasDom = document.getElementById('mycanvas');
             var canvasContext = canvasDom.getContext('2d'); 
             canvasContext.fillStyle='#FF0000';
-            canvasContext.fillRect(0,0,150,75);
+            canvasContext.fillRect(0,0,150,75); //绘制矩形
         </script>
         <script>
             /*
