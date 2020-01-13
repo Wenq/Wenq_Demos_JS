@@ -1,0 +1,72 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: wenq
+ * @Date: 2020-01-13 22:29:34
+ * @LastEditors  : wenq
+ * @LastEditTime : 2020-01-13 23:06:10
+ -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>js事件委托</title>
+    <style type="text/css">
+        #list {
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+            align-items: flex-start;
+            border: 2px solid red;
+            list-style: none;
+            overflow: auto;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #list .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            border: 1px solid blue;
+            /* flex-shrink: 0; */
+            /* flex-grow: 1; */
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .item:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+    </ul>
+    <script>
+        window.onload = () => {
+            var listDom = document.getElementById('list');
+            if (listDom) {
+                //动态增加列表子元素
+                for (var i = 0; i < 300; i++) {
+                    var liDom = document.createElement('li');
+                    liDom.className = 'item';
+                    // liDom.setAttribute('value', i)
+                    liDom.innerText = i;
+                    listDom.appendChild(liDom);
+                }
+                //事件委托
+                listDom.addEventListener('click', (e) => {
+                    if(e.target && e.target.tagName==='LI'){
+                        alert('u click: ' + e.target.innerText)   
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
