@@ -1,0 +1,36 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: wenq
+ * @Date: 2020-01-14 20:10:18
+ * @LastEditors  : wenq
+ * @LastEditTime : 2020-01-14 20:18:28
+ -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>event loop demo</title>
+        <style>
+            .parent {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 600px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='parent'>parent</div>
+        <script>
+            var parentDom = document.getElementsByClassName('parent')[0]
+            if(parentDom){
+                parentDom.addEventListener('click',()=>{
+                    alert('parent click!');
+                });
+            }
+
+            //event loop测试代码
+        </script>
+    </body>
+</html>
