@@ -4,34 +4,164 @@
  * @Author: wenq
  * @Date: 2020-01-14 20:10:18
  * @LastEditors  : wenq
- * @LastEditTime : 2020-01-14 20:42:21
+ * @LastEditTime : 2020-01-15 21:30:26
  -->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>event loop demo</title>
-        <style>
-            .parent {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100%;
-                width: 600px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class='parent'>parent</div>
-        <script>
-            var parentDom = document.getElementsByClassName('parent')[0]
-            if(parentDom){
-                parentDom.addEventListener('click',()=>{
-                    alert('parent click!');
-                });
-            }
 
-            //event loop测试代码
-            
-        </script>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>event loop demo</title>
+    <style>
+        .parent {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+            height: 100%;
+            /* width: 600px; */
+            border: 2px solid black;
+        }
+
+        .parent .btn {
+            height: 30px;
+            /* flex: 1;  /* /*作用于主轴 */
+            margin-bottom: 10px;
+        }
+
+        .parent .item {
+            display: flex;
+            flex-grow: 1;
+            border: 2px solid #1512f1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='parent'>
+        <button class='btn'>start</button>
+        <textarea class='item'>操作日志</textarea>
+    </div>
+    <script>
+        var parentDom = document.getElementsByClassName('parent')[0]
+        if (parentDom) {
+            parentDom.addEventListener('click', () => {
+                // alert('parent click!');
+            });
+        }
+
+        //log
+        var logDom = document.getElementsByClassName('item')[0];
+        var curLog = '';
+        var setLog = (logMsg) => {
+            curLog = logDom.innerHTML + '\n' + (logMsg || '');
+            logDom.innerHTML = curLog;
+        }
+
+        //button click
+        var btnDom = document.getElementsByClassName('btn')[0];
+        if (btnDom) {
+            btnDom.addEventListener('click', () => {
+                //event loop测试代码
+                setLog('btn click!');
+                eventloopFun1();
+                // eventloopFun2();
+                // eventloopFun3();
+            });
+        }
+
+        //event loop 示例1
+        //答案：1 4 7 5 2 3 6
+        function eventloopFun1() {
+            setLog('eventloopFun1');
+
+            setLog(1);
+
+            setTimeout(() => {
+                setLog(2);
+                Promise.resolve().then(() => {
+                    setLog(3)
+                });
+            });
+
+            new Promise((resolve, reject) => {
+                setLog(4)
+                resolve(5)
+            }).then((data) => {
+                setLog(data);
+            })
+
+            setTimeout(() => {
+                setLog(6);
+            })
+
+            setLog(7);
+        }
+
+        //event loop 示例2
+        //答案:1 4 10 5 6 7 2 3 9 8
+        function eventloopFun2() {
+            setLog('eventloopFun2');
+
+            setLog(1);
+
+            setTimeout(() => {
+                setLog(2);
+                Promise.resolve().then(() => {
+                    setLog(3)
+                });
+            });
+
+            new Promise((resolve, reject) => {
+                setLog(4)
+                resolve(5)
+            }).then((data) => {
+                setLog(data);
+
+                Promise.resolve().then(() => {
+                    setLog(6)
+                }).then(() => {
+                    setLog(7)
+
+                    setTimeout(() => {
+                        setLog(8)
+                    }, 0);
+                });
+            })
+
+            setTimeout(() => {
+                setLog(9);
+            })
+
+            setLog(10);
+        }
+
+        //event loop 示例3
+        //答案: script start、async1 start、async2、promise1、script end、promise2、async1 end、setTimeout
+        function eventloopFun3() {
+            setLog('eventloopFun3');
+
+            async function async1() {
+                setLog('async1 start')
+                await async2()
+                setLog('async1 end')
+            }
+            async function async2() {
+                setLog('async2')
+            }
+            setLog('script start')
+            setTimeout(function () {
+                setLog('setTimeout')
+            }, 0)
+            async1();
+            new Promise(function (resolve) {
+                setLog('promise1')
+                resolve();
+            }).then(function () {
+                setLog('promise2')
+            })
+            setLog('script end')
+        }
+    </script>
+</body>
+
 </html>
