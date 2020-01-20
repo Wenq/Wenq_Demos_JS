@@ -1,0 +1,65 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: wenq
+ * @Date: 2020-01-20 22:20:37
+ * @LastEditors  : wenq
+ * @LastEditTime : 2020-01-20 22:23:19
+ -->
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>prototype demo</title>
+        <style>
+            .parent {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: stretch;
+                height: 100%;
+                /* width: 600px; */
+                border: 2px solid black;
+            }
+    
+            .parent .btn {
+                height: 30px;
+                /* flex: 1;  /* /*作用于主轴 */
+                margin-bottom: 10px;
+            }
+    
+            .parent .item {
+                display: flex;
+                flex-grow: 1;
+                border: 2px solid #1512f1;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class='parent'>
+            <button class='btn'>start</button>
+            <textarea class='item'>操作日志</textarea>
+        </div>
+        <script>
+            //log
+            var logDom = document.getElementsByClassName('item')[0];
+            var curLog = '';
+            var setLog = (logMsg) => {
+                curLog = logDom.innerHTML + '\n' + (logMsg || '');
+                logDom.innerHTML = curLog;
+            }
+    
+            //button click
+            var btnDom = document.getElementsByClassName('btn')[0];
+            if (btnDom) {
+                btnDom.addEventListener('click', () => {
+                    //event loop测试代码
+                    setLog('btn click!');
+                });
+            }
+        </script>
+    </body>
+    
+    </html>
+    
