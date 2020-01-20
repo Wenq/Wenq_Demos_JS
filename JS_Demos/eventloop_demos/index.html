@@ -161,6 +161,37 @@
             })
             setLog('script end')
         }
+     
+        //event loop示例 (主函数、同步js)
+        //答案: start、promise start、asyncFunc1 start、invoke do1、end、promise success、asyncFunc1 end、setTimeout
+        var doFunc1 = () => {
+            //async await
+            async function asyncFunc1() {
+                setLog('asyncFunc1 start'); //同步
+                var tmp1 = await do1();
+                // return tmp1
+                setLog('asyncFunc1 end'); //await后面的放入微任务
+            }
+            //function
+            function do1() {
+                setLog('invoke do1'); //同步
+            }
+            setLog('start');
+            setTimeout(() => { //异步回调内容放入宏任务
+                setLog('setTimeout');
+            }, 0);
+            new Promise((resolve, reject) => {
+                setLog('promise start'); //同步
+                resolve('promise success'); //触发异步
+                // reject('promise faild');
+            }).then(function success(value) {
+                setLog(value); //异步回调放入微任务
+            }, function faild(value) {
+                setLog(value);
+            });
+            asyncFunc1();
+            setLog('end');
+        }
     </script>
 </body>
 
