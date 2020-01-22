@@ -53,11 +53,11 @@ instanceof运算符
 
 ## apply的作用
 
-作用：1.对象继承、2.对象方法与属性劫持
+> * 1.对象继承、
+> * 2.对象方法与属性劫持
 
 ## apply与call的区别
 
-区别：调用时参数结构不同
-
-xx.apply(context, [args1, args2...]);
-xx.call(context, args1, args2...);
+调用时**参数结构不同**
+> * xx.apply(context, [args1, args2...]);
+> * xx.call(context, args1, args2...);
