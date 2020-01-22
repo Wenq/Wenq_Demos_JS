@@ -56,11 +56,30 @@
                 btnDom.addEventListener('click', () => {
                     //event loop测试代码
                     setLog('btn click!');
-                    applyDemo();
+                    applyDemo1();
+                    applyDemo2();
                 });
             }
+
+            //apply场景1 (继承)
+            function applyDemo1(){
+                setLog('applyDemo1:');
+                function human(name, age){
+                    this.name = name;
+                    this.age = age;
+                }
+                function student(name, age, num){
+                    human.apply(this,arguments); //继承(这里传入human的参数与名称无关，human内部按顺序取的)
+                    this.num = num;
+                }
+
+                var stu1 = new student('xiaowang', 27, '0001'); //继承了human的属性‘name、age’，注意参数顺序
+                setLog('student->: ' + ' name: ' + stu1.name + ' age: ' + stu1.age + ' num: ' + stu1.num);
+            }
+            //apply场景2 (劫持)
             var bb = 'bbwindow';
-            function applyDemo(){
+            function applyDemo2(){
+                setLog('applyDemo2:');
                 var bb = 'bb';
                 var aa = {
                     bb : 'bbaa',
@@ -71,6 +90,7 @@
                         },0);
                     }
                 };
+                //apply场景2: 使用apply做上下文/属性/方法的劫持
                 aa.bbdo.apply({bb:'cc'}); //cc
                 // aa.bbdo.apply(null,{bb:'cc'}); //bbwindow
                 aa.bbdo.apply(null,[bb]); //bbwindow
