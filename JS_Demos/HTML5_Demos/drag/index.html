@@ -4,7 +4,7 @@
  * @Author: wenq
  * @Date: 2020-02-21 09:26:05
  * @LastEditors: wenq
- * @LastEditTime: 2020-02-21 10:43:41
+ * @LastEditTime: 2020-02-21 17:30:30
  -->
 
 <html>
@@ -74,14 +74,36 @@
             target = document.getElementById('drag-target');
             source = document.getElementById('drag-source');
             if (source) {
+                //动态增加拖动item
                 var dragSourceItem;
                 for (var i = 0; i < 10; i++) {
                     dragSourceItem = document.createElement('span');
-                    dragSourceItem.className = 'drag-item source-item';
+                    dragSourceItem.className = 'drag-item source-item target-item';
                     dragSourceItem.innerHTML = i;
                     dragSourceItem.setAttribute('draggable', true); //设置为支持拖拽
+                    dragSourceItem.setAttribute('id', 'drag-item-' + i); //id
+                    dragSourceItem.ondragstart = (event) => {
+                        console.log('drag demo -  ondragstart', event.target.id);
+                        event.dataTransfer.setData('args', event.target.id); //设置拖拽传输参数(‘args’只是一个标识，可按需要取名)
+                    };
                     source.appendChild(dragSourceItem);
                 }
+            }
+            if(target){
+                //拖拽放开
+                target.ondrop = (event)=>{
+                    console.log('drag demo -  ondrop', event.target.id);
+                    var id = event.dataTransfer.getData('args');
+                    var dropDom = document.getElementById(id); //获取被拖动元素
+                    if(dropDom){
+                        target.appendChild(dropDom); //移动元素
+                    }
+                };
+                //拖拽结束
+                target.ondragover = (event)=>{
+                    console.log('drag demo -  ondropover', event.target.id);
+                    event.preventDefault();
+                };
             }
         }
 
