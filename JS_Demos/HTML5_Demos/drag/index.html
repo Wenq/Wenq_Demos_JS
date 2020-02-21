@@ -1,0 +1,99 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: wenq
+ * @Date: 2020-02-21 09:26:05
+ * @LastEditors: wenq
+ * @LastEditTime: 2020-02-21 10:43:41
+ -->
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>h5-drag demo</title>
+    <style>
+        html body div span {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .container {
+            width: 80vw;
+            height: 80vh;
+            border: 1px solid red;
+            padding: 10px;
+        }
+
+        .drag-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .drag-target {
+            width: 100%;
+            height: 40%;
+            border: 1px solid blue;
+        }
+
+        .drag-source {
+            width: 100%;
+            height: 60%;
+            border: 1px solid yellow;
+            margin-top: 10px;
+        }
+
+        .drag-container .drag-item {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .drag-target .target-item {
+            background-color: coral;
+        }
+
+        .drag-source .source-item {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id='drag-target' class='drag-container drag-target'></div>
+        <div id='drag-source' class='drag-container drag-source'></div>
+    </div>
+    <script>
+        //init
+        window.onload = () => {
+            target = document.getElementById('drag-target');
+            source = document.getElementById('drag-source');
+            if (source) {
+                var dragSourceItem;
+                for (var i = 0; i < 10; i++) {
+                    dragSourceItem = document.createElement('span');
+                    dragSourceItem.className = 'drag-item source-item';
+                    dragSourceItem.innerHTML = i;
+                    dragSourceItem.setAttribute('draggable', true); //设置为支持拖拽
+                    source.appendChild(dragSourceItem);
+                }
+            }
+        }
+
+        /*
+            h5拖拽总结：
+            实现拖拽的步骤：
+            1.被拖动元素要打开其属性‘draggable’为true(注：是属性，不是style)。
+            2.被拖动元素在其事件‘onDragStart’中可以设置要传递给后续事件的‘参数a’(内容根据自己需要设置)。
+            3.在目标元素中松开鼠标，触发目标元素的‘drop’相关事件，在该事件中可拿到‘参数a’，之后可做后续相关处理(比如获取到被拖动元素这个dom，并将其作为子元素添加到目标元素中去)。
+            注：页面中有容器A，容器B，子元素C，假设元素C布局在A中，此时在其他地方获取到元素C的dom对象后，将其添加到B中，则C就自动从A中去除了。
+        */
+    </script>
+</body>
+
+</html>
