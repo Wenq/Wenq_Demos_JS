@@ -1,0 +1,31 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: wenq
+ * @Date: 2020-02-25 19:55:48
+ * @LastEditors: wenq
+ * @LastEditTime: 2020-02-25 20:02:47
+ -->
+<html>
+
+<head>
+    <title>js扁平化</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        //扁平化: 多位数组转1维数组
+        function flatten(arr) {
+            return arr.reduce((pre, next) => {
+                return pre.concat(Array.isArray(next) ? flatten(next) : next);
+            }, []);
+        }
+
+        //test
+        var data = [1, 2, [3, 4], 5, [6, [7]], 8, [9, 0]];
+        console.log(flatten(data).join(','))
+    </script>
+</body>
+
+</html>
