@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>demo1</title>
+	<style type="text/css">
+		#div1 {
+			background-color: red;
+		}
+		#span1 {
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div>下面红色块证明了幽灵空白节点存在，前提：html5页面声明+inline-block</div>
+	<!--幽灵空白节点-->
+	<div id='div1'><span id='span1'></span></div>
+
+</body>
+</html>
