@@ -2,11 +2,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>vue demo1</title>
+	<title>vue start demo1</title>
 	<!-- 开发环境版本，包含了有帮助的命令行警告 -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
+  <!-- 数据对象输出到dom，即页面 -->
 <div id="app">
   {{ message }}
 </div>
@@ -19,6 +20,7 @@ var app = new Vue({
 })
 </script>
 
+<!-- 数据对象绑定到dom元素的attribute -->
 <div id='app2'>
   <span v-bind:title='message'>
      鼠标悬停几秒钟查看此处动态绑定的提示信息！
@@ -31,6 +33,40 @@ var app = new Vue({
       message: '页面加载于' + new Date().toLocaleString()
     }
   })
+</script>
+
+<!-- 数据对象绑定dom元素可见性 //window.app3.seen=false console中手动切换为不可见-->
+<div id='app3'>
+  <p v-if='seen'>现在你看到我了</p>
+</div>
+<script type="text/javascript">
+  var app3 = new Vue({
+  el: '#app3',
+  data: {
+    seen: true
+  }
+})
+</script>
+
+<!-- 渲染数组 //window.app4.todos.push({text:'555'}) console中手动新增一个选项-->
+<div id='app4'>
+  <ol>
+    <li v-for='todo in todos'>
+    {{todo.text}}
+  </li>
+  </ol>
+</div>
+<script type="text/javascript">
+  var app4 = new Vue({
+  el: '#app4',
+  data: {
+    todos: [
+    {text:'1111'},
+    {text:'2222'},
+    {text:'3333'}
+    ]
+  }
+})
 </script>
 </body>
 </html>
