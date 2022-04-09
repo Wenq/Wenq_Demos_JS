@@ -20,7 +20,7 @@ var app = new Vue({
 })
 </script>
 
-<!-- 数据对象绑定到dom元素的attribute v-bind -->
+<!-- v-bind 数据对象绑定到dom元素的attribute  -->
 <div id='app2'>
   <span v-bind:title='message'>
      鼠标悬停几秒钟查看此处动态绑定的提示信息！
@@ -35,7 +35,7 @@ var app = new Vue({
   })
 </script>
 
-<!-- 数据对象绑定dom元素可见性 v-if //window.app3.seen=false console中手动切换为不可见-->
+<!-- v-if 数据对象绑定dom元素可见性  //window.app3.seen=false console中手动切换为不可见-->
 <div id='app3'>
   <p v-if='seen'>现在你看到我了</p>
 </div>
@@ -48,7 +48,7 @@ var app = new Vue({
 })
 </script>
 
-<!-- 渲染数组 v-for //window.app4.todos.push({text:'555'}) console中手动新增一个选项-->
+<!-- v-for 渲染数组 //window.app4.todos.push({text:'555'}) console中手动新增一个选项-->
 <div id='app4'>
   <ol>
     <li v-for='todo in todos'>
@@ -69,7 +69,7 @@ var app = new Vue({
 })
 </script>
 
-<!-- 用 v-on 指令添加一个事件监听器 -->
+<!-- v-on 指令添加一个事件监听器 -->
 <div id='app5'>
   <p>
     {{message}}
