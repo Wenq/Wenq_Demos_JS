@@ -13,16 +13,47 @@
 </style>
 </head>
 <body>
-  <!-- vue实例 -->
+  <!-- Object.freeze(xx)冻结property更新-->
 <div id='app' class='divStyle'>
+  <p>{{foo}}</p>
+  <button v-on:click="foo = 'baz'">click to change it</button>
 </div>
 <script type="text/javascript">
+  var obj = {
+    foo: 'bar'
+  }
+  Object.freeze(obj)
 var app = new Vue({
   el: '#app',
-  data: {
-    message: 'Hello Vue!'
-}
+  data: obj
 })
+</script>
+
+  <!-- 实例property与实例方法-->
+<div id='example' class='divStyle'>
+</div>
+<script type="text/javascript">
+  var data = {
+    a: '1'
+  }
+var vm = new Vue({
+  el: '#example',
+  data: data
+})
+
+var el = document.getElementById('example')
+if(el){
+  console.log('el exsit!')
+  var str = 'vm.$data === data : ' + vm.$data === data;
+  str +=  'vm.$el === el : ' + vm.$el === el;
+  el.innerText = str;
+
+  // $watch 是一个实例方法
+vm.$watch('a', function (newValue, oldValue) {
+  // 这个回调将在 `vm.a` 改变后调用
+  alert('data.a changed!')
+})
+}
 </script>
 </body>
 </html>
