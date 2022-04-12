@@ -55,5 +55,22 @@ vm.$watch('a', function (newValue, oldValue) {
 })
 }
 </script>
+
+  <!-- 模版语法，插值-->
+<div id='app1' class='divStyle'>
+  <p v-once>v-once绑定数据只渲染一次，后续改变数据源不重新渲染: {{foo}}</p>
+  <p>Using mustaches: {{ rawHtml }}</p>
+  <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+</div>
+<script type="text/javascript">
+  var obj = {
+    foo: 'bar',
+    rawHtml: "<span class='color: red'>this should be red</span>"
+  }
+var app1 = new Vue({
+  el: '#app1',
+  data: obj
+})
+</script>
 </body>
 </html>
