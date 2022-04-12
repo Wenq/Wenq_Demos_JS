@@ -93,6 +93,20 @@ xx.outerHTML：<div id='xx'><span></span></div>
 "除了数据 property，Vue 实例还暴露了一些有用的实例 property 与方法。它们都有前缀 $，以便与用户定义的 property 区分开来。"
 
 
+## 2022/4/12:
+
+【学习进度】
+模板语法
+插值
+文本
+原始 HTML
+Attribute
+使用 JavaScript 表达式
+指令
+参数
+动态参数
+修饰符
+
 
 
 
