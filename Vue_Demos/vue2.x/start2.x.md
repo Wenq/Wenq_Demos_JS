@@ -115,10 +115,26 @@ Attribute
  v-once 指令
 
  v-html 指令
+
  
+ ## 2022/4/19:
 
+ 【学习进度】
+模板语法
+插值
+文本
+原始 HTML
+Attribute
+使用 JavaScript 表达式
+指令
+参数
+动态参数
+修饰符
+缩写
+v-bind 缩写
+v-on 缩写
 
-
+“Vue 为 v-bind 和 v-on 这两个最常用的指令，提供了特定简写：: 与 @”
 
 
 
