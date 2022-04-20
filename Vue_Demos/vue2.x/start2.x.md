@@ -140,6 +140,54 @@ v-on 缩写
 计算属性和侦听器
 计算属性
 基础例子
+计算属性缓存 vs 方法
+计算属性 vs 侦听属性
+计算属性的 setter
+侦听器
+Class 与 Style 绑定
+
+“模板内的表达式非常便利，但是设计它们的初衷是用于简单运算的。”
+“对于任何复杂逻辑，你都应当使用计算属性。”
+
+计算属性申明实例：
+var vm = new Vue({
+  el: '#example',
+  data: {
+    message: 'Hello'
+  },
+  computed: {
+    // 计算属性的 getter
+    reversedMessage: function () { //计算属性
+      // `this` 指向 vm 实例
+      return this.message.split('').reverse().join('')
+    }
+  }
+})
+
+“可以像绑定普通 property 一样在模板中绑定计算属性。”
+property改变，对应计算属性也会改变，所有使用该计算属性的地方都会更新。
+
+“计算属性是基于它们的响应式依赖进行缓存的。只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要 message 还没有发生改变，多次访问 reversedMessage 计算属性会立即返回之前的计算结果，而不必再次执行函数。”
+
+“Vue 提供了一种更通用的方式来观察和响应 Vue 实例上的数据变动：侦听属性。” --watch
+“计算属性默认只有 getter，不过在需要时你也可以提供一个 setter”
+“虽然计算属性在大多数情况下更合适，但有时也需要一个自定义的侦听器。这就是为什么 Vue 通过 watch 选项提供了一个更通用的方法，来响应数据的变化。当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。”
+
+watch代码实例：
+el: '#watch-example',
+  data: {
+    question: '',
+    answer: 'I cannot give you an answer until you ask a question!'
+  },
+  watch: { //申明侦听器
+    // 如果 `question` 发生改变，这个函数就会运行
+    question: function (newQuestion, oldQuestion) {
+      this.answer = 'Waiting for you to stop typing...'
+      this.debouncedGetAnswer()
+    }
+  }
+
+# 2022/4/21:
 
 
 
