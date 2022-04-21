@@ -207,7 +207,32 @@ Class 与 Style 绑定
 class atrribute支持的数据格式包括：字符串、对象、数组（数组里可以再用对象）
 
 
+## 2022/4/22:
 
+【学习进度】
+条件渲染
+v-if
+在 <template> 元素上使用 v-if 条件渲染分组
+v-else
+v-else-if
+用 key 管理可复用的元素
+v-show
+v-if vs v-show
+v-if 与 v-for 一起使用
+
+v-if
+v-else-if
+v-else
+
+“Vue 会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染。”。--组件复用
+“Vue 为你提供了一种方式来表达“这两个元素是完全独立的，不要复用它们”。只需添加一个具有唯一值的 key attribute ” --用key标识一个对象，涉及复用等
+
+v-show
+“v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS property display。”
+“v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。” --v-if、v-show使用场景
+
+【学习进度】
+列表渲染
 
 
 
