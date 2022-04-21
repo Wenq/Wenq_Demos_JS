@@ -189,6 +189,23 @@ el: '#watch-example',
 
 # 2022/4/21:
 
+【学习进度】
+Class 与 Style 绑定
+绑定 HTML Class
+对象语法
+数组语法
+用在组件上
+绑定内联样式
+对象语法
+数组语法
+自动添加前缀
+多重值
+
+“v-bind 用于 class 和 style 时，Vue.js 做了专门的增强。表达式结果的类型除了字符串之外，还可以是对象或数组。”
+“v-bind:class 指令也可以与普通的 class attribute 共存”
+
+class atrribute支持的数据格式包括：字符串、对象、数组（数组里可以再用对象）
+
 
 
 
