@@ -15,20 +15,29 @@
 	<input type="text" name="text01" id="input01">
 	<script type="text/javascript">
 		var input01 = window.document.getElementById('input01')
-		if(input01){
+		if (input01) {
+
 			var evtInstance = customEventInstance
-			evtInstance.EventCenter.registerEvent(evtInstance.EvantName.CUSEVENT_ONTEXTCHANGED, function(e){
-				alert('event：CUSEVENT_ONTEXTCHANGED 已触发, 参数： ' + e)
+			//注册event
+			evtInstance.EventCenter.registerEvent(evtInstance.EvantName.CUSEVENT_BEFORETEXTCHANGED, function (e) {
+				console.warn('event：CUSEVENT_BEFORETEXTCHANGED 已触发, 参数： ' + e)
 			});
-			input01.addEventListener('change', function(e){
+			//注册event
+			evtInstance.EventCenter.registerEvent(evtInstance.EvantName.CUSEVENT_ONTEXTCHANGED, function (e) {
+				console.warn('event：CUSEVENT_ONTEXTCHANGED 已触发, 参数： ' + e)
+			});
+
+			input01.addEventListener('change', function (e) {
 				console.log('input change: ' + input01.value)
+				//触发event
 				evtInstance.EventCenter.triggerEvent(evtInstance.EvantName.CUSEVENT_ONTEXTCHANGED, input01.value)
 			});
-			input01.addEventListener('input', function(e){
+			input01.addEventListener('input', function (e) {
 				console.log('input beforeChange: ' + input01.value)
+				//触发event
 				evtInstance.EventCenter.triggerEvent(evtInstance.EvantName.CUSEVENT_BEFORETEXTCHANGED, input01.value)
 			});
-		}else{
+		} else {
 			console.error('input01 undefined!')
 		}
 	</script>
