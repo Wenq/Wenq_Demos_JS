@@ -30,8 +30,8 @@ customEventInstance.EventCenter = {
 		}
 	},
 
-	//发布event
-	// publishEvent: function publishEvent(argument) {
+	//分发event
+	// dispatchEvent: function dispatchEvent(argument) {
 	// 	// body...
 	// },
 
