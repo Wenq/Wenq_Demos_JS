@@ -24,7 +24,7 @@ customEventInstance.EventCenter = {
 	triggerEvent: function triggerEvent(eventName, params) {
 		for (var i = 0; i < this.eventList.length; i++) {
 			if (this.eventList[i].eventName == eventName) {
-				this.eventList[i].callback && this.eventList[i].callback(params);
+				this.eventList[i].callback && this.eventList[i].callback(params)
 				console.warn('已触发event: ' + eventName + ', 参数： ' + params)
 			}
 		}
@@ -42,7 +42,7 @@ customEventInstance.EventCenter = {
 			if (this.eventList[i].eventName == eventName) {
 				this.eventList.splice(i, 1)
 				console.warn('注销event成功: ' + eventName)
-				break;
+				break
 			}
 		}
 	}
