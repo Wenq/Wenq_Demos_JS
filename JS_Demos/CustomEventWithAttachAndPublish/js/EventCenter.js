@@ -1,7 +1,7 @@
 
 console.log('load EventCenter.js successed!')
 
-//自定义事件对象
+//全局自定义事件对象
 var customEventInstance = {}
 
 //event中心，封装event各类接口
@@ -21,7 +21,7 @@ customEventInstance.EventCenter = {
 	},
 
 	//触发event
-	triggerEvent: function triggerEvent(eventName, params) {
+	dispatchEvent: function dispatchEvent(eventName, params) {
 		for (var i = 0; i < this.eventList.length; i++) {
 			if (this.eventList[i].eventName == eventName) {
 				this.eventList[i].callback && this.eventList[i].callback(params)
@@ -29,11 +29,6 @@ customEventInstance.EventCenter = {
 			}
 		}
 	},
-
-	//分发event
-	// dispatchEvent: function dispatchEvent(argument) {
-	// 	// body...
-	// },
 
 	//注销event（什么时候主动注销？？）
 	unRegisterEvent: function unAttachEvent(eventName) {

@@ -28,14 +28,14 @@
 			});
 
 			input01.addEventListener('change', function (e) {
-				console.log('input change: ' + input01.value)
+				console.log('input-change，change: ' + input01.value)
 				//触发event
-				evtInstance.EventCenter.triggerEvent(evtInstance.EvantName.CUSEVENT_ONTEXTCHANGED, input01.value)
+				evtInstance.EventCenter.dispatchEvent(evtInstance.EvantName.CUSEVENT_ONTEXTCHANGED, input01.value)
 			});
 			input01.addEventListener('input', function (e) {
-				console.log('input beforeChange: ' + input01.value)
+				console.log('input-input， beforeChange: ' + input01.value)
 				//触发event
-				evtInstance.EventCenter.triggerEvent(evtInstance.EvantName.CUSEVENT_BEFORETEXTCHANGED, input01.value)
+				evtInstance.EventCenter.dispatchEvent(evtInstance.EvantName.CUSEVENT_BEFORETEXTCHANGED, input01.value)
 			});
 		} else {
 			console.error('input01 undefined!')
