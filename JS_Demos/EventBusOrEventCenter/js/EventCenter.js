@@ -4,7 +4,7 @@ console.log('load EventCenter.js successed!')
 //全局自定义事件对象
 var customEventInstance = {}
 
-//event中心，封装event各类接口
+//event中心，封装event标准接口
 customEventInstance.EventCenter = {
 
 	//event注册对象列表
