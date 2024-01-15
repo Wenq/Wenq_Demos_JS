@@ -21,11 +21,11 @@ customEventInstance.EventCenter = {
 	},
 
 	//触发event
-	dispatchEvent: function dispatchEvent(eventName, params) {
+	dispatchEvent: function dispatchEvent(eventName, ...params) {
 		for (var i = 0; i < this.eventList.length; i++) {
 			if (this.eventList[i].eventName == eventName) {
-				this.eventList[i].callback && this.eventList[i].callback(params)
-				console.warn('已触发event: ' + eventName + ', 参数： ' + params)
+				this.eventList[i].callback && this.eventList[i].callback(...params)
+				console.warn('已触发event: ' + eventName + ', 参数： ', ...params)
 			}
 		}
 	},
