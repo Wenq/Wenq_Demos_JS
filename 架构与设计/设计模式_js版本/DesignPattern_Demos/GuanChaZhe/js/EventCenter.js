@@ -1,4 +1,3 @@
-
 console.log('load EventCenter.js successed!')
 
 //全局自定义事件对象
