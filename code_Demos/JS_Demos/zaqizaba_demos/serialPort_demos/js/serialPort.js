@@ -1,6 +1,7 @@
 console.log('load serialPort.js successed!')
 
 //资料地址：https://zhuanlan.zhihu.com/p/456427866?utm_id=0
+//浏览器支持版本：chrome-89、edge-89、Opera-76；safari/ie/移动端都不支持
 
 //打开串口
 // 提示用户选择一个串口
