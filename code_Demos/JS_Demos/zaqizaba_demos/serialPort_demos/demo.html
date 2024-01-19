@@ -12,8 +12,20 @@
 	<script type="text/javascript" src="js/EventCenter.js">
 	</script>
 	<div class="div" id="bar">js串口通信</div>
+	<label>串口名称： </label>
 	<input type="text" name="text01" id="input01">
+	<button>连接串口设备：</button>
+	<input type="text" name="text02" id="input02">
+	<button>读取串口数据：</button>
+	<input type="text" name="text03" id="input03">
+	<button>写入串口数据：</button>
+	<button>关闭连接</button>
 	<script type="text/javascript">
+		if ("serial" in navigator) {
+			// 浏览器支持串口通信
+		}else{
+			alert('该浏览器不支持 web serial api！')
+		}
 		var input01 = window.document.getElementById('input01')
 		if (input01) {
 			//

@@ -1,51 +1,38 @@
-console.log('load EventCenter.js successed!')
+console.log('load serialPort.js successed!')
 
-//全局自定义事件对象
-var customEventInstance = {}
+//资料地址：https://zhuanlan.zhihu.com/p/456427866?utm_id=0
 
-//event中心，封装event标准接口
-customEventInstance.EventCenter = {
+//打开串口
+// 提示用户选择一个串口
+const port = await navigator.serial.requestPort();
+// 获取用户之前授予该网站访问权限的所有串口
+const ports = await navigator.serial.getPorts();
 
-	//event注册对象列表
-	eventList: [],
+// 打开串口
+await port.open({
+  dataBits: 8, // 数据位
+  stopBits: 1, // 停止位
+  parity: "none", // 奇偶校验
+  baudRate: 9600, // 波特率
+});
 
-	//注册event
-	registerEvent: function attachEvent(eventName, callback) {
-		// body...
-		this.eventList.push({
-			eventName,
-			callback
-		});
-		console.warn('注册event成功: ' + eventName)
-	},
-
-	//触发event
-	dispatchEvent: function dispatchEvent(eventName, ...params) {
-		for (var i = 0; i < this.eventList.length; i++) {
-			if (this.eventList[i].eventName == eventName) {
-				this.eventList[i].callback && this.eventList[i].callback(...params)
-				console.warn('已触发event: ' + eventName + ', 参数： ', ...params)
-			}
-		}
-	},
-
-	//注销event（什么时候主动注销？？）
-	unRegisterEvent: function unAttachEvent(eventName) {
-		//根据eventName遍历eventList中对象，找到最近一个与eventName名称一样的事件对象，移除该对象
-		for (var i = 0; i < this.eventList.length; i++) {
-			if (this.eventList[i].eventName == eventName) {
-				this.eventList.splice(i, 1)
-				console.warn('注销event成功: ' + eventName)
-				break
-			}
-		}
-	}
-
+//读取数据
+const reader = port.readable.getReader();
+// 监听来自串口的数据
+while (true) {
+  const { value, done } = await reader.read();
+  if (done) {
+    // 允许稍后关闭串口
+    reader.releaseLock();
+    break;
+  }
+  // value 是一个 Uint8Array
+  console.log(value);
 }
 
-//event事件名称枚举
-customEventInstance.EvantName = {
-	CUSEVENT_BEFORETEXTCHANGED: 'beforeTextChanged',
-	CUSEVENT_ONTEXTCHANGED: 'onTextChanged',
-	CUSEVENT_AFTERTEXTCHANGED: 'afterTextChanged'
-}
+//写入数据
+await writer.write(
+	new Uint8Array("hello".split("").map((s) => s.charCodeAt(0)))
+	);
+
+//串口关闭
