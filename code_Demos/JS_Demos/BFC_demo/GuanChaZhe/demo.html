@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>观察者模式/自定义事件/发布订阅 demo</title>
+	<link rel="stylesheet" type="text/css" href="css/demo.css">
+</head>
+
+<body>
+	<script type="text/javascript" src="js/EventCenter.js">
+	</script>
+	<div class="div" id="bar">自定义事件 - 订阅、触发、分发</div>
+	<input type="text" name="text01" id="input01">
+	<script type="text/javascript">
+		var input01 = window.document.getElementById('input01')
+		if (input01) {
+
+			var evtInstance = customEventInstance
+			//注册event
+			evtInstance.EventCenter.registerEvent(evtInstance.EvantName.CUSEVENT_BEFORETEXTCHANGED, function (e) {
+				console.warn('event：CUSEVENT_BEFORETEXTCHANGED 已触发, 参数： ' + e)
+			});
+			//注册event
+			evtInstance.EventCenter.registerEvent(evtInstance.EvantName.CUSEVENT_ONTEXTCHANGED, function (e) {
+				console.warn('event：CUSEVENT_ONTEXTCHANGED 已触发, 参数： ' + e)
+			});
+
+			input01.addEventListener('change', function (e) {
+				console.log('input-change，change: ' + input01.value)
+				//触发event
+				evtInstance.EventCenter.dispatchEvent(evtInstance.EvantName.CUSEVENT_ONTEXTCHANGED, input01.value)
+			});
+			input01.addEventListener('input', function (e) {
+				console.log('input-input， beforeChange: ' + input01.value)
+				//触发event
+				evtInstance.EventCenter.dispatchEvent(evtInstance.EvantName.CUSEVENT_BEFORETEXTCHANGED, input01.value)
+			});
+		} else {
+			console.error('input01 undefined!')
+		}
+	</script>
+</body>
+
+</html>
