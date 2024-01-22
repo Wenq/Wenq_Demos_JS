@@ -10,3 +10,6 @@ html, body {
 	height: 30px;
 	border: 1px solid red;
 }
+.block1 {
+	margin: 10px;
+}
