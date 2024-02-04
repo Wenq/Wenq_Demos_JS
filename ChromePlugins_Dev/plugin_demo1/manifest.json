@@ -1,0 +1,6 @@
+{
+    "manifest_version" : 3,
+    "name" : "wenq chrome extension demo_01",
+    "version" : "0.0.1",
+    "description": "chrome plugins dev test 01"
+}
