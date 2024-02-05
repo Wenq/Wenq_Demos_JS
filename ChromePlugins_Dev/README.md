@@ -58,3 +58,6 @@ background -> content: ?
     8.Cookie获取（Popup/Content/background）
     9.打包extension、发布到应用商店
 
+# chrome extension 开发者注册
+https://chrome.google.com/webstore/devconsole/register
+（需要google账号 + 5美元注册费）
