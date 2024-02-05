@@ -31,6 +31,12 @@ plugin_search_but.onclick = async function () {
         connect.onMessage.addListener((mess) => {
             console.log(mess)
         })
+
+        //（Popup）获取页面cookie
+        const cookies = await chrome.cookies.getAll({ domain: '.douban.com' })
+        console.log('popup cookies--->', cookies)
+        const urlCookies = await chrome.cookies.getAll({ url: 'https://movie.douban.com/' })
+        console.log("popup urlCookies", urlCookies);
     }
 
 }

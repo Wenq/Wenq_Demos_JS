@@ -14,7 +14,8 @@
     },
     "permissions": [
         "notifications",
-        "tabs"
+        "tabs",
+        "cookies"
     ],
     "content_scripts": [
         {

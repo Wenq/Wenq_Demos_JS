@@ -55,5 +55,10 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
         }
         const allData = await response.json()
         console.log('service worker allData', allData)
+
+        //代码暂时放这里
+        //（background）获取页面cookie
+        const cookies = await chrome.cookies.getAll({ domain: '.douban.com' })
+        console.log('service worker cookies--->', cookies)
     }
 });
