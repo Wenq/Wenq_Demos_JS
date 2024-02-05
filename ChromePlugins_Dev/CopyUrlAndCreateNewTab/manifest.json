@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "一键复制页签",
+    "version": "0.1",
+    "description": "复制当前页签url地址，自动新建浏览器页签并打开该地址",
+    "action": {
+        "default_icon": "icons/icon.png",
+        "default_title": "一键复制页签",
+        "default_popup": "popup/index.html"
+    },
+    "permissions": [
+        "notifications",
+        "tabs"
+    ]
+}
