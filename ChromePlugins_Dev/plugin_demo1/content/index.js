@@ -13,14 +13,33 @@ function createPage() {
     const page = $('<div id="cj_move_page"></div>')
     const h3 = $('<h3 id="cj_move_h3">来自浏览器注入脚本，可以drage me！</h3>')
     const but1 = $('<button id="cj_but1">消息通知</button>')
+    const but2 = $('<button id="cj_but2">content 加载更多</button>')
+    const but3 = $('<button id="cj_but3">service worker 加载</button>')
     page.append(h3)
     page.append(but1)
+    page.append(but2)
+    page.append(but3)
     $('body').append(page)
+    //消息通知按钮事件
     $('#cj_but1').click(async (e) => {
         console.log('e', e, chrome)
-
         // 发送消息（向后台background/service worker）-- 注入脚本和后台通信
         chrome.runtime.sendMessage({ action: "fromContent" });
+    })
+    // content 加载更多按钮事件
+    $('#cj_but2').click(async (e) => {
+        //fetch：发起网络请求
+        const response = await fetch("https://movie.douban.com/j/tv/recommend_groups")
+        if (!response.ok) {
+            throw new Error('Network response was not ok')
+        }
+        const allData = await response.json()
+        console.log('content index allData', allData)
+    })
+    // service worker 加载按钮事件
+    $('#cj_but3').click(async (e) => {
+        console.log('e', e, chrome)
+        chrome.runtime.sendMessage({ action: "fromContentFetch" });
     })
     //拖拽
     drag(cj_move_h3)
@@ -52,3 +71,19 @@ function drag(ele) {
         }
     }
 }
+
+//监听来自Popup的消息 - 1
+chrome.runtime.onMessage.addListener((e) => {
+    console.log('e(from content)', e)
+})
+
+//监听来自Popup的消息 - 2
+chrome.runtime.onConnect.addListener((res) => {
+    console.log('contentjs中的 chrome.runtime.onConnect：', res)
+    if (res.name === 'fromPopup2Content') {
+        res.onMessage.addListener(mess => {
+            console.log('contentjs中的 res.onMessage.addListener：', mess)
+            res.postMessage('哈哈哈，我是contentjs')
+        })
+    }
+})

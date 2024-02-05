@@ -13,12 +13,14 @@
         "service_worker": "background/service_worker.js"
     },
     "permissions": [
-        "notifications"
+        "notifications",
+        "tabs"
     ],
     "content_scripts": [
         {
             "matches": [
-                "https://www.baidu.com/"
+                "https://www.baidu.com/",
+                "https://movie.douban.com/*"
             ],
             "js": [
                 "content/jquery.js",

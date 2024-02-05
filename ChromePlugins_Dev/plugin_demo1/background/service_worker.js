@@ -47,5 +47,13 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
                 console.log('notificationId-->(fromContent)', notificationId)
             }
         );
+    } else if (message.action === "fromContentFetch") {
+        //发起网络请求
+        const response = await fetch("https://movie.douban.com/j/tv/recommend_groups")
+        if (!response.ok) {
+            throw new Error('Network response was not ok')
+        }
+        const allData = await response.json()
+        console.log('service worker allData', allData)
     }
 });
