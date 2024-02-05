@@ -6,7 +6,7 @@
 }
 
 .plugin_search {
-    margin: 15px 30px 15px 30px;
+    margin: 15px 10px 15px 30px;
 }
 
 .plugin_search_bar {
@@ -39,6 +39,7 @@
     outline: 0px;
     padding: 0 8px;
     box-sizing: content-box;
+    cursor: pointer;
 }
 
 .plugin_span {

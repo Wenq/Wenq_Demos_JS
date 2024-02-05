@@ -10,6 +10,9 @@ plugin_search_but.onclick = async function () {
     });
     if (tabs && tabs.length > 0) {
         // 创建一个新的标签页，并导航到当前活动标签页的 URL
-        chrome.tabs.create({ url: tabs[0].url });
+        chrome.tabs.create({
+            index: tabs[0].index + 1,
+            url: tabs[0].url
+        });
     }
 }
