@@ -1,18 +1,32 @@
 {
-    "manifest_version" : 3,
-    "name" : "wenq chrome extension demo_01",
-    "version" : "0.0.1",
+    "manifest_version": 3,
+    "name": "wenq chrome extension demo_01",
+    "version": "0.0.1",
     "description": "chrome plugins dev test 01",
-    "action" : {
-        "default_icon" : "icons/icon.png",
-        "default_title" : "Popup Title xxx",
-        "default_popup" : "popup/index.html"
+    "action": {
+        "default_icon": "icons/icon.png",
+        "default_title": "Popup Title xxx",
+        "default_popup": "popup/index.html"
     },
-    "background" : {
-        "type" : "module",
-        "service_worker" : "background/service_worker.js"
+    "background": {
+        "type": "module",
+        "service_worker": "background/service_worker.js"
     },
-    "permissions" : [
+    "permissions": [
         "notifications"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.baidu.com/"
+            ],
+            "js": [
+                "content/jquery.js",
+                "content/index.js"
+            ],
+            "css": [
+                "content/index.css"
+            ]
+        }
     ]
 }

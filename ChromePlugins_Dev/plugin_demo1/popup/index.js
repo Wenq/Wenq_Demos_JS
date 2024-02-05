@@ -5,7 +5,7 @@ plugin_search_but.onclick = function () {
     
     //chrome插件运行时对象：chrome
     console.log("chrome:", chrome)
-    //发送消息给其他Popup
+    //发送消息给其他Popup（popup弹窗与后台background/service worker通信）
     chrome.runtime.sendMessage({
         action : "fromPopup",
         message : "Hello from Popup!"
