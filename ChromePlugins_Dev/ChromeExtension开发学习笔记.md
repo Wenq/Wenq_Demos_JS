@@ -65,3 +65,8 @@ background -> content: ?
 # chrome extension 开发者注册
 https://chrome.google.com/webstore/devconsole/register
 （需要google账号 + 5美元注册费）
+
+#  2024/2/8
+当前熟练度：
+1、目前了解了chrome extension开发的基础知识，做了自己的demo验证。
+2、对开发流程有了了解，但各模块的使用还需要进一步学习加强（`算入门了吧`）。
