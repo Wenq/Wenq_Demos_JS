@@ -1,8 +1,6 @@
 const plugin_search_but = document.getElementById('plugin_search_but')
 plugin_search_but.onclick = async function () {
-    // 这是一个基本的 Chrome 扩展程序示例
-    // 它会在工具栏中添加一个按钮，点击该按钮会打开一个新的标签页，并导航到当前活动标签页的 URL
-
+    //TODO：在点击工具栏图标打开的插件界面中，再次点击后才打开新页签（实现方案一）
     // 获取当前窗口的tab
     const tabs = await chrome.tabs.query({
         active: true,

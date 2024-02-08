@@ -43,7 +43,7 @@ background -> content: ?
 2、chrome.tabs.sendMessage / ?
 3、chrome.runtime.sendConnnect / chrome.runtime.onConnect.addListener
 
-# 内容目录（总结）
+# 内容目录（总结，对应帖子 - https://zhuanlan.zhihu.com/p/678535335）
 1、extension插件介绍（包括开发语言、使用场景、功能范围等）
 2、插件术语（概念介绍）
     1.manifest.json文件
