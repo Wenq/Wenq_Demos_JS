@@ -1,9 +1,11 @@
 # Chrome插件开发 2024/2/4
 
 ===========================
+
 学习帖子：
-https://zhuanlan.zhihu.com/p/678535335  --目前主要看这篇
-https://www.zhihu.com/tardis/bd/art/438896257?source_id=1001
+https://zhuanlan.zhihu.com/p/678535335  --目前主要看这篇（100%）
+https://www.zhihu.com/tardis/bd/art/438896257?source_id=1001 --（5%）
+https://www.xjx100.cn/news/1505781.html?action=onClick --该篇更加详细，注重实操（10%）
 
 ===========================
 # 2024/2/5
