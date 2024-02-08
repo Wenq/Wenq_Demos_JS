@@ -8,6 +8,8 @@ https://www.zhihu.com/tardis/bd/art/438896257?source_id=1001
 ===========================
 # 2024/2/5
 
+Chrome插件是一个用`Web技术`开发、用来增强浏览器功能的软件，它其实就是一个由`HTML、CSS、JS、图片等`资源组成的一个`.crx后缀`的压缩包.
+
 `chrome extension 开发，程序是声明式的，主要配置文件manifest.json。`
 其包含的程序模块包括：
 【主要】

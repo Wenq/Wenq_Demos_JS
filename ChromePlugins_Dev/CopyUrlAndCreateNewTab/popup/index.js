@@ -9,7 +9,7 @@ plugin_search_but.onclick = async function () {
         currentWindow: true
     });
     if (tabs && tabs.length > 0) {
-        // 创建一个新的标签页，并导航到当前活动标签页的 URL
+        // 创建一个新的标签页，并导航到当前活动标签页的URL
         chrome.tabs.create({
             index: tabs[0].index + 1,
             url: tabs[0].url
