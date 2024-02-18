@@ -64,7 +64,7 @@ background -> content: ?
 
 # chrome extension 开发者注册
 https://chrome.google.com/webstore/devconsole/register
-（需要google账号 + 5美元注册费）
+（需要google账号 + 5美元注册费），需要`科学上网`才能打开在线chrome extension商店
 
 #  2024/2/8
 当前熟练度：
