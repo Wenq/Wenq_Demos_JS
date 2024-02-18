@@ -4,6 +4,7 @@
 
 学习帖子：
 https://zhuanlan.zhihu.com/p/635411894 （这篇帖子感觉内容跟最新版yo脚手架不一致，有点旧了）
+https://code.visualstudio.com/api/get-started/your-first-extension （官方开发文档）
 
 ===========================
 
