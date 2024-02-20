@@ -12,6 +12,11 @@ https://blog.csdn.net/weixin_43616817/article/details/124316972
 
 ===========================
 
+# 背景知识
+需要的软件：node、yo、generator-code
+开发工具：vscode
+插件打包工具：vsce
+
 # 2024/2/18 vscode extension开发流程
 1、使用提供的npm包工具创建开发工程（类似react提供的‘create start app’）
 2、（一般使用vscode软件）基于如上工程编写具体插件逻辑代码

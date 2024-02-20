@@ -1,1 +1,1 @@
-this is a color theme created by demo1.
+this is a demo for practice to developing vscode extension created by wenq.
