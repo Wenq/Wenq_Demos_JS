@@ -20,7 +20,7 @@ https://blog.csdn.net/weixin_43616817/article/details/124316972
 # 2024/2/18 vscode extension开发流程
 1、使用提供的npm包工具创建开发工程（类似react提供的‘create start app’）
 2、（一般使用vscode软件）基于如上工程编写具体插件逻辑代码
-3、（一般使用vscode软件）本地开发调试（启动调试等有快捷键）、打包
+3、（一般使用vscode软件）本地开发调试（启动调试等有快捷键）、打包（可本地程序直接在vscode里调试，也可用vsce打包后未vsix文件后，通过vscode安装该vsix包再测试功能）
 4、注册账号，上传并发布extension包(之后其他人可在vscode客户端中搜索并下载)
 
 ## `实际安装/开发过程`：
