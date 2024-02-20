@@ -30,7 +30,7 @@ https://blog.csdn.net/weixin_43616817/article/details/124316972
 4、创建插件项目指令：“yo code”
 5、插件代码主入口程序文件“extension.js”，这里是js开发；如果是ts开发则主入口程序文件是“extension.ts”
 6、在vscode中使用F5开启调试，会弹新窗口出来，输入command激活插件
-7、安装“vsce”来打包和发布
+7、安装“vsce”来打包和发布（发布需要有MS的azure账号，生成自己的token，发布时需要这个token字符串）
 
 ## yo和generator-code介绍
 yo和generator-code这两个包用途如下：
