@@ -8,8 +8,16 @@ https://www.zhihu.com/tardis/bd/art/438896257?source_id=1001 --（5%）
 https://www.xjx100.cn/news/1505781.html?action=onClick --该篇更加详细，注重实操（10%）
 
 ===========================
-# 2024/2/5
 
+# 2024/2/20 需要的软件或基础知识
+需要的软件：无（手搓manifest.json文件）
+开发工具：vscode或其他IDE都可以
+插件打包工具：chrome浏览器的extension管理界面自带打包功能
+api：chrome支持的功能对象，api等（各种模块）
+其他：可安装第三方包参与开发（比如使用npm安装）？？
+发布：chrome官方账号、extension商店管理上传
+
+# 2024/2/5
 Chrome插件是一个用`Web技术`开发、用来增强浏览器功能的软件，它其实就是一个由`HTML、CSS、JS、图片等`资源组成的一个`.crx后缀`的压缩包.
 
 `chrome extension 开发，程序是声明式的，主要配置文件manifest.json。`

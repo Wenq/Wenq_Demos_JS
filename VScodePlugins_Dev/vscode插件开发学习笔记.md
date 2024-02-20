@@ -13,7 +13,7 @@ https://blog.csdn.net/weixin_43616817/article/details/124316972
 ===========================
 
 # 需要的软件或基础知识
-需要的软件：node、yo、generator-code
+需要的软件：node、yo（脚手架）、generator-code（模版）
 开发工具：vscode
 插件打包工具：vsce
 api：vscode支持的功能对象，api等（开放了vscode软件的编辑区域、右键菜单等）
