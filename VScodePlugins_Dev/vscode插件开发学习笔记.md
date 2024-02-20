@@ -12,10 +12,14 @@ https://blog.csdn.net/weixin_43616817/article/details/124316972
 
 ===========================
 
-# 背景知识
+# 需要的软件或基础知识
 需要的软件：node、yo、generator-code
 开发工具：vscode
 插件打包工具：vsce
+api：vscode支持的功能对象，api等（开放了vscode软件的编辑区域、右键菜单等）
+其他：可安装第三方包参与开发（比如使用npm安装）
+发布：azure官方账号、账号生成token
+
 
 # 2024/2/18 vscode extension开发流程
 1、使用提供的npm包工具创建开发工程（类似react提供的‘create start app’）
@@ -36,4 +40,3 @@ https://blog.csdn.net/weixin_43616817/article/details/124316972
 yo和generator-code这两个包用途如下：
 1、yo模块全局安装后就安装了Yeoman，Yeoman是通用型项目脚手架工具，可以根据一套模板，生成一个对应的项目结构
 2、generator-code模块是VS Code扩展生成器，与yo配合使用才能构建项
-
