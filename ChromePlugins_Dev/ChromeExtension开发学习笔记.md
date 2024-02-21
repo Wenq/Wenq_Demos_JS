@@ -81,5 +81,5 @@ https://chrome.google.com/webstore/devconsole/register
 # 2024/2/21 chrome extension开发流程
 1、手搓manifest.json文件，做相应配置
 2、基于如上配置文件及其入口编写具体插件逻辑代码（比如使用vscode软件开发）
-3、基于chrome浏览器的`开发者模式`加载插件代码进行开发调试、chrome浏览器扩展自带打包功能（打包生成crx文件）
+3、基于chrome浏览器的`开发者模式`加载插件代码进行开发调试、chrome浏览器扩展自带打包功能（打包生成.crx文件）
 4、注册goole商店账号（开发者账号？），上传并发布extension包(之后其他人可在商店中下载并安装使用)
