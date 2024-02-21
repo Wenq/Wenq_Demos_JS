@@ -12,6 +12,7 @@ https://www.xjx100.cn/news/1505781.html?action=onClick --该篇更加详细，�
 # 2024/2/20 需要的软件或基础知识
 需要的软件：无（手搓manifest.json文件）
 开发工具：vscode或其他IDE都可以
+开发语言：html/js/css
 插件打包工具：chrome浏览器的extension管理界面自带打包功能
 api：chrome支持的功能对象，api等（各种模块）
 其他：可安装第三方包参与开发（比如使用npm安装）？？
