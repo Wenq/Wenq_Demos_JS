@@ -2,12 +2,10 @@
 
 ===========================
 
-学习帖子：
+# 学习帖子：
 https://zhuanlan.zhihu.com/p/678535335  --目前主要看这篇（100%）
 https://www.zhihu.com/tardis/bd/art/438896257?source_id=1001 --（5%）
 https://www.xjx100.cn/news/1505781.html?action=onClick --该篇更加详细，注重实操（10%）
-
-===========================
 
 # 2024/2/20 需要的软件或基础知识
 需要的软件：无（手搓manifest.json文件）
@@ -18,7 +16,7 @@ api：chrome支持的功能对象，api等（各种模块）
 其他：可安装第三方包参与开发（比如使用npm安装）？？
 发布：chrome官方账号、extension商店管理上传
 
-# 2024/2/5
+# 2024/2/5 开发知识
 Chrome插件是一个用`Web技术`开发、用来增强浏览器功能的软件，它其实就是一个由`HTML、CSS、JS、图片等`资源组成的一个`.crx后缀`的压缩包.
 
 `chrome extension 开发，程序是声明式的，主要配置文件manifest.json。`
@@ -75,7 +73,13 @@ background -> content: ?
 https://chrome.google.com/webstore/devconsole/register
 （需要google账号 + 5美元注册费），需要`科学上网`才能打开在线chrome extension商店
 
-#  2024/2/8
+#  2024/2/8 学习进度
 当前熟练度：
 1、目前了解了chrome extension开发的基础知识，做了自己的demo验证。
 2、对开发流程有了了解，但各模块的使用还需要进一步学习加强（`算入门了吧`）。
+
+# 2024/2/21 chrome extension开发流程
+1、手搓manifest.json文件，做相应配置
+2、基于如上配置文件及其入口编写具体插件逻辑代码（比如使用vscode软件开发）
+3、基于chrome浏览器的`开发者模式`加载插件代码进行开发调试、chrome浏览器扩展自带打包功能（打包生成crx文件）
+4、注册goole商店账号（开发者账号？），上传并发布extension包(之后其他人可在商店中下载并安装使用)
