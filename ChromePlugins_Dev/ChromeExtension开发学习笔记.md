@@ -83,3 +83,10 @@ https://chrome.google.com/webstore/devconsole/register
 2、基于如上配置文件及其入口编写具体插件逻辑代码（比如使用vscode软件开发）
 3、基于chrome浏览器的`开发者模式`加载插件代码进行开发调试、chrome浏览器扩展自带打包功能（打包生成.crx文件）
 4、注册goole商店账号（开发者账号？），上传并发布extension包(之后其他人可在商店中下载并安装使用)
+
+# 2024/2/23 chrome extension 其他能力
+1、覆盖chrome浏览器默认页面（比如新建空白页签的空白页面等）
+2、storage读写程序数据（支持不同浏览器之间同步、支持对象等）
+3、自带的devtools扩展，增加新扩展面板
+4、notifications推送桌面通知
+5、webRequest拦截所有浏览器http请求，支持修改等
